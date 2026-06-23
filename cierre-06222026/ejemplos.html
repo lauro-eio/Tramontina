@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ejemplo {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-top: 4px solid;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ejemplo:nth-child(1) { border-top-color: #2563eb; }
+    .ejemplo:nth-child(2) { border-top-color: #dc2626; }
+    .ejemplo:nth-child(3) { border-top-color: #16a34a; }
+
+    .ejemplo-numero {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      margin-bottom: 0.35rem;
+    }
+
+    .ejemplo-titulo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .ejemplo:nth-child(1) .ejemplo-titulo { color: #2563eb; }
+    .ejemplo:nth-child(2) .ejemplo-titulo { color: #dc2626; }
+    .ejemplo:nth-child(3) .ejemplo-titulo { color: #16a34a; }
+
+    .ejemplo-texto {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #374151;
+      flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      .columns {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ejemplos</h1>
+  </header>
+
+  <div class="columns">
+    <article class="ejemplo">
+      <p class="ejemplo-numero">Ejemplo 1</p>
+      <h2 class="ejemplo-titulo">Mente</h2>
+      <p class="ejemplo-texto">
+        Todos los días a las 4:00 PM, antes de enviar el reporte de cierre a mi director, cerraré la laptop y caminaré 2 minutos al dispensador de agua. Esto me obligará a salir del 'Sistema 1' (piloto automático) y revisar los datos con el 'Sistema 2' (pensamiento analítico) antes de dar el clic final.
+      </p>
+    </article>
+
+    <article class="ejemplo">
+      <p class="ejemplo-numero">Ejemplo 2</p>
+      <h2 class="ejemplo-titulo">Emoción</h2>
+      <p class="ejemplo-texto">
+        Durante la junta de resultados de los lunes, en el momento en que reciba una crítica o feedback duro de mi equipo, colocaré mis manos sobre el escritorio y respiraré profundo durante 5 segundos antes de responder. Mi acción física es escuchar la intervención completa sin interrumpir ni gesticular.
+      </p>
+    </article>
+
+    <article class="ejemplo">
+      <p class="ejemplo-numero">Ejemplo 3</p>
+      <h2 class="ejemplo-titulo">Hábito</h2>
+      <p class="ejemplo-texto">
+        De lunes a viernes, inmediatamente después de sentarme en mi escritorio y abrir la laptop (Señal), abriré mi agenda física y escribiré mis 2 prioridades del día antes de abrir el correo electrónico (Respuesta). Mi recompensa será tomarme mi primer café del día una vez escritas esas prioridades.
+      </p>
+    </article>
+  </div>
+</body>
+</html>

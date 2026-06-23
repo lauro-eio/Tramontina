@@ -1,0 +1,110 @@
+MANUAL DE FACILITACIÓN UNIFICADO: HWF
+Rol de Facilitación: Guía socrático, catalizador de fricción y moderador de interacciones.
+Enfoque General: Prohibido teorizar. El participante es el protagonista el 80% del tiempo.
+BLOQUE 0: INTRODUCCIÓN Y DIAGNÓSTICO RÁPIDO
+Duración: 45 minutos (Correspondiente al 25% del tiempo total: Experiencia Concreta / Caso Parte 1)
+Enfoque: Romper la inercia, inducir fricción real online y ejecutar la simulación en Breakout Rooms.
+Alertas de Dinamismo
+Riesgo de monólogo: Si el facilitador lee la introducción como un discurso, el grupo se desconectará en el minuto 2.
+Acción correctiva: Lanzar las preguntas de diagnóstico al chat de inmediato para forzar la interacción en los primeros 120 segundos.
+Secuencia de Facilitación
+El Costo Oculto de Tener la Razón. Miren a su alrededor en esta pantalla. Todos los que estamos aquí fuimos contratados por nuestra capacidad técnica, experiencia y talento para resolver problemas. Sin embargo, todos los días los proyectos se retrasan, las ideas mueren en los canales de chat y las reuniones se extienden sin llegar a ningún acuerdo. ¿Cuánto tiempo y energía pierden a la semana simplemente lidiando con malentendidos o intentando destrabar un acuerdo con otra área?
+La realidad es incómoda: estamos pagando un "impuesto oculto" de ineficiencia diaria. Y el origen no es la falta de presupuesto; son nuestros propios hábitos de comunicación, esos que consideramos "normales" pero que sabotean los resultados.
+Trigger de Interacción (Minuto 3): Responde en el chat ahora mismo.
+Pregunta 1: ¿Cuántas veces en la última semana has visto a alguien en una reunión fingiendo escuchar, cuando en realidad solo estaba esperando que el otro se callara para imponer su argumento?
+Pregunta 2: ¿Cuántas veces has visto un proyecto crítico congelarse porque dos personas prefirieron defender su postura y "tener la razón" antes que resolver el problema real?
+Las Reglas del Juego
+Este espacio de 3 horas no es un repaso teórico, ni un discurso motivacional sobre "ser más amables". Venimos a hacer una disección fría de los errores conductuales que cometemos en vivo.
+Fricción Real: En los próximos minutos pasarán a salas grupales reducidas de 3 personas.
+Roles Opuestos: Se enfrentarán a dilemas diseñados con roles opuestos para chocar (Operaciones, Comercial, Finanzas).
+El Intercambio: Para avanzar y ganar, alguien tendrá que ceder información confidencial. El sistema lanzará un Pop-up exigiendo votar por un culpable si la cuenta colapsa.
+¿Tus hábitos diarios de comunicación están construyendo tu liderazgo, o estás saboteando silenciosamente tus propios resultados?
+Trigger de Interacción (Minuto 7): Para iniciar el cronómetro y abrir los grupos, escribe "LISTO" en el chat.
+(Apertura de Breakout Rooms: Caso Parte 1 - Duración de la simulación en salas: 35 minutos).
+BLOQUE 1: OBSERVACIÓN REFLEXIVA (LA AUTOPSIA)
+Duración: 63 minutos (35% del tiempo total)
+Enfoque: Atacar el miedo al conflicto, interrogar el comportamiento real en la simulación y exponer el impacto del ego corporativo.
+Alertas de Dinamismo
+Riesgo de justificación corporativa: Los participantes intentarán culpar a las reglas del software o a las limitaciones de tiempo del caso en lugar de aceptar su conducta.
+Acción correctiva: Cortar las respuestas teóricas y repreguntar: "¿Qué hiciste tú exactamente en el minuto 10?". Mantener el ritmo de cambio de dinámica estrictamente cada 4 minutos.
+Matriz de Debate Socrático
+Tiempo
+Pregunta Abierta e Incómoda del Facilitador
+Dinámica de Interacción (Cada 4 min)
+Respuestas Esperadas de la Audiencia (Dolor Real)
+Min 0-12
+P1: "Cuando el sistema les lanzó el Pop-up exigiendo votar por el culpable de la crisis... ¿Por qué su primera reacción fue proteger su propio departamento en lugar de salvar la cuenta del cliente?"
+Chat abierto en cascada y 3 micrófonos abiertos de salas que colapsaron.
+"Sentí que si aceptaba el error de mi área, me meterían la culpa a mí", "El rol me obligaba a defenderme", "Era una trampa para hacernos quedar mal".
+Min 12-24
+P2: "Sean honestos: Mientras sus compañeros presentaban sus propuestas técnicas o comerciales... ¿Realmente estaban escuchando para entender su lógica, o solo hacían silencio mientras estructuraban mentalmente su contraataque?"
+Votación rápida en pantalla (Poll): A) Escuché con empatía / B) Esperé mi turno para atacar. Seguido de debate.
+"Para ser sincero, no registré sus números, solo pensaba en cómo justificar que mi plan era más barato", "Sentía que perdería el control si les daba la razón".
+Min 24-36
+P3: "Cuando Finanzas o el experto técnico usaron frases como 'Eso es inviable' o 'Estás equivocado'... ¿Qué pasó biológicamente con su disposición a cooperar? ¿Buscaron negociar o pasaron a un modo de guerra fría?"
+Dinámica en chat: "Escribe una palabra que describa lo que sentiste cuando te desacreditaron públicamente".
+"Me cerré por completo", "Me dio coraje y decidí no ceder en nada", "Dejé de proponer ideas y dejé que el tiempo corriera para que perdiéramos todos".
+Min 36-48
+P4: "En el minuto 12 tuvieron la oportunidad de aliarse compartiendo datos confidenciales. ¿Por qué el miedo a perder el control o la autoría del plan les impidió ceder esa información a tiempo?"
+Intervención dirigida a participantes identificados como "líderes dominantes" en los Breakout Rooms.
+"Pensé que usarían mi información en mi contra", "Si cedía mis datos, perdía mi ventaja competitiva en la mesa", "El ego de querer ser el salvador único nos cegó".
+Min 48-63
+P5: "La Cuenta Titán se perdió y el departamento entero está despedido de mentira. Mirando el desastre... ¿El plan de quién era realmente el mejor, o el verdadero error fue creer que tener la razón individual valía más que el negocio entero?"
+Reflexión verbal abierta. Cierre del bloque de dolor.
+"Ningún plan funcionaba solo", "Nos enfocamos en ganar la discusión interna en lugar de resolver el problema del cliente", "Fuimos operativamente ciegos por puro ego corporativo".
+
+BLOQUE 2: CONCEPTUALIZACIÓN ABSTRACTA (EL DESCUBRIMIENTO)
+Duración: 27 minutos (15% del tiempo total)
+Enfoque: Co-creación de reglas institucionales sin diapositivas. El grupo formula los conceptos utilizando sus propias palabras basándose en el dolor del bloque anterior.
+Alertas de Dinamismo
+Riesgo de clase magistral: El facilitador puede verse tentado a leer la biografía de Dale Carnegie o explicar los principios de forma unilateral.
+Acción correctiva [RECHAZADO el formato de lectura]: El facilitador solo actúa como escribano en la pizarra digital, validando las respuestas que los alumnos deducen.
+Mecánica de la Pizarra Digital (Miro / Whiteboard)
+El facilitador dibuja tres columnas vacías y arrastra notas adhesivas según las respuestas del grupo.
+
+
+
+========================================================================================
+NUESTRO ERROR (Dolor)         --> REGLA DE ORO CO-CREADA (Alumnos) --> PRINCIPIO (Dale Carnegie)
+----------------------------------------------------------------------------------------
+1. Corregir y aplastar ideas  --> "Validar el mérito del otro antes" --> Aprecio Sincero y Estatus
+2. Decir "Estás mal" en público--> "Eliminar los ataques directos"   --> Nunca digas: "Estás equivocado"
+3. Preparar la réplica mental  --> "Escuchar para integrar, no ganar"--> Descentramiento del Yo
+========================================================================================
+
+
+Secuencia de Preguntas de Transición Socrática
+Para el Micro-Concepto 1 (Aprecio y Validación vs. Egocentrismo)
+Facilitador: Para que Operaciones no hubiera cerrado la puerta a las ideas comerciales, ¿qué debió hacer antes de criticar?
+Trigger de Interacción: Escriban en la pizarra digital o en el chat la acción omitida.
+Respuesta del grupo: Reconocer que el cliente necesitaba una respuesta comercial urgente y no solo servidores.
+Validación del Facilitador: Exacto. El autor del libro, Dale Carnegie, llama a esto: El Principio del Aprecio Sincero y la Validación del Estatus. Si no validas el terreno del otro primero, tu conocimiento técnico no vale nada.
+Para el Micro-Concepto 2 (Respeto por la Opinión Ajena vs. Confrontación)
+Facilitador: Si pudieran borrar las palabras 'Estás equivocado' o 'Eso es inviable' de la mesa, ¿cómo habrían planteado el límite de presupuesto de Finanzas sin polarizar el grupo?
+Trigger de Interacción: Abran 2 micrófonos para escuchar el cambio de palabras en vivo.
+Respuesta del grupo: Diciendo algo como: "Entiendo el valor de tu plan, busquemos cómo adaptarlo a los $50,000 que tenemos".
+Validación del Facilitador: Brillante. El principio raíz es: Respeta la opinión ajena. Nunca digas: 'Estás equivocado'. Cambia el ataque por curiosidad constructiva.
+Para el Micro-Concepto 3 (Escucha Activa vs. Escucha de Preparación)
+Facilitador: ¿Cuál es la regla que nos autoimpondremos a partir de hoy cuando alguien esté hablando en una reunión de crisis?
+Trigger de Interacción: Todos escriben la regla en una sola palabra en el chat al mismo tiempo (función de ráfaga).
+Respuesta del grupo: Apagar el discurso interno y poner atención total a los datos del otro antes de hablar.
+Validación del Facilitador: Espectacular. A eso Carnegie lo define como: La Escucha Activa Orientada al Interés del Otro (Descentramiento del Yo). Dejar de oírnos a nosotros mismos para poder influir realmente.
+BLOQUE 3: EXPERIMENTACIÓN ACTIVA (EL GIRO DE TUERCA)
+Duración: 45 minutos (25% del tiempo total)
+Enfoque: Aplicación inmediata bajo fuego de las Reglas de Oro co-creadas. Forzar un entregable práctico final.
+Alertas de Dinamismo
+Riesgo de recaída conductual: Los participantes, por la presión del tiempo, tienden a olvidar las reglas co-creadas y vuelven a interrumpir.
+Acción correctiva: Monitorear activamente las salas. Si un equipo no aplica el filtro de 30 segundos, congelar su pantalla temporalmente o ejecutar el poder de veto de Finanzas.
+El Escenario: "Operación Salvavidas - Parte 2: El Comité de Crisis"
+Los participantes regresan a los mismos Breakout Rooms de 3 personas (mismos roles: Operaciones, Comercial, Finanzas). El cronómetro vuelve a correr: tienen exactamente 20 minutos de negociación limpia.
+El Giro de Tuerca: El CEO les da una última oportunidad antes de firmar los despidos. Sin embargo, el sistema ha activado una Regla Estricta de Interacción:
+Regla del Filtro Carnegie: Antes de que cualquier rol pueda proponer una solución o rebatir, debe resumir en 30 segundos el argumento del compañero anterior y validar abiertamente un punto fuerte de su propuesta. Si no lo hace, el rol de Finanzas tiene el poder de vetar su tiempo de palabra.
+Nuevas Variables de Fricción: Se revela que si combinan la información confidencial de forma cooperativa, existe un plan alternativo de contingencia híbrido que cuesta exactamente $48,000 USD (mantiene los servidores esenciales y otorga una compensación parcial de relaciones públicas al cliente). Deben encontrarlo cooperando.
+El Entregable Final: Compromiso Escrito e Individual (Últimos 15 minutos)
+La sesión no termina con un acuerdo grupal gaseoso. Cada participante debe llenar y enviar de forma obligatoria un formulario individual (vía Microsoft Forms/Google Forms o directamente en el chat principal) con la siguiente estructura estricta:
+Compromiso Conductual de Influencia - HWF
+Mi Nombre: [Nombre del Participante]
+Mi Mayor Quiebre de Ego en la Simulación: (Ej. Acepto que interrumpí sistemáticamente a Comercial porque creí que mi conocimiento técnico me hacía superior).
+El Principio de Dale Carnegie que apliqué con éxito en la Parte 2: [Principio seleccionado].
+Mi Misión de Campo Real (Próximos 5 días): Escribe una acción medible con un colega de tu equipo real donde aplicarás este principio. (Ej. "En la reunión de proyectos del jueves con Carlos, no usaré la palabra 'pero' ni le diré que está equivocado cuando presente sus proyecciones; en su lugar, validaré su esfuerzo y haré una pregunta socrática").
+El facilitador cierra la sesión validando la recepción de los formularios en tiempo real en la pantalla principal.
