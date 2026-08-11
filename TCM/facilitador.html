@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Guía de facilitación TCM — Adaptabilidad Operativa">
+  <title>TCM — Guía del Facilitador</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f0f0eb;
+      --sidebar: #1e293b;
+      --sidebar-text: #cbd5e1;
+      --sidebar-active: #c2410c;
+      --coach: #fef3c7;
+      --coach-border: #f59e0b;
+      --trigger: #ffedd5;
+      --trigger-border: #ea580c;
+      --copy: #ecfdf5;
+      --copy-border: #10b981;
+    }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: #1a1a1a;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      min-height: 100vh;
+    }
+    .sidebar {
+      background: var(--sidebar);
+      color: var(--sidebar-text);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-brand {
+      padding: 0 1.25rem 1.25rem;
+      border-bottom: 1px solid #334155;
+      margin-bottom: 0.75rem;
+    }
+    .sidebar-brand .tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+    }
+    .sidebar-brand h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-top: 0.25rem;
+    }
+    .sidebar-brand .total {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 0.35rem;
+    }
+    .step-nav { list-style: none; flex: 1; }
+    .step-nav button {
+      width: 100%;
+      display: block;
+      text-align: left;
+      padding: 0.7rem 1.25rem;
+      background: none;
+      border: none;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--sidebar-text);
+      font-size: 0.8rem;
+      transition: background 0.15s;
+    }
+    .step-nav button:hover { background: #334155; }
+    .step-nav button.active {
+      background: #334155;
+      border-left-color: var(--sidebar-active);
+      color: #f8fafc;
+    }
+    .step-nav .step-num {
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #64748b;
+      display: block;
+    }
+    .step-nav button.active .step-num { color: #fdba74; }
+    .step-nav .step-title {
+      font-weight: 600;
+      display: block;
+      margin-top: 0.15rem;
+    }
+    .step-nav .step-dur {
+      font-size: 0.68rem;
+      color: #64748b;
+      display: block;
+      margin-top: 0.1rem;
+    }
+    .progress-bar-wrap {
+      padding: 1rem 1.25rem 0;
+      border-top: 1px solid #334155;
+      margin-top: auto;
+    }
+    .progress-label {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-bottom: 0.4rem;
+    }
+    .progress-bar {
+      height: 4px;
+      background: #334155;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--sidebar-active);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    main {
+      padding: 2rem 2.5rem 3rem;
+      max-width: 860px;
+    }
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+    .panel-header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .panel-header .block-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+    }
+    .panel-header h2 {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 700;
+      margin-top: 0.3rem;
+      letter-spacing: -0.02em;
+    }
+    .panel-header .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.6rem;
+    }
+    .meta-pill {
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: #e5e7eb;
+      color: #374151;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+    .alert-coach {
+      background: var(--coach);
+      border: 1px solid var(--coach-border);
+      border-left: 4px solid var(--coach-border);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+    }
+    .alert-coach strong {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #92400e;
+      margin-bottom: 0.35rem;
+    }
+    .section { margin-bottom: 1.75rem; }
+    .section h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+      color: #111827;
+    }
+    .script {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.15rem 1.25rem;
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.7;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .script p { margin-bottom: 0.75rem; }
+    .script p:last-child { margin-bottom: 0; }
+    .trigger-box {
+      background: var(--trigger);
+      border: 1px solid var(--trigger-border);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1rem;
+    }
+    .trigger-box .trigger-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c2410c;
+      margin-bottom: 0.4rem;
+    }
+    .trigger-box p { font-size: 0.9rem; color: #7c2d12; }
+    .copy-block {
+      background: var(--copy);
+      border: 1px solid var(--copy-border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .copy-block .copy-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      gap: 0.5rem;
+    }
+    .copy-block .copy-time {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #047857;
+    }
+    .copy-block .copy-btn {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.25rem 0.55rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .copy-block .copy-btn:hover { background: #059669; }
+    .copy-block .copy-btn.copied { background: #6b7280; }
+    .copy-block p { font-size: 0.88rem; color: #064e3b; line-height: 1.55; }
+    .arco-table, .cora-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .arco-table th, .cora-table th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b7280;
+    }
+    .arco-table td, .cora-table td {
+      padding: 0.7rem 0.75rem;
+      border-top: 1px solid #e5e7eb;
+      vertical-align: top;
+      color: #374151;
+      line-height: 1.45;
+    }
+    .letter {
+      font-weight: 700;
+      color: #c2410c;
+      width: 2rem;
+    }
+    .qr-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 0.75rem;
+    }
+    .qr-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      max-width: 200px;
+    }
+    .qr-card img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+    }
+    .qr-card a {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: #c2410c;
+      word-break: break-all;
+    }
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 2px solid #e5e7eb;
+    }
+    .nav-btn {
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+    }
+    .nav-btn.prev { background: #e5e7eb; color: #374151; }
+    .nav-btn.prev:hover { background: #d1d5db; }
+    .nav-btn.prev:disabled { opacity: 0.4; cursor: not-allowed; }
+    .nav-btn.next { background: #c2410c; color: #fff; }
+    .nav-btn.next:hover { background: #9a3412; }
+    .step-counter { font-size: 0.8rem; color: #6b7280; }
+    ul.tight { padding-left: 1.2rem; font-size: 0.9rem; color: #374151; }
+    ul.tight li { margin-bottom: 0.4rem; }
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: relative; height: auto; }
+      .step-nav { display: flex; overflow-x: auto; }
+      .step-nav li { flex-shrink: 0; }
+      .step-nav button { width: auto; min-width: 130px; border-left: none; border-bottom: 3px solid transparent; }
+      .step-nav button.active { border-bottom-color: var(--sidebar-active); border-left: none; }
+      .progress-bar-wrap { display: none; }
+      main { padding: 1.25rem 1rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="tag">Solo facilitador</span>
+        <h1>TCM — Adaptabilidad Operativa</h1>
+        <p class="total">Duración total: 3 horas</p>
+      </div>
+      <ol class="step-nav" id="stepNav">
+        <li><button type="button" data-step="0" class="active">
+          <span class="step-num">Paso 1</span>
+          <span class="step-title">Diagnóstico</span>
+          <span class="step-dur">00:00 – 00:30</span>
+        </button></li>
+        <li><button type="button" data-step="1">
+          <span class="step-num">Paso 2</span>
+          <span class="step-title">Ronda 1 · Habitual</span>
+          <span class="step-dur">00:30 – 00:43</span>
+        </button></li>
+        <li><button type="button" data-step="2">
+          <span class="step-num">Paso 3</span>
+          <span class="step-title">Marco A.R.C.O.</span>
+          <span class="step-dur">00:43 – 01:05</span>
+        </button></li>
+        <li><button type="button" data-step="3">
+          <span class="step-num">Paso 4</span>
+          <span class="step-title">Ronda 2 · A.R.C.O.</span>
+          <span class="step-dur">01:05 – 01:30</span>
+        </button></li>
+        <li><button type="button" data-step="4">
+          <span class="step-num">Paso 5</span>
+          <span class="step-title">Protocolo C.O.R.A.</span>
+          <span class="step-dur">01:40 – 02:40</span>
+        </button></li>
+        <li><button type="button" data-step="5">
+          <span class="step-num">Paso 6</span>
+          <span class="step-title">Cierre · Decálogo</span>
+          <span class="step-dur">02:40 – 03:00</span>
+        </button></li>
+      </ol>
+      <div class="progress-bar-wrap">
+        <p class="progress-label" id="progressLabel">Paso 1 de 6</p>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:16.67%"></div></div>
+      </div>
+    </aside>
+
+    <main>
+      <!-- PASO 1 -->
+      <section class="step-panel active" data-step="0">
+        <header class="panel-header">
+          <span class="block-tag">Bloque 0 · Radiografía Comercial</span>
+          <h2>Diagnóstico</h2>
+          <div class="meta">
+            <span class="meta-pill">30 minutos</span>
+            <span class="meta-pill">Pilar: Transparencia e Integridad</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ Coach</strong>
+          El formulario es anónimo. No señale nacionalidades. Al minuto 25, ceda la palabra al Director Comercial (60–90 s) para seguridad psicológica.
+        </div>
+
+        <div class="section">
+          <h3>Encuadre (00:00 – 00:05)</h3>
+          <div class="script">
+            <p>«En Tramontina uno de nuestros pilares centrales es la <strong>Transparencia e Integridad</strong>. Ser transparentes no es solo actuar con ética: es tener la claridad y la valentía de poner los problemas del mercado sobre la mesa a tiempo.</p>
+            <p>Hoy vamos a medir qué tan transparentes estamos siendo en la alineación diaria entre Dirección, Canales y Regiones.»</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Formulario en vivo (00:05 – 00:15)</h3>
+          <div class="trigger-box">
+            <p class="trigger-label">Acción</p>
+            <p>Proyecte el QR de <strong>Radiografía Comercial</strong>. Confirme que no rastrea nombres ni puestos.</p>
+          </div>
+          <div class="qr-row">
+            <div class="qr-card">
+              <img src="QR/Radiografia%20Comercial%20-%20Tramontina.png" alt="QR Radiografía Comercial">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfO7ykPnnCgP5Ccsig8-aCs2yGVPAikPmSpyZysNgNWIva4jw/viewform?usp=sharing" target="_blank" rel="noopener">Abrir formulario</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Análisis (00:15 – 00:25)</h3>
+          <ul class="tight">
+            <li><strong>Brecha jerárquica:</strong> evitan cuestionar al superior (R1 A/C) pero esperan apertura de su equipo (R3 A).</li>
+            <li><strong>Polarización horizontal:</strong> debate directo vs. preservar relación (R2).</li>
+            <li><strong>Costo a Transparencia:</strong> asentimiento por cortesía compromete el P&amp;L.</li>
+          </ul>
+          <div class="copy-block" style="margin-top:1rem">
+            <div class="copy-meta">
+              <span class="copy-time">Cierre del bloque (~00:25)</span>
+              <button type="button" class="copy-btn" data-copy="Si aceptamos metas en silencio para no generar fricción, estamos comprometiendo la Transparencia. Y si esperamos que nuestro equipo nos diga todo pero nosotros no se lo decimos a la Dirección, estamos fallando al pilar de Liderazgo.">Copiar</button>
+            </div>
+            <p>Si aceptamos metas en silencio para no generar fricción, estamos comprometiendo la Transparencia. Y si esperamos que nuestro equipo nos diga todo pero nosotros no se lo decimos a la Dirección, estamos fallando al pilar de Liderazgo.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Director Comercial (00:25 – 00:28)</h3>
+          <ul class="tight">
+            <li>Cuestionar con datos no es falta de respeto.</li>
+            <li>Sustituir asentimiento formal por claridad anticipada de riesgos.</li>
+            <li>Autorización explícita para debatir en el taller y en la operación.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Transición (00:28 – 00:30)</h3>
+          <div class="script">
+            <p>Los problemas de ejecución no derivan de falta de capacidad, sino de la falta de un lenguaje común para delegar, verificar y diferir. Introduzca A.R.C.O. como herramienta de alineación vertical.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PASO 2 -->
+      <section class="step-panel" data-step="1">
+        <header class="panel-header">
+          <span class="block-tag">Módulo 1 · Parte A</span>
+          <h2>Ronda 1 — Método habitual</h2>
+          <div class="meta">
+            <span class="meta-pill">~13 minutos</span>
+            <span class="meta-pill">Parejas · 3 min drill</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ Riesgo 3 — debate técnico</strong>
+          No diga «dile que sí al jefe». Consigna neutral + reloj de 3 minutos. Comparta <code>role-play.html</code> (sección Pase de Estafeta).
+        </div>
+
+        <div class="section">
+          <h3>Consigna neutral (00:30 – 00:35)</h3>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Instrucción de lanzamiento</span>
+              <button type="button" class="copy-btn" data-copy="Tienen un reto de alineación comercial y exactamente 3 minutos para hacer la llamada o reunión de asignación. El objetivo no es resolver el plan de marketing ni renegociar el P&L: es pactar el compromiso y la forma de trabajo. Actúen como lo harían un martes cualquiera con la prisa de la operación.">Copiar</button>
+            </div>
+            <p>Tienen un reto de alineación comercial y exactamente 3 minutos… Actúen como lo harían un martes cualquiera con la prisa de la operación.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Ejecución + revelación (00:35 – 00:43)</h3>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Debrief — receptores</span>
+              <button type="button" class="copy-btn" data-copy="Levanten la mano los Receptores que tenían en su ficha el dato del retraso de Logística y el descuento del cliente, pero NO se lo dijeron a su superior durante los 3 minutos.">Copiar</button>
+            </div>
+            <p>Levanten la mano los Receptores que tenían el dato… pero NO se lo dijeron…</p>
+          </div>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Debrief — emisores</span>
+              <button type="button" class="copy-btn" data-copy="Ahora levanten la mano los Emisores que asumieron que, como el Receptor no puso un freno definitivo, la meta de +$5 MDP está 100% garantizada.">Copiar</button>
+            </div>
+            <p>Ahora levanten la mano los Emisores que asumieron… meta 100% garantizada.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PASO 3 -->
+      <section class="step-panel" data-step="2">
+        <header class="panel-header">
+          <span class="block-tag">Módulo 1 · Parte B</span>
+          <h2>Filtro jerárquico + Marco A.R.C.O.</h2>
+          <div class="meta">
+            <span class="meta-pill">00:43 – 01:05</span>
+            <span class="meta-pill">Liderazgo · Trabajo y Devoción</span>
+          </div>
+        </header>
+
+        <div class="section">
+          <h3>Exposición breve (00:43 – 00:53)</h3>
+          <div class="script">
+            <p>La comunicación implícita y la deferencia hacen que el receptor prefiera resolver «en el camino» antes que cuestionar. El líder interpreta silencio como confirmación. Un liderazgo transparente no pregunta «¿Quedó claro?»: verifica el entendimiento.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Entrenamiento A.R.C.O. (00:53 – 01:05)</h3>
+          <table class="arco-table">
+            <thead>
+              <tr><th></th><th>Significado</th><th>Frase clave</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="letter">A</td>
+                <td>Alcance cero ambigüedad — KPI, fecha, restricciones</td>
+                <td>«Sell-Out del 12% manteniendo margen del 18%.»</td>
+              </tr>
+              <tr>
+                <td class="letter">R</td>
+                <td>Read-Back — el colaborador resume; prohibido «¿Dudas?»</td>
+                <td>«Platícame: ¿cuál es tu plan táctico en tus cuentas top?»</td>
+              </tr>
+              <tr>
+                <td class="letter">C</td>
+                <td>Criterios de alerta — detonante sin juzgarlo como falla</td>
+                <td>«Si al día 15 el cliente X no emite OC, nos reunimos.»</td>
+              </tr>
+              <tr>
+                <td class="letter">O</td>
+                <td>Obstáculos de mercado — permiso explícito</td>
+                <td>«¿Qué freno de Logística o competencia nos va a impedir llegar?»</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PASO 4 -->
+      <section class="step-panel" data-step="3">
+        <header class="panel-header">
+          <span class="block-tag">Módulo 1 · Parte C</span>
+          <h2>Ronda 2 — Alineación A.R.C.O.</h2>
+          <div class="meta">
+            <span class="meta-pill">01:05 – 01:30</span>
+            <span class="meta-pill">Práctica + inversión</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ Coach</strong>
+          Emisor debe ejecutar los 4 pasos. La «O» y el Read-Back deben sacar el dato de Logística oculto en Ronda 1. Luego inviertan roles (10 min) con escenario de lanzamiento / restricciones de importación.
+        </div>
+
+        <div class="section">
+          <h3>Debrief de cierre (01:23 – 01:30)</h3>
+          <ul class="tight">
+            <li>¿Qué datos salieron en Ronda 2 que habrían quedado ocultos en Ronda 1?</li>
+            <li>Receptores: ¿cómo cambió el compromiso al ser guiados por la «O»?</li>
+            <li>¿A qué nos comprometemos al asignar un objetivo a partir de hoy?</li>
+          </ul>
+          <p style="margin-top:0.75rem;font-size:0.9rem;color:#374151"><strong>Entregable:</strong> Read-Back + Obstáculos como protocolo oficial de la Dirección Comercial.</p>
+        </div>
+
+        <div class="trigger-box">
+          <p class="trigger-label">Receso 01:30 – 01:40</p>
+          <p>10 minutos. Reencuadre al regreso: Valorización de las Personas = debatir ideas con firmeza, cuidar personas con respeto.</p>
+        </div>
+      </section>
+
+      <!-- PASO 5 -->
+      <section class="step-panel" data-step="4">
+        <header class="panel-header">
+          <span class="block-tag">Módulo 2 · Debate de Canales</span>
+          <h2>Protocolo C.O.R.A. + triadas</h2>
+          <div class="meta">
+            <span class="meta-pill">01:40 – 02:40</span>
+            <span class="meta-pill">Valorización · Satisfacción del Cliente</span>
+          </div>
+        </header>
+
+        <div class="section">
+          <h3>Choque de estilos (01:40 – 01:52)</h3>
+          <div class="script">
+            <p>Estilo directo: confrontación de ideas = eficiencia. Estilo indirecto: debate acalorado = ataque personal. El silencio interdepartamental produce canibalización, promesas rotas y retrasos.</p>
+            <p><strong>Mantra:</strong> «Atacar las ideas comerciales con dureza; cuidar a las personas con calidez.»</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Entrenamiento C.O.R.A. (01:52 – 02:07)</h3>
+          <table class="cora-table">
+            <thead>
+              <tr><th></th><th>Significado</th><th>Frase clave</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="letter">C</td>
+                <td>Contexto comercial — datos e impacto, sin adjetivos</td>
+                <td>«+10% en E-commerce → margen Retail cae 6%.»</td>
+              </tr>
+              <tr>
+                <td class="letter">O</td>
+                <td>Objetivos cruzados — validar el KPI del otro</td>
+                <td>«Entiendo que Digital prioriza cuota en el lanzamiento…»</td>
+              </tr>
+              <tr>
+                <td class="letter">R</td>
+                <td>Riesgo compartido — impacto global Tramontina</td>
+                <td>«…canibalizar Retail arriesga penalización y margen global.»</td>
+              </tr>
+              <tr>
+                <td class="letter">A</td>
+                <td>Alternativas co-creadas — mínimo 2 opciones</td>
+                <td>«Diferenciamos empaque Digital, o promo 48 h sin tocar lista base.»</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h3>Taller en triadas (02:07 – 02:30)</h3>
+          <div class="trigger-box">
+            <p class="trigger-label">Acción</p>
+            <p>Comparta <code>role-play.html</code> — sección Debate de Canales. Equipos: Retail + E-commerce + Marketing/Producto. Director observa como «Consejo».</p>
+          </div>
+          <ul class="tight">
+            <li><strong>Fase 1 (10 min):</strong> negociación obligando C.O.R.A.</li>
+            <li><strong>Fase 2 (10 min):</strong> inversión — defender el canal opuesto.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Debrief (02:30 – 02:40)</h3>
+          <ul class="tight">
+            <li>¿Qué cambia al partir de Objetivos Cruzados (O)?</li>
+            <li>Soporte: ¿qué visibilidad ganaron con Riesgo Compartido (R)?</li>
+            <li>¿Qué regla horizontal adoptamos antes de escalar a Dirección?</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PASO 6 -->
+      <section class="step-panel" data-step="5">
+        <header class="panel-header">
+          <span class="block-tag">Cierre</span>
+          <h2>Acuerdos de Sincronía Comercial</h2>
+          <div class="meta">
+            <span class="meta-pill">02:40 – 03:00</span>
+            <span class="meta-pill">Carta Compromiso</span>
+          </div>
+        </header>
+
+        <div class="section">
+          <h3>Decálogo co-creado (02:40 – 02:48)</h3>
+          <div class="script">
+            <p>Guíe 3–4 acuerdos no negociables. Ejemplos:</p>
+            <ul class="tight" style="margin-top:0.5rem">
+              <li>Toda asignación cierra con Read-Back (A.R.C.O.).</li>
+              <li>Declarar riesgo el día 1 = Transparencia; avisar el día 28 = falla.</li>
+              <li>Fricciones de canal se negocian con datos (C.O.R.A.) antes de escalar.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Carta Compromiso (02:48 – 02:54)</h3>
+          <div class="qr-row">
+            <div class="qr-card">
+              <img src="QR/tcm-carta-compromiso-Tramontina.png" alt="QR Carta Compromiso">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd62RV_IyxBy_6PY_P1jjWngKtZPCuza9FpjofnDHDTBbVMUg/viewform?usp=header" target="_blank" rel="noopener">Abrir formulario</a>
+            </div>
+          </div>
+          <div class="alert-coach" style="margin-top:1rem">
+            <strong>⚠ Coach</strong>
+            Muestre el contador en vivo («14 de 14 firmadas»). Luego Director valida (2 min) y cierre del facilitador (1 min).
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Cierre institucional</h3>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Frase de cierre</span>
+              <button type="button" class="copy-btn" data-copy="La adaptabilidad operativa no ocurre en un taller de 3 horas; ocurre mañana cuando elijan preguntar «¿cómo lo vas a ejecutar?» en lugar de «¿quedó claro?». Hoy han definido las reglas para competir mejor en el mercado honrando los valores de Tramontina.">Copiar</button>
+            </div>
+            <p>La adaptabilidad operativa no ocurre en un taller de 3 horas…</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="nav-footer">
+        <button type="button" class="nav-btn prev" id="btnPrev" disabled>Anterior</button>
+        <span class="step-counter" id="stepCounter">Paso 1 de 6</span>
+        <button type="button" class="nav-btn next" id="btnNext">Siguiente</button>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var total = 6;
+      var current = 0;
+      var panels = document.querySelectorAll('.step-panel');
+      var navBtns = document.querySelectorAll('.step-nav button');
+      var btnPrev = document.getElementById('btnPrev');
+      var btnNext = document.getElementById('btnNext');
+      var stepCounter = document.getElementById('stepCounter');
+      var progressLabel = document.getElementById('progressLabel');
+      var progressFill = document.getElementById('progressFill');
+
+      function goTo(step) {
+        current = Math.max(0, Math.min(total - 1, step));
+        panels.forEach(function (p) {
+          p.classList.toggle('active', Number(p.dataset.step) === current);
+        });
+        navBtns.forEach(function (b) {
+          b.classList.toggle('active', Number(b.dataset.step) === current);
+        });
+        btnPrev.disabled = current === 0;
+        btnNext.textContent = current === total - 1 ? 'Fin' : 'Siguiente';
+        var label = 'Paso ' + (current + 1) + ' de ' + total;
+        stepCounter.textContent = label;
+        progressLabel.textContent = label;
+        progressFill.style.width = ((current + 1) / total * 100) + '%';
+      }
+
+      navBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () { goTo(Number(btn.dataset.step)); });
+      });
+      btnPrev.addEventListener('click', function () { goTo(current - 1); });
+      btnNext.addEventListener('click', function () {
+        if (current < total - 1) goTo(current + 1);
+      });
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () {
+            btn.textContent = 'Copiado';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = 'Copiar';
+              btn.classList.remove('copied');
+            }, 2000);
+          });
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' && current < total - 1) goTo(current + 1);
+        if (e.key === 'ArrowLeft' && current > 0) goTo(current - 1);
+      });
+    })();
+  </script>
+</body>
+</html>
