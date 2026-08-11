@@ -1,5 +1,8 @@
 # Instructor share URLs (Vercel)
 
+## Instructor hub (bookmark; do NOT share with participants)
+- `/` — open all landings + facilitator guides, copy URLs
+
 ## Participant landings (share only the one for that session)
 - HWF: `/hwf/`
 - TCM: `/tcm/`
@@ -11,3 +14,4 @@
 
 ## Notes
 Session source docs live in `_source/` (excluded from Vercel via `.vercelignore`).
+Participant landings have no cross-workshop navigation.
