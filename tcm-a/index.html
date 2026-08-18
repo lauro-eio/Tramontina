@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guía digital del participante — Adaptabilidad Operativa Tramontina">
+  <title>TCM — Adaptabilidad Operativa</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #c2410c;
+      --accent-dark: #9a3412;
+      --bg: #f5f5f0;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+    }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .hero {
+      background: linear-gradient(145deg, #1c1917 0%, #44403c 55%, #c2410c 160%);
+      color: #fafaf9;
+      padding: 3rem 1.5rem 2.75rem;
+      text-align: center;
+    }
+    .hero .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #fdba74;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #d6d3d1;
+      margin-bottom: 1.25rem;
+    }
+    .hero .mantra {
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #fed7aa;
+      border-top: 1px solid rgba(253, 186, 116, 0.35);
+      padding-top: 1rem;
+    }
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 720px;
+      margin: 1.5rem auto 0;
+    }
+    .pillars span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      background: rgba(255,255,255,0.1);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      color: #e7e5e4;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+    section { margin-bottom: 2.75rem; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+    }
+    section > p {
+      color: #374151;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .tool-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      border-top: 3px solid var(--accent);
+    }
+    .tool-card .letter {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .tool-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+    .tool-card p {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0.6rem;
+    }
+    .tool-card .phrase {
+      font-size: 0.8rem;
+      color: #1c1917;
+      background: #fff7ed;
+      border-radius: 6px;
+      padding: 0.55rem 0.7rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .decalogo {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--accent);
+    }
+    .decalogo ol {
+      padding-left: 1.25rem;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+    .decalogo li { margin-bottom: 0.85rem; }
+    .decalogo li:last-child { margin-bottom: 0; }
+    .cta-zone {
+      background: #1c1917;
+      color: #fafaf9;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .cta-zone h2 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .cta-zone > p {
+      color: #a8a29e;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .cta-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .cta-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #fed7aa;
+    }
+    .cta-card img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.35rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+    }
+    .cta-btn:hover { background: var(--accent-dark); }
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .links-row a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fdba74;
+      text-decoration: none;
+      border: 1px solid rgba(253,186,116,0.4);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+    }
+    .links-row a:hover { background: rgba(253,186,116,0.12); }
+    .diagnostico-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .diagnostico-box h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 700px) {
+      .card-grid, .cta-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <p class="badge">Tramontina · Guía del participante</p>
+    <h1>Adaptabilidad Operativa</h1>
+    <p class="sub">Sincronía Operativa y Ejecución Interdepartamental</p>
+    <p class="mantra">«Atacar las ideas comerciales con dureza; cuidar a las personas con calidez.»</p>
+    <div class="pillars">
+      <span>Transparencia e Integridad</span>
+      <span>Liderazgo</span>
+      <span>Valorización de las Personas</span>
+      <span>El Trabajo y la Devoción</span>
+      <span>Satisfacción del Cliente</span>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section>
+      <p class="section-label">Diagnóstico</p>
+      <h2>El Espejo Comercial y Operativo</h2>
+      <div class="diagnostico-box">
+        <h3>El reto de la sincronía</h3>
+        <p>
+          El «asentamiento por cortesía» y la falta de debate abierto restan visibilidad
+          y capacidad de respuesta a la operación. Ocultar o postergar la notificación
+          de un riesgo de inventario, transporte o crédito para evitar fricciones inmediatas
+          no es diplomacia: es opacidad operativa que afecta el P&amp;L de Tramontina.
+        </p>
+        <h3 style="margin-top:1.25rem">Seguridad psicológica</h3>
+        <p>
+          La Dirección Comercial y de Administración autoriza de forma explícita declarar
+          riesgos y restricciones técnicas desde el día 1, sustentados con datos duros
+          y sin temor a represalias. Cuestionar la viabilidad de una meta o compromiso
+          con fundamento técnico no es falta de respeto ni de compromiso: es un ejercicio
+          real de Transparencia e Integridad.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Módulo 1</p>
+      <h2>Alineación Vertical — Marco A.R.C.O.</h2>
+      <p>Herramienta para delegar, recibir y comprometer metas y entregas operativas sin ambigüedad.</p>
+      <div class="card-grid">
+        <article class="tool-card">
+          <div class="letter">A</div>
+          <h3>Alcance cero ambigüedad</h3>
+          <p>Definir el KPI exacto, la fecha de entrega y las restricciones operativas.</p>
+          <p class="phrase">«El compromiso es el despliegue del volumen X para el día 15, manteniendo la capacidad de almacén sin fletes extraordinarios.»</p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">R</div>
+          <h3>Read-Back comercial y operativo</h3>
+          <p>Transferir la responsabilidad del resumen al colaborador. Prohibido preguntar «¿Quedó claro?».</p>
+          <p class="phrase">«Platícame: ¿cuál es tu plan táctico de capacidad y tiempos para asegurar este volumen en la fecha acordada?»</p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">C</div>
+          <h3>Criterios de alerta</h3>
+          <p>Fijar la fecha o evento detonante para levantar la mano y escalar desviaciones a tiempo, sin que sea juzgado como una falla personal.</p>
+          <p class="phrase">«Si al día 10 la liberación de aduana o el armado en almacén presenta un retraso de más de 48 horas, nos reunimos inmediatamente.»</p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">O</div>
+          <h3>Obstáculos de mercado y operación</h3>
+          <p>Pregunta obligatoria del líder para exponer cuellos de botella de inventario, transporte o proceso.</p>
+          <p class="phrase">«Revisando la realidad de la cadena hoy, ¿qué freno de espacio, transporte o importación nos va a impedir cumplir si no lo resolvemos juntos desde ahora?»</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Módulo 2</p>
+      <h2>Negociación Horizontal — Protocolo C.O.R.A.</h2>
+      <p>Resolución de fricciones entre Comercial, Cadena de Suministro, Finanzas y Áreas de Soporte sin dañar la relación interdepartamental.</p>
+      <div class="card-grid">
+        <article class="tool-card">
+          <div class="letter">C</div>
+          <h3>Contexto comercial y técnico</h3>
+          <p>Objeciones o restricciones basadas en datos, capacidad e impacto financiero, sin adjetivos.</p>
+          <p class="phrase">«Adelantar el despacho de este pedido hoy satura el área de armado en un 30% e incrementa el costo de flete urgente en un 12%.»</p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">O</div>
+          <h3>Objetivos cruzados</h3>
+          <p>Reconocer y validar el indicador del otro departamento antes de defender la postura propia.</p>
+          <p class="phrase">«Entiendo que Comercial prioriza cerrar la cuota del mes con este cliente clave…»</p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">R</div>
+          <h3>Riesgo compartido</h3>
+          <p>Explicar el impacto global de la decisión en la operación, el flujo de caja o la reputación de Tramontina.</p>
+          <p class="phrase">«…pero asumir un compromiso sin inventario liberado arriesga penalizaciones por incumplimiento y afecta el margen global de la compañía.»</p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">A</div>
+          <h3>Alternativas co-creadas</h3>
+          <p>Proponer al menos 2 opciones viables de solución en lugar de un «no» cerrado.</p>
+          <p class="phrase">«Propongo dos opciones: o programamos entregas parciales semanales, o aplicamos un esquema de facturación por fases respetando la capacidad del almacén.»</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Acuerdos del equipo</p>
+      <h2>Decálogo de Sincronía Operativa</h2>
+      <div class="decalogo">
+        <ol>
+          <li>Declarar un riesgo de importación, inventario o crédito desde el día 1 es un acto de transparencia; notificarlo al final del periodo es una falla de ejecución.</li>
+          <li>Toda junta de asignación o pase de estafeta concluye con un Read-Back (A.R.C.O.) para verificar el entendimiento mutuo.</li>
+          <li>Las diferencias entre Comercial, Supply Chain y Finanzas se negocian directamente entre pares con datos duros (C.O.R.A.) antes de escalar a la Dirección General.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cta-zone" id="compromiso">
+      <h2>Zona de acción</h2>
+      <p>Registre su Carta Compromiso y consulte el diagnóstico de la sesión.</p>
+      <div class="cta-grid">
+        <div class="cta-card">
+          <h3>Carta Compromiso</h3>
+          <img src="qr/tcm-carta-compromiso-Tramontina.png" alt="QR Carta Compromiso">
+          <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd62RV_IyxBy_6PY_P1jjWngKtZPCuza9FpjofnDHDTBbVMUg/viewform?usp=header" target="_blank" rel="noopener">Abrir formulario</a>
+        </div>
+        <div class="cta-card">
+          <h3>Radiografía Comercial</h3>
+          <img src="qr/Radiografia%20Comercial%20-%20Tramontina.png" alt="QR Radiografía Comercial">
+          <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfO7ykPnnCgP5Ccsig8-aCs2yGVPAikPmSpyZysNgNWIva4jw/viewform?usp=sharing" target="_blank" rel="noopener">Abrir formulario</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>TCM · Tramontina México · Adaptabilidad Operativa</footer>
+</body>
+</html>
