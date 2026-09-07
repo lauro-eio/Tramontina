@@ -1,0 +1,316 @@
+**Brief de Materiales de Apoyo Visual e Interactivo (GTY)**
+
+**1. Enfoque General de los Materiales**
+
+* **Tono y Perspectiva:** Inductivo, técnico y despersonalizado. Evita señalar falencias individuales o señalar directamente la cultura de Tramontina. Presenta los retos de negociación como dilemas estándar de la industria B2B para fomentar la autocrítica orgánica y sin posturas defensivas.
+
+
+* **Formato Tecnológico:** Plataforma web en HTML para la proyección de diapositivas/dashboards en tiempo real y Formularios de Google para la captura de datos y reflexiones.
+* **Métrica de Éxito:** Que el participante identifique de forma autónoma la brecha entre la negociación reactiva (posiciones) y la negociación técnica (principios).
+
+
+
+---
+
+**2. Desglose de Materiales y Finalidad**
+
+* **Módulo HTML 1: Pantalla de Bienvenida y Termómetro de Industria**
+* **Enfoque:** Diagnóstico neutral y no punitivo sobre el balance de poder en las ventas complejas.
+* **Finalidad:** Romper el hielo durante los 10 minutos de tolerancia, captar la atención de los asistentes puntuales y preparar el terreno conceptual sin culpar a áreas o personas.
+
+
+* **Componentes:** Temporizador de inicio, código QR y enlace a encuesta rápida sobre percepción de poder de negociación frente al comprador.
+
+
+* **Módulo HTML 2: Tablero Comparativo "Negociación Tradicional vs. Negociación por Principios"**
+* **Enfoque:** Cuadro de contraste entre dos escuelas de negociación (Posiciones vs. Intereses).
+* **Finalidad:** Permitir que los participantes reconozcan por sí mismos los patrones que aplican en su día a día (como ceder margen por prisa o depender de escalaciones) al verlos reflejados como un "modelo tradicional a evolucionar" y no como un error personal.
+
+
+* **Componentes:** Gráficos dinámicos interactivos que despliegan los 4 pilares de GTY vinculados a la autonomía commercial.
+
+
+* **Módulo HTML 3: Guía Visual de Simulación y Reglas de la Mesa**
+* **Enfoque:** Instrucciones metodológicas para el ejercicio práctico en parejas.
+* **Finalidad:** Estructurar la simulación para evitar que caigan en discusiones informales. Establece un marco donde el participante que actúa como área de soporte o cliente empuje al otro a buscar intereses y criterios objetivos.
+
+
+* **Componentes:** Diagrama de pasos (Preparación, Simulación, Re-negociación), temporizador para cada fase y QR de registro de acuerdos.
+
+
+* **Módulo HTML 4: Dashboard Integrado de Resultados (Debrief)**
+* **Enfoque:** Métricas consolidadas del grupo de forma anónima y agregada.
+* **Finalidad:** Generar la conversación de cierre a partir de evidencia grupal. Permite analizar cuántas parejas lograron proteger el valor/margen y qué estrategias de intercambio de variables fueron las más efectivas.
+* **Componentes:** Gráficos automáticos (extraídos del Formulario de Google) mostrando el % de margen preservado y el tipo de concesiones acordadas.
+
+
+
+**1. Formulario 1: Termómetro de la Industria**
+* **Enfoque:** Diagnóstico neutral e inductivo sobre las tensiones y el balance de poder en las ventas complejas B2B.
+* **Finalidad:** Aprovechar los 10 minutos de impuntualidad para captar la percepción inicial del grupo y generar datos anónimos que sirvan como detonador de la teoría, sin poner a nadie a la defensiva.
+* **Componentes:**
+* Escala de percepción (1 a 5) sobre quién retiene el poder en la mesa de negociación (Vendedor vs. Comprador).
+* Selección de la variable de mayor presión comercial (descuentos por volumen, plazos, competencia, cierres de ciclo).
+* Campo abierto corto de 1-2 palabras sobre la principal fortaleza del equipo al negociar.
+
+
+
+**2. Formulario 2: Registro del Caso Práctico**
+* **Enfoque:** Captura cuantitativa y objetiva de los resultados obtenidos durante la simulación en parejas (Caso Tramontina).
+* **Finalidad:** Recabar los datos de los acuerdos alcanzados para alimentar en tiempo real el Dashboard del Módulo 4 y analizar cómo el grupo manejó el margen y los límites.
+* **Componentes:**
+* Confirmación de acuerdo (Sí se firmó / No se firmó - Salida por BATNA).
+* Nivel de concesión de precio (Precio de lista intacto / Descuento parcial negociado / Descuento máximo cedido).
+* Selección de monedas de cambio obtenidas (ajuste en plazos de pago, volumen, mix de producto, exhibición o concesión unilateral).
+
+
+**3. Formulario 3: Carta Compromiso GTY**
+
+* **Enfoque:** Responsabilidad individual, evolución profesional y autonomía comercial ("ser dueños de su negocio").
+* **Finalidad:** Garantizar la transferencia de lo aprendido a la operación diaria y dejar evidencia clara a la Dirección Comercial y HRBP sobre las acciones inmediatas que tomará cada participante.
+* **Componentes:**
+* Compromiso Comercial Externo: Acción concreta de preparación en GTY para evitar congelar ventas y regalar margen en los cierres de mes.
+* Compromiso de Autonomía Interna: Estrategia de negociación basada en criterios y datos antes de interactuar con áreas de soporte (Finanzas/Operaciones) para evitar dependencias innecesarias.
+
+
+
+
+**Contenido Técnico e Interactivo del Módulo 1**
+
+**1. Título y Mensaje de Encuadre**
+
+* **Título:** *Negociación Táctica y Empresarial: De la Posición al Interés.*
+* **Mensaje de Apertura:** *"En las ventas complejas B2B, el valor del acuerdo depende de cómo preparamos la mesa antes de sentarnos a negociar."*
+
+**2. Preguntas de la Dinámica "Termómetro de la Industria"**
+*(Accesibles mediante el código QR / Enlace al Formulario de Google 1)*
+
+* **Pregunta 1 (Escala de Percepción de Poder):**
+* *Texto:* "En la dinámica actual de tu sector, ¿quién consideran que retiene mayor poder de decisión en el cierre de un acuerdo?"
+* *Opciones (Escala 1 al 5):*
+* 1 = El vendedor domina y dicta las condiciones.
+* 3 = El poder está equilibrado entre ambas partes.
+* 5 = El comprador condiciona totalmente el precio y los tiempos.
+
+
+
+
+* **Pregunta 2 (Factor de Fricción Comercial):**
+* *Texto:* "¿Cuál de las siguientes variables genera mayor presión al momento de defender el valor de un acuerdo?"
+* *Opciones de selección múltiple:*
+* Exigencia de descuentos por volumen.
+* Tiempos y plazos de entrega ajustados.
+* Comparación directa con precios de la competencia.
+* Urgencia por cerrar dentro de un periodo de tiempo determinado (cierres de ciclo).
+
+
+
+
+* **Pregunta 3 (Pregunta Abierta Corta):**
+* *Texto:* "Escribe 1 o 2 palabras que describan cuál es la principal fortaleza que tiene tu equipo al momento de negociar."
+
+
+
+**3. Mensaje Informativo para los Participantes Puntuales**
+
+* **Texto en Pantalla:** *"Tus respuestas son 100% anónimas y se consolidarán en un mapa grupal que analizaremos al arrancar la sesión. La presentación iniciará formalmente al finalizar el conteo de tiempo."*
+
+---
+
+*(Sugerencia de presentación visual: Un diseño limpio de tres bloques con el título a la izquierda, el QR con instrucciones a la derecha y un temporizador en el pie de página).*
+
+
+**Contenido Técnico e Interactivo del Módulo 2**
+
+**1. Título y Mensaje de Encuadre**
+
+* **Título:** *Los 4 Pilares GTY: Evolución de la Negociación Tradicional.*
+* **Mensaje de Apertura:** *"Negociar por posiciones agota el margen y tensiona la relación; negociar por principios genera valor y acuerdos sostenibles a largo plazo."*
+
+
+**2. Cuadro Comparativo "Escuela Tradicional vs. Negociación por Principios"**
+*(Contenido para el despliegue interactivo de los 4 pilares)*
+
+* **Pilar 1: Separar a las Personas del Problema**
+* *Enfoque Tradicional:* Se percibe la resistencia interna o externa como un conflicto personal, derivando en desconfianza o escalación por correo.
+
+
+* *Clave GTY:* Atacar el cuello de botella operativo (tiempos, procesos, recursos) manteniendo intacta la relación profesional con la contraparte (clientes o áreas de soporte).
+
+
+
+
+* **Pilar 2: Enfocarse en Intereses, No en Posiciones**
+* *Enfoque Tradicional:* Atancarse en exigencias rígidas (ej. "necesito un 15% de descuento" o "no hay margen").
+
+
+* *Clave GTY:* Indagar el "para qué" detrás de la postura para descubrir la necesidad real de flujo, inventario o presupuesto del comprador.
+
+
+
+
+* **Pilar 3: Inventar Opciones de Beneficio Mutuo**
+* *Enfoque Tradicional:* Ceder precio de forma reactiva sin recibir nada a cambio para asegurar un cierre de ciclo.
+
+
+* *Clave GTY:* Empaquetar variables (volúmenes, plazos de pago, mix de producto, exhibición) para construir acuerdos de beneficio compartido.
+
+
+* **Pilar 4: Criterios Objetivos y BATNA (Límite Real)**
+* *Enfoque Tradicional:* Ceder por presión de tiempo o depender de autorizaciones constantes por falta de claridad en los límites reales.
+
+
+* *Clave GTY:* Definir previamente la Mejor Alternativa a un Acuerdo Negociado (BATNA) y utilizar estándares de mercado/costos para respaldar la postura con datos objetivos.
+
+
+
+
+
+**3. Ejercicio de Caso de Estudio Breve (Reflexión Inductiva)**
+*(Pregunta interactiva para discusión guiada)*
+
+* **Caso Dilema:** *"Un cliente de cuenta clave condiciona la firma de un contrato anual a que se le otorgue un descuento extraordinario antes de que termine el mes. De no aceptarlo, amenaza con congelar las compras."*
+
+* **Pregunta de Análisis:**
+* "¿Cómo se desarticula esta exigencia aplicando el principio de 'Intereses vs. Posiciones' sin perder el cliente ni destruir el margen comercial?"
+
+
+
+
+
+---
+
+*(Sugerencia de presentación visual: Una matriz interactiva de 4 cuadrantes donde cada cuadrante representa un pilar de GTY y permite alternar visualmente entre el 'Camino Tradicional' y el 'Camino por Principios').*
+
+
+
+**Contenido Técnico e Interactivo del Módulo 3**
+
+**1. Título y Mensaje de Encuadre**
+
+* **Título:** *Taller de Simulación: Aplicación Práctica de la Negociación por Principios.*
+* **Mensaje de Apertura:** *"La preparación previa transforma la presión de la mesa en una conversación estructurada de intercambio de valor."*
+
+
+**2. Guía Metodológica para la Simulación en Parejas**
+*(Instrucciones de la dinámica paso a paso)*
+
+* **Fase 1: Mapa de Preparación Individual (15 min)**
+* *Herramienta:* Diligenciamiento de la Hoja de Trabajo de GTY antes de interactuar.
+* *Puntos a definir:*
+1. Mis intereses reales vs. Mi posición inicial.
+
+
+2. Los posibles intereses de la otra parte (Finanzas, Operaciones o Cliente).
+
+
+3. Tres opciones de beneficio mutuo para empaquetar (variables no monetarias: plazos, volúmenes, entregas).
+
+
+4. Mi BATNA (Límite real antes de retirarme o escalar).
+
+
+
+
+
+
+* **Fase 2: Negociación Cruzada en Vivo (25 min)**
+* *Asignación de Roles:*
+* *Rol A (Líder Comercial):* Debe cerrar el acuerdo protegiendo el margen y aplicando criterios objetivos.
+
+
+* *Rol B (Contraparte - Cliente o Área de Soporte):* Debe exigir condiciones difíciles (descuentos o plazos) evaluando si el Comercial indaga sus intereses o solo cede por presión.
+
+
+
+
+
+
+* **Fase 3: Retroalimentación e Iteración (20 min)**
+* *Intercambio de observaciones (10 min):* ¿El Comercial cedió precio o negoció variables? ¿Se mantuvo el respeto interprofesional?
+
+
+* *Re-negociación exprés (10 min):* Ajuste de la oferta aplicando el BATNA y criterios objetivos respaldados por datos.
+
+
+
+
+
+**3. Preguntas de Registro de Acuerdos**
+*(Accesibles mediante el código QR / Enlace al Formulario de Google 1 - Sección Simulación)*
+
+* **Pregunta 1 (Resultado del Acuerdo):**
+* *Texto:* "¿Lograron llegar a un acuerdo firmado en la mesa?"
+* *Opciones:* Sí / No (Se ejerció el BATNA / Salida de la mesa).
+
+
+* **Pregunta 2 (Protección de Valor):**
+* *Texto:* "¿Se otorgó algún descuento sobre el precio de lista inicial?"
+* *Opciones:* No se otorgó descuento / Se otorgó un descuento parcial con intercambio de variables / Se otorgó el descuento máximo exigido.
+
+
+* **Pregunta 3 (Moneda de Cambio):**
+* *Texto:* "Si el acuerdo incluyó concesiones, ¿qué variable pidió el Comercial a cambio?"
+* *Opciones de selección múltiple:* Ajuste en plazos de pago / Incremento en volumen de compra / Exclusividad o exhibición / Cambio en tiempos de entrega / Ninguna (concesión unilateral).
+
+
+
+---
+
+*(Sugerencia de presentación visual: Un panel dividido que proyecte las 'Reglas de Oro de la Mesa' a la izquierda, el cronómetro por fases a la derecha y el QR para registrar el resultado final en la parte inferior).*
+
+
+**Contenido Técnico e Interactivo del Módulo 4**
+
+**1. Título y Mensaje de Encuadre**
+
+* **Título:** *Debrief y Tablero de Resultados: Análisis de Concesiones y Valor Creado.*
+* **Mensaje de Apertura:** *"El éxito de una negociación no se mide por cerrar a cualquier costo, sino por el valor preservado y la solidez de la relación construida."*
+
+
+**2. Tablero de Métricas Agregadas del Grupo**
+*(Contenido para el despliegue de resultados extraídos en vivo del Formulario de Google 1)*
+
+* **Métrica 1: Tasa de Acuerdos vs. Uso de BATNA**
+* Porcentaje de parejas que cerraron un acuerdo firmado frente al porcentaje que prefirió levantarse de la mesa al no encontrar criterios objetivos sostenibles.
+
+
+
+
+* **Métrica 2: Preservación del Margen Comercial**
+* Proporción de negociaciones que mantuvieron el precio de lista frente a aquellas que concedieron descuentos unilaterales por presión de cierre.
+
+
+
+
+* **Métrica 3: Matriz de Intercambio de Variables (Monedas de Cambio)**
+* Desglose visual de las variables no monetarias más utilizadas para proteger el margen (volumen, plazos, mix de producto, exhibición).
+
+
+
+
+
+**3. Preguntas de Análisis y Reflexión Grupal**
+*(Ganchos de debate proyectados para la plenaria)*
+
+* **Estrategia y Protección de Valor:**
+* "¿En qué casos el descuento fue un intercambio estratégico de valor y en cuáles se convirtió en una concesión reactiva para evitar la fricción?"
+
+
+
+* **Autonomía y Límites Reales:**
+* "¿Qué tan claro fue el BATNA durante la simulación y cómo afectó el nivel de confianza al momento de defender la postura frente a la contraparte?"
+
+
+
+
+* **Negociación Interfuncional:**
+* "Al estar en el rol de la contraparte (Soporte o Cliente), ¿qué comportamiento del Comercial facilitó encontrar soluciones creativas y qué actitud cerró la comunicación?"
+
+
+
+
+
+---
+
+*(Sugerencia de presentación visual: Un dashboard dinámico con gráficos de pastel para el porcentaje de acuerdos, gráficos de barras para las variables intercambiadas y un bloque destacado con las 3 preguntas clave para el debate).*

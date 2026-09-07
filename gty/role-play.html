@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GTY — Role-play: Mapa de preparación y fichas de rol">
+  <meta name="robots" content="noindex">
+  <title>GTY — Role-play</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+    header { text-align: center; margin-bottom: 1.25rem; }
+    header .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    header .mantra {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+    .spoiler-note {
+      max-width: 640px;
+      margin: 0 auto 1.75rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #9a3412;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .nav-tabs button {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 2px solid #e5e7eb;
+      background: #fff;
+      color: #374151;
+      cursor: pointer;
+    }
+    .nav-tabs button.active {
+      border-color: #c2410c;
+      background: #c2410c;
+      color: #fff;
+    }
+    .block { display: none; }
+    .block.active { display: block; }
+    .scenario {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #c2410c;
+    }
+    .scenario h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #c2410c;
+    }
+    .scenario p {
+      color: #374151;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .scenario p:last-child { margin-bottom: 0; }
+    .rules-list {
+      list-style: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    .rules-list li {
+      font-size: 0.9rem;
+      color: #4b5563;
+      padding: 0.35rem 0 0.35rem 1.25rem;
+      position: relative;
+    }
+    .rules-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #c2410c;
+      font-weight: bold;
+    }
+    .timing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .timing-card {
+      background: #fafaf9;
+      border-radius: 8px;
+      padding: 0.85rem 0.9rem;
+      border: 1px solid #e7e5e4;
+    }
+    .timing-card .t {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c2410c;
+      margin-bottom: 0.25rem;
+    }
+    .timing-card p {
+      font-size: 0.8rem;
+      color: #4b5563;
+      margin: 0;
+      line-height: 1.45;
+    }
+    .worksheet {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+    .worksheet h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .worksheet > .hint {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .field {
+      margin-bottom: 1rem;
+    }
+    .field:last-of-type { margin-bottom: 0; }
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+    .field-box {
+      min-height: 3.25rem;
+      background: #fafaf9;
+      border: 1.5px dashed #d6d3d1;
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.9rem;
+      color: #a8a29e;
+      line-height: 1.5;
+    }
+    .field-box.tall { min-height: 5rem; }
+    .prep-note {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #9a3412;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+    }
+    .role-panel {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      border-top: 4px solid #c2410c;
+    }
+    .role-panel[data-role="a"] { border-top-color: #2563eb; }
+    .role-panel[data-role="b1"] { border-top-color: #dc2626; }
+    .role-panel[data-role="b2"] { border-top-color: #7c3aed; }
+    .role-panel-head {
+      padding: 1.35rem 1.5rem 1rem;
+    }
+    .role-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+    }
+    .role-panel-head h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 0.2rem;
+      line-height: 1.3;
+    }
+    .role-panel[data-role="a"] .role-panel-head h2 { color: #2563eb; }
+    .role-panel[data-role="b1"] .role-panel-head h2 { color: #dc2626; }
+    .role-panel[data-role="b2"] .role-panel-head h2 { color: #7c3aed; }
+    .role-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    .role-panel-body { padding: 0 1.5rem 1.5rem; }
+    .confidential-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #b45309;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .role-section { margin-bottom: 1.1rem; }
+    .role-section:last-child { margin-bottom: 0; }
+    .role-section h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+    .role-section p,
+    .role-section li {
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+    .role-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .role-section li {
+      padding: 0.3rem 0 0.3rem 1.1rem;
+      position: relative;
+    }
+    .role-section li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #c2410c;
+      font-weight: bold;
+    }
+    .registro-card {
+      background: #1c1917;
+      color: #fafaf9;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .registro-card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .registro-card > p {
+      color: #a8a29e;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .registro-card img.qr-img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.35rem;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      background: #c2410c;
+      text-decoration: none;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+    }
+    .cta-btn:hover { background: #9a3412; }
+    .registro-fields {
+      text-align: left;
+      max-width: 420px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+    }
+    .registro-fields h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fed7aa;
+      margin-bottom: 0.65rem;
+    }
+    .registro-fields ul {
+      list-style: none;
+    }
+    .registro-fields li {
+      font-size: 0.85rem;
+      color: #d6d3d1;
+      padding: 0.35rem 0 0.35rem 1.1rem;
+      position: relative;
+    }
+    .registro-fields li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #fdba74;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    @media (max-width: 700px) {
+      .timing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="badge">GTY · Negociación Táctica y Empresarial</p>
+      <h1>Simulación — Role-play</h1>
+      <p class="mantra">«La preparación previa transforma la presión de la mesa en intercambio de valor.»</p>
+    </header>
+
+    <p class="spoiler-note">Abre solo la pestaña de tu rol asignado. No revises la ficha de tu contraparte.</p>
+
+    <div class="nav-tabs" role="tablist">
+      <button type="button" class="active" data-block="mapa" role="tab" aria-selected="true">Mapa</button>
+      <button type="button" data-block="rola" role="tab" aria-selected="false">Rol A</button>
+      <button type="button" data-block="rolb1" role="tab" aria-selected="false">Rol B1</button>
+      <button type="button" data-block="rolb2" role="tab" aria-selected="false">Rol B2</button>
+      <button type="button" data-block="registro" role="tab" aria-selected="false">Registro</button>
+    </div>
+
+    <!-- MAPA -->
+    <div class="block active" id="block-mapa">
+      <section class="scenario" aria-labelledby="mapa-title">
+        <h2 id="mapa-title">Preparación individual — 15 minutos</h2>
+        <p>
+          Antes de hablar con tu pareja, lee tu ficha de rol y completa el mapa GTY.
+          Trabajan en parejas: <strong>Rol A (Comercial)</strong> frente a
+          <strong>B1 (Cliente)</strong> o <strong>B2 (Finanzas/Operaciones)</strong>.
+        </p>
+        <ul class="rules-list">
+          <li>Completa el mapa <strong>antes</strong> de iniciar la conversación.</li>
+          <li>Define al menos <strong>3 monedas de cambio</strong> no monetarias.</li>
+          <li>Fija tu BATNA: el límite donde el acuerdo deja de ser rentable.</li>
+        </ul>
+        <div class="timing-grid" aria-label="Micro-estructura del role-play">
+          <div class="timing-card">
+            <div class="t">0 – 5 min</div>
+            <p>Ataque e impasse. La contraparte exige; el Comercial indaga, sin ceder precio de inmediato.</p>
+          </div>
+          <div class="timing-card">
+            <div class="t">5 – 20 min</div>
+            <p>Paquetes GTY. Mover la mesa a variables múltiples: «Si te mantengo X, ajustamos Y».</p>
+          </div>
+          <div class="timing-card">
+            <div class="t">20 – 25 min</div>
+            <p>Cierre o BATNA. Firmar con intercambio de valor, o salir limpio si no hay rentabilidad.</p>
+          </div>
+        </div>
+        <p style="margin-top:1rem; font-size:0.9rem; color:#4b5563;">
+          <strong>Feedback (Rol B → A):</strong>
+          «¿Sentí que indagaste mis intereses para resolver mi problema o que solo intentaste imponerme tu posición?»
+        </p>
+      </section>
+
+      <div class="worksheet">
+        <h3>Hoja de trabajo — Mapa GTY</h3>
+        <p class="hint">Anota a mano o mentalmente. Estos cuadros son guía visual; no se envían.</p>
+        <div class="field">
+          <label>Posición inicial</label>
+          <div class="field-box">Lo que pides o defiendes en la mesa…</div>
+        </div>
+        <div class="field">
+          <label>Mis intereses</label>
+          <div class="field-box tall">El «para qué» real detrás de tu postura…</div>
+        </div>
+        <div class="field">
+          <label>Intereses estimados de la contraparte</label>
+          <div class="field-box tall">Hipótesis sobre lo que necesita la otra parte…</div>
+        </div>
+        <div class="field">
+          <label>3 monedas de cambio</label>
+          <div class="field-box tall">1. … &nbsp;&nbsp; 2. … &nbsp;&nbsp; 3. …</div>
+        </div>
+        <div class="field">
+          <label>BATNA / límite</label>
+          <div class="field-box">Condición mínima de rentabilidad antes de que el acuerdo le cueste dinero a la empresa…</div>
+        </div>
+        <p class="prep-note">Completa este mapa antes de hablar. La simulación empieza cuando ambos estén listos.</p>
+      </div>
+    </div>
+
+    <!-- ROL A -->
+    <div class="block" id="block-rola">
+      <article class="role-panel" data-role="a">
+        <div class="role-panel-head">
+          <span class="role-tag">Ficha A · Visible solo para este rol</span>
+          <h2>Líder Comercial</h2>
+          <p class="role-subtitle">Aplica para Escenario A (vs. Cliente) y Escenario B (vs. Finanzas/Ops)</p>
+        </div>
+        <div class="role-panel-body">
+          <div class="role-section">
+            <h4>Objetivo</h4>
+            <p>
+              Cerrar el contrato del mes protegiendo el <strong>margen de lista</strong>
+              y asegurando la viabilidad operativa.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>Reglas obligatorias</h4>
+            <ul>
+              <li>Prohibido otorgar un descuento en la <strong>primera oferta</strong>.</li>
+              <li>Si concedes cualquier ajuste comercial, exige de inmediato una <strong>variable a cambio</strong> (volumen, días de pago, espacio en anaquel, entregas).</li>
+              <li>Mantén tu <strong>BATNA</strong> claro: no aceptes acuerdos que generen pérdida a la empresa.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>En la mesa (recordatorio)</h4>
+            <ul>
+              <li>0–5 min: absorbe el golpe; lanza la primera pregunta de intereses. No digas «es política de la empresa».</li>
+              <li>5–20 min: empaqueta variables («Si te mantengo X, ajustamos Y»).</li>
+              <li>20–25 min: cierra con intercambio de valor o ejecuta el BATNA.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ROL B1 -->
+    <div class="block" id="block-rolb1">
+      <article class="role-panel" data-role="b1">
+        <div class="role-panel-head">
+          <span class="role-tag">Ficha B1 · Solo para este rol</span>
+          <h2>Cliente Estratégico</h2>
+          <p class="role-subtitle">Comprador departamental / Distribuidor</p>
+        </div>
+        <div class="role-panel-body">
+          <div class="confidential-banner">🔒 Confidencial — solo para este rol</div>
+          <div class="role-section">
+            <h4>Posición (lo que pides)</h4>
+            <p>
+              Exiges un <strong>12% de descuento directo</strong> sobre la orden del mes y extensión
+              de crédito de <strong>30 a 90 días</strong>. Amenazas con congelar la compra o irte con la competencia.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>Intereses reales (lo que no dices)</h4>
+            <ul>
+              <li>Almacén saturado — temor al costo de inventario parado.</li>
+              <li>Necesidad de flujo de caja para el siguiente trimestre.</li>
+              <li>Urgencia de entrega puntual para una promoción.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Comportamiento</h4>
+            <ul>
+              <li><strong>Minutos 0–5:</strong> inflexible. «La orden se firma hoy solo si sale con el 12%».</li>
+              <li><strong>Si A cede precio sin pedir nada:</strong> acepta el descuento y exige más días de crédito.</li>
+              <li><strong>Cuándo ceder:</strong> solo si A indaga almacén/entrega y propone un paquete (ej. 3% a cambio de entregas parciales, o lista intacta + 60 días si sube volumen 15%).</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Pregunta de feedback al Comercial</h4>
+            <p>«¿Sentí que indagaste mis intereses para resolver mi problema o que solo intentaste imponerme tu posición?»</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ROL B2 -->
+    <div class="block" id="block-rolb2">
+      <article class="role-panel" data-role="b2">
+        <div class="role-panel-head">
+          <span class="role-tag">Ficha B2 · Solo para este rol</span>
+          <h2>Finanzas / Operaciones</h2>
+          <p class="role-subtitle">Área interna Tramontina</p>
+        </div>
+        <div class="role-panel-body">
+          <div class="confidential-banner">🔒 Confidencial — solo para este rol</div>
+          <div class="role-section">
+            <h4>Posición (lo que pides)</h4>
+            <p>
+              <strong>Cero descuentos adicionales</strong> para la cuenta. Crédito a
+              <strong>30 días estrictos</strong> por historial de pagos tardíos.
+              Rechazo total a «excepciones por correo».
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>Intereses reales (lo que no dices)</h4>
+            <ul>
+              <li>Reducir la cartera vencida para no castigar reservas.</li>
+              <li>Obtener previsibilidad de demanda — planear producción sin fletes exprés.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Comportamiento</h4>
+            <ul>
+              <li><strong>Minutos 0–5:</strong> duro ante la «urgencia de cierre». «No autorizaré otra excepción que destruya el margen a fin de mes».</li>
+              <li><strong>Si A ruega o usa la cuota:</strong> mantén el <strong>NO</strong>.</li>
+              <li><strong>Cuándo ceder:</strong> solo con criterios objetivos (anticipo, canje de crédito, volumen anual firmado que compense el margen).</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Pregunta de feedback al Comercial</h4>
+            <p>«¿Sentí que indagaste mis intereses para resolver mi problema o que solo intentaste imponerme tu posición?»</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- REGISTRO -->
+    <div class="block" id="block-registro">
+      <section class="registro-card" aria-labelledby="reg-title">
+        <h2 id="reg-title">Form 2 · Registro del caso</h2>
+        <p>Al terminar el feedback, registren el resultado de la pareja (un envío por pareja).</p>
+        <img class="qr-img" src="qr/form-2-registro.png" alt="QR Registro del Caso Práctico">
+        <a class="cta-btn" href="https://forms.gle/pu5u9zqGz1uAkEeH8" target="_blank" rel="noopener">Abrir formulario</a>
+        <div class="registro-fields">
+          <h3>Campos a reportar</h3>
+          <ul>
+            <li><strong>Acuerdo:</strong> sí se firmó / no (salida por BATNA).</li>
+            <li><strong>Descuento:</strong> lista intacta / parcial con intercambio / máximo cedido.</li>
+            <li><strong>Monedas de cambio:</strong> plazos, volumen, mix, exhibición, entregas u otra.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>Tramontina · Global Leadership · GTY</footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.nav-tabs button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-block');
+        document.querySelectorAll('.nav-tabs button').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        document.querySelectorAll('.block').forEach(function (block) {
+          block.classList.toggle('active', block.id === 'block-' + id);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

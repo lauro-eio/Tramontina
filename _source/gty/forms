@@ -1,0 +1,157 @@
+# GTY — Spec de Google Forms (Grupo B)
+
+**Programa:** Global Leadership · Tramontina  
+**Taller:** Negociación Táctica y Empresarial (GTY)  
+**Estado:** Forms live · QR en `gty/qr/` · HTML cableado
+
+Fuente de verdad de URLs y paths. Si cambia un Form, actualiza esta tabla y luego los HTML.
+
+---
+
+## Hub de estado
+
+| Form | Momento | Archivo QR | URL |
+| --- | --- | --- | --- |
+| **1** Termómetro de la Industria | 00:00–00:10 | `gty/qr/form-1-termometro.png` | https://forms.gle/yswDByCjtjP536r49 |
+| **2** Registro del Caso Práctico | ~02:05–02:15 | `gty/qr/form-2-registro.png` | https://forms.gle/pu5u9zqGz1uAkEeH8 |
+| **3** Carta Compromiso GTY | 02:40–03:00 | `gty/qr/form-3-compromiso.png` | https://forms.gle/MEFW46wm7HpL83UM7 |
+
+**Dónde se usan**
+- Form 1 + 3 → `gty/index.html`, deck, facilitador  
+- Form 2 → `gty/role-play.html`, deck, facilitador  
+
+**Ajustes comunes (los tres)**
+- Marcar todas las preguntas como **obligatorias**
+- Confirmación: Configuración → Presentación → Mensaje de confirmación (texto abajo por form)
+
+---
+
+## Form 1 — Termómetro de la Industria
+
+| Campo | Valor |
+| --- | --- |
+| **Título** | Termómetro de la Industria \| Programa Global Leadership |
+| **Descripción** | Respuestas 100% anónimas. Tus insumos nos ayudan a mapear las dinámicas reales del mercado B2B antes de iniciar la sesión. |
+| **Quién** | Cada participante (individual) |
+| **Anonimato** | Sí — no pedir nombre |
+
+### Preguntas
+
+#### 1. Percepción de poder en la negociación
+- **Ayuda:** En la dinámica comercial actual de tu sector, ¿quién consideras que retiene mayor poder de decisión al momento de fijar las condiciones de un acuerdo?
+- **Tipo:** Escala lineal · 1 a 5
+- **1** = El vendedor domina y dicta las condiciones  
+- **5** = El comprador condiciona totalmente el precio y los tiempos
+
+#### 2. Principal factor de presión comercial
+- **Ayuda:** ¿Cuál de las siguientes variables genera mayor presión o tensión al momento de defender el valor de una propuesta?
+- **Tipo:** Casillas de verificación (múltiples) + opción «Otro»
+- **Opciones:**
+  - Exigencia continua de descuentos por volumen
+  - Tiempos y plazos de entrega ajustados por parte del cliente
+  - Comparación directa con precios o promociones de la competencia
+  - Urgencia por cerrar ventas dentro de un periodo determinado (cierres de ciclo)
+
+#### 3. Fortaleza del equipo comercial
+- **Ayuda:** En 1 o 2 palabras, ¿cuál consideras la principal fortaleza de tu equipo al sentarse a negociar?
+- **Tipo:** Respuesta corta
+
+### Mensaje de confirmación
+
+> ¡Gracias por tus respuestas! La información se proyectará de forma agregada al iniciar la sesión.
+
+---
+
+## Form 2 — Registro del Caso Práctico
+
+| Campo | Valor |
+| --- | --- |
+| **Título** | Registro del Caso Práctico \| Simulación GTY |
+| **Descripción** | Captura rápida de los términos finales del ejercicio en parejas. **Un registro por pareja.** |
+| **Quién** | Una persona por pareja (después del role-play) |
+
+### Preguntas
+
+#### 1. Resultado del acuerdo
+- **Ayuda:** ¿Lograron llegar a un acuerdo firmado al finalizar la mesa?
+- **Tipo:** Opción múltiple
+- **Opciones:**
+  - Sí, alcanzamos un acuerdo y cerramos la negociación
+  - No, no hubo acuerdo y se ejerció el BATNA (salida limpia de la mesa)
+
+#### 2. Gestión del precio y margen
+- **Ayuda:** ¿Cuál fue la postura final respecto al precio o condición financiera inicial?
+- **Tipo:** Opción múltiple
+- **Opciones:**
+  - Se mantuvo el precio/margen de lista inicial sin otorgar descuentos
+  - Se otorgó un descuento parcial a cambio de una variable de valor para la empresa
+  - Se otorgó el descuento máximo exigido sin obtener contraprestaciones claras
+  - No aplica (no hubo acuerdo)
+
+#### 3. Intercambio de variables (monedas de cambio)
+- **Ayuda:** Si el acuerdo incluyó concesiones, ¿qué variables no monetarias solicitó el Comercial a cambio?
+- **Tipo:** Casillas de verificación (múltiples)
+- **Opciones:**
+  - Ajuste o adelanto en los plazos de pago/cobro
+  - Incremento en el volumen de compra o compromiso de permanencia
+  - Compromiso de exhibición preferente, espacio en anaquel o exclusividad
+  - Ajuste en los tiempos o condiciones de entrega (logística / planta)
+  - Ninguna (concesión unilateral de precio)
+  - No aplica (no hubo acuerdo o se mantuvo el precio intacto)
+
+#### 4. Utilidad del BATNA
+- **Ayuda:** ¿Qué tanto ayudó tener claro el límite de negociación (BATNA) para sostener la postura?
+- **Tipo:** Escala lineal · 1 a 5
+- **1** = Nada útil (cedimos por presión del tiempo)  
+- **5** = Indispensable (nos dio firmeza y claridad sin improvisar)
+
+### Mensaje de confirmación
+
+> ¡Registro guardado! Los datos se proyectarán de forma agregada para el análisis del grupo.
+
+---
+
+## Form 3 — Carta Compromiso GTY
+
+| Campo | Valor |
+| --- | --- |
+| **Título** | Carta Compromiso GTY \| Negociación Táctica y Empresarial |
+| **Descripción** | Formaliza la transferencia del taller a tu operación diaria. Define 2 acciones concretas para fortalecer autonomía y rentabilidad. |
+| **Quién** | Cada participante (identificado — seguimiento HRBP / Dirección) |
+| **Anonimato** | No — pide nombre y puesto |
+
+### Preguntas
+
+#### 1. Datos de identificación
+- **Ayuda:** Nombre completo y puesto actual (seguimiento de compromisos).
+- **Tipo:** Respuesta corta
+
+#### 2. Compromiso comercial externo (clientes / cierres)
+- **Ayuda:** ¿Qué acción o herramienta concreta de GTY integrarás en tu siguiente negociación con clientes para evitar congelar ventas y regalar precio en los cierres de mes?
+- **Tipo:** Párrafo
+
+#### 3. Compromiso de autonomía interna (áreas de soporte)
+- **Ayuda:** ¿Cómo te prepararás técnicamente (intereses, criterios objetivos, BATNA) antes de negociar con Finanzas u Operaciones, para decidir con firmeza sin depender de correos masivos?
+- **Tipo:** Párrafo
+
+#### 4. Indicador de aplicación inmediata
+- **Ayuda:** ¿En qué plazo estimas aplicar por primera vez estos compromisos en una negociación activa?
+- **Tipo:** Opción múltiple
+- **Opciones:**
+  - En las próximas 24 a 48 horas
+  - En el transcurso de esta misma semana
+  - Durante el cierre del ciclo comercial en curso
+
+### Mensaje de confirmación
+
+> ¡Carta Compromiso registrada! Tus respuestas sirven como hoja de ruta de seguimiento en el programa Global Leadership.
+
+---
+
+## Checklist post-creación
+
+1. [x] Crear Form 1, 2 y 3 en Google Forms con este spec  
+2. [x] Pegar URLs en la tabla Hub (arriba)  
+3. [x] Generar QR → `gty/qr/form-1-termometro.png`, `form-2-registro.png`, `form-3-compromiso.png`  
+4. [x] Sustituir placeholders en landing, facilitador, role-play y deck  
+5. [ ] Probar envío de prueba + vista de respuestas (pantalla secundaria coach)  
