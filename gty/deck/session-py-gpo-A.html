@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Negociación Táctica y Empresarial · Grupo A · Tramontina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --ink: #f4f7fa;
+  --muted: #9aadc0;
+  --navy: #0d1a2e;
+  --navy-2: #152438;
+  --navy-3: #1a2b45;
+  --accent: #fdba74;
+  --accent-deep: #c2410c;
+  --warn: #fbbf24;
+  --ok: #86efac;
+  --risk: #fca5a5;
+  --line: rgba(255,255,255,0.12);
+  --font: "DM Sans", system-ui, sans-serif;
+  --display: "Fraunces", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%;
+  background: var(--navy);
+  color: var(--ink);
+  font-family: var(--font);
+  overflow: hidden;
+}
+.deck { height: 100%; position: relative; }
+.slide {
+  display: none;
+  height: 100%;
+  padding: clamp(1.5rem, 4vh, 3rem) clamp(1.75rem, 5vw, 4.5rem) 4.5rem;
+  background:
+    radial-gradient(900px 500px at 100% 0%, rgba(194,65,12,0.18), transparent 55%),
+    radial-gradient(700px 400px at 0% 100%, rgba(26,43,69,0.9), transparent 50%),
+    linear-gradient(165deg, var(--navy) 0%, var(--navy-2) 55%, #0a1524 100%);
+  flex-direction: column;
+  justify-content: center;
+}
+.slide.active { display: flex; animation: in 0.35s cubic-bezier(0.22,1,0.36,1); }
+@keyframes in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.slide.hero { justify-content: flex-end; padding-bottom: 12vh; }
+.kicker {
+  font-size: .78rem; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 .6rem;
+}
+h1 {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 700; letter-spacing: -.02em;
+  line-height: 1.12; margin: 0 0 .75rem; max-width: 18ch;
+}
+h2 {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 700; letter-spacing: -.02em;
+  margin: 0 0 1.25rem; line-height: 1.15;
+}
+.lead { font-size: clamp(1.05rem, 2vw, 1.3rem); color: rgba(244,247,250,.82); max-width: 40rem; margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.5rem; }
+.chip {
+  padding: .4rem .85rem; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255,255,255,.06);
+  font-size: .88rem; color: rgba(244,247,250,.9);
+}
+.tag {
+  display: inline-block; font-size: .75rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .75rem;
+}
+ul.bullets {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: .85rem;
+  max-width: 44rem;
+}
+ul.bullets li {
+  position: relative; padding-left: 1.5rem;
+  font-size: clamp(1.05rem, 2.1vw, 1.4rem); line-height: 1.4;
+}
+ul.bullets li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: .55rem; height: .55rem; border-radius: 50%; background: var(--accent-deep);
+}
+.grid-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  max-width: 56rem;
+}
+.grid-3 {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;
+  max-width: 56rem;
+}
+@media (max-width: 900px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+.card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 14px; padding: 1.15rem 1.25rem;
+}
+.card h3 {
+  margin: 0 0 .65rem; font-size: 1.05rem; color: var(--accent);
+  letter-spacing: .04em; text-transform: uppercase; font-weight: 700;
+}
+.card.trad h3 { color: var(--risk); }
+.card.ok h3 { color: var(--ok); }
+.card p, .card li { margin: .35rem 0; font-size: 1.05rem; color: rgba(244,247,250,.88); }
+.note-line { color: var(--muted); font-size: 1rem; margin-top: 1rem; max-width: 40rem; }
+.timer {
+  margin-top: 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: .75rem;
+}
+.timer-display {
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .02em;
+  min-width: 5.5ch;
+}
+.timer button {
+  font-family: inherit;
+  font-size: .9rem; font-weight: 600;
+  padding: .55rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  background: rgba(255,255,255,.08);
+  color: var(--ink);
+}
+.timer button.timer-start {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  color: #fff;
+}
+.timer button:hover { filter: brightness(1.08); }
+.timer.running .timer-display { color: var(--ok); }
+.timer.done .timer-display { color: var(--risk); }
+.prompt {
+  max-width: 42rem;
+  font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+  line-height: 1.4;
+  color: rgba(244,247,250,.92);
+  margin: 0;
+}
+.key-msg {
+  max-width: 42rem;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+.gold {
+  max-width: 48rem;
+  margin-top: 1rem;
+  padding: .9rem 1.15rem;
+  background: rgba(251,191,36,.12);
+  border: 1px solid rgba(251,191,36,.4);
+  border-radius: 12px;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: #fde68a;
+}
+.bars { display: flex; flex-direction: column; gap: .85rem; max-width: 40rem; width: 100%; }
+.bar-row { display: grid; grid-template-columns: 11rem 1fr 3.2rem; gap: .75rem; align-items: center; }
+.bar-row .label { font-size: .95rem; color: rgba(244,247,250,.9); }
+.bar-track {
+  height: .85rem; border-radius: 99px;
+  background: rgba(255,255,255,.08); overflow: hidden;
+}
+.bar-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent-deep), var(--accent));
+}
+.bar-fill.risk { background: linear-gradient(90deg, #991b1b, #f87171); }
+.bar-row .val {
+  font-family: var(--display); font-weight: 700;
+  color: var(--accent); text-align: right; font-size: 1.1rem;
+}
+.bar-row .val.risk { color: var(--risk); }
+.compare-table {
+  width: 100%; max-width: 52rem; border-collapse: collapse;
+  font-size: clamp(.95rem, 1.7vw, 1.15rem);
+}
+.compare-table th {
+  text-align: left; padding: .65rem .75rem;
+  font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); border-bottom: 1px solid var(--line);
+}
+.compare-table td {
+  padding: .85rem .75rem; border-bottom: 1px solid var(--line);
+  vertical-align: top; line-height: 1.4;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table .bad { color: var(--risk); }
+.compare-table .good { color: var(--ok); }
+.steps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  max-width: 56rem;
+}
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr; } }
+.step-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 14px; padding: 1.15rem 1.25rem;
+}
+.step-card .n {
+  font-family: var(--display); font-size: 1.6rem; font-weight: 700;
+  color: var(--accent); margin-bottom: .4rem;
+}
+.step-card p { margin: 0; font-size: 1.05rem; color: rgba(244,247,250,.88); line-height: 1.4; }
+.footer-bar {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: .65rem 1.25rem;
+  background: rgba(8,14,24,.85); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  font-size: .8rem; color: var(--muted); z-index: 20;
+}
+.progress {
+  flex: 1; max-width: 14rem; height: 4px;
+  background: rgba(255,255,255,.1); border-radius: 99px; overflow: hidden;
+}
+.progress > i {
+  display: block; height: 100%; width: 0%;
+  background: var(--accent-deep); border-radius: 99px; transition: width .25s ease;
+}
+.controls { display: flex; gap: .4rem; align-items: center; }
+.controls button {
+  background: rgba(255,255,255,.08); border: 1px solid var(--line);
+  color: var(--ink); border-radius: 8px; padding: .35rem .65rem;
+  cursor: pointer; font-size: .78rem; font-family: inherit;
+}
+.controls button:hover { background: rgba(194,65,12,.25); border-color: var(--accent); }
+.notes {
+  display: none; position: fixed; right: 1rem; bottom: 3.5rem;
+  width: min(28rem, calc(100vw - 2rem)); max-height: 40vh; overflow: auto;
+  background: #111827; border: 1px solid var(--line); border-radius: 12px;
+  padding: 1rem 1.15rem; z-index: 25; box-shadow: 0 20px 50px rgba(0,0,0,.4);
+  font-size: .9rem; color: #d1d5db; line-height: 1.5;
+}
+.notes.open { display: block; }
+.notes strong { color: var(--accent); }
+.help {
+  position: fixed; top: .75rem; right: .75rem; z-index: 15;
+  font-size: .72rem; color: var(--muted);
+  background: rgba(0,0,0,.35); padding: .35rem .6rem; border-radius: 8px;
+  border: 1px solid var(--line);
+}
+  </style>
+</head>
+<body>
+  <div class="help">← → navegar · S notes · F fullscreen</div>
+  <div class="deck">
+
+    <!-- 1 Hero -->
+    <section class="slide hero active" data-notes="Bienvenida. Postura: espejo operativo, no evaluación RH. Decir: perfil agregado de quienes completaron PrinciplesYou (n=11 de 20). No proyectar nombres ni rankings.">
+      <p class="kicker">Tramontina · Negociación Táctica y Empresarial</p>
+      <h1>Huella operativa del Grupo A</h1>
+      <p class="lead">De la razón técnica al criterio que mueve la operación</p>
+      <div class="chips">
+        <span class="chip">90 minutos</span>
+        <span class="chip">Grupo A</span>
+        <span class="chip">Admin · Finanzas · Supply · Comercial</span>
+      </div>
+    </section>
+
+    <!-- 2 Agenda -->
+    <section class="slide" data-notes="Mostrar agenda. Anclar: no venimos a romper reglas; venimos a mirar cómo las usamos entre áreas.">
+      <p class="tag">Ruta · 90′</p>
+      <h2>Cuatro bloques</h2>
+      <ul class="bullets">
+        <li><strong>00:00–00:20</strong> Espejo con datos · PrinciplesYou</li>
+        <li><strong>00:20–00:50</strong> Reencuadre de la norma</li>
+        <li><strong>00:50–01:10</strong> Autonomía vs. escalamiento</li>
+        <li><strong>01:10–01:30</strong> Costo oculto + anclaje al taller de liderazgo</li>
+      </ul>
+    </section>
+
+    <!-- 3 Disclaimer n -->
+    <section class="slide" data-notes="Leer en voz alta el disclaimer. Si preguntan por faltantes: el mapa es grupal agregado, no diagnóstico individual. No listar nombres en proyección.">
+      <p class="tag">Método</p>
+      <h2>Cómo leer estos números</h2>
+      <ul class="bullets">
+        <li>Promedios agregados · <strong>n = 11</strong> de 20 del Grupo A</li>
+        <li>Sin nombres · sin ranking individual</li>
+        <li>Riesgo de diseño operativo — no juicio de carácter</li>
+      </ul>
+      <p class="note-line">Fuente: PrinciplesYou · join por email con lista de participantes Grupo A.</p>
+    </section>
+
+    <!-- 4 Fortalezas -->
+    <section class="slide" data-notes="Paso 1 (0–5′): VALIDAR. Reconocer que este perfil sostiene rigor fiscal, normativo y operativo. Evitar que se sientan juzgados.">
+      <p class="tag">Bloque 1 · Fortalezas</p>
+      <h2>Capacidad de ejecución</h2>
+      <div class="bars">
+        <div class="bar-row">
+          <span class="label">Persistencia</span>
+          <div class="bar-track"><div class="bar-fill" style="width:81%"></div></div>
+          <span class="val">81</span>
+        </div>
+        <div class="bar-row">
+          <span class="label">Exigencia</span>
+          <div class="bar-track"><div class="bar-fill" style="width:76%"></div></div>
+          <span class="val">76</span>
+        </div>
+        <div class="bar-row">
+          <span class="label">Determinación</span>
+          <div class="bar-track"><div class="bar-fill" style="width:76%"></div></div>
+          <span class="val">76</span>
+        </div>
+        <div class="bar-row">
+          <span class="label">Pensamiento lógico</span>
+          <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+          <span class="val">75</span>
+        </div>
+        <div class="bar-row">
+          <span class="label">Tomar el control</span>
+          <div class="bar-track"><div class="bar-fill" style="width:73%"></div></div>
+          <span class="val">73</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 Ceguera -->
+    <section class="slide" data-notes="Paso 2 (5–12′): confrontación cuantitativa. Presentar como riesgo de diseño: exigencia alta + empatía baja = imposición de reglas y atrincheramiento.">
+      <p class="tag">Bloque 1 · Brecha</p>
+      <h2>Ceguera interpersonal</h2>
+      <div class="bars">
+        <div class="bar-row">
+          <span class="label">Empatía</span>
+          <div class="bar-track"><div class="bar-fill risk" style="width:31%"></div></div>
+          <span class="val risk">31</span>
+        </div>
+        <div class="bar-row">
+          <span class="label">Orientación a personas</span>
+          <div class="bar-track"><div class="bar-fill risk" style="width:46%"></div></div>
+          <span class="val risk">46</span>
+        </div>
+        <div class="bar-row">
+          <span class="label">Nutrir / cuidar</span>
+          <div class="bar-track"><div class="bar-fill risk" style="width:43%"></div></div>
+          <span class="val risk">43</span>
+        </div>
+        <div class="bar-row">
+          <span class="label">Flexibilidad</span>
+          <div class="bar-track"><div class="bar-fill risk" style="width:60%"></div></div>
+          <span class="val risk">60</span>
+        </div>
+      </div>
+      <p class="note-line">Lógica ~75 vs. empatía ~31 — misma sala, mismo grupo.</p>
+    </section>
+
+    <!-- 6 Paradoja -->
+    <section class="slide" data-notes="Anclar la paradoja. Transición a pregunta de indagación.">
+      <p class="tag">Bloque 1 · Espejo</p>
+      <h2>La paradoja de la operación</h2>
+      <p class="key-msg">«Tenemos la razón técnica… y el proceso sigue paralizado. ¿Quién gana?»</p>
+      <p class="lead">Cuando la exigencia es alta y la empatía es baja, el liderazgo se traduce en imposición de reglas.</p>
+    </section>
+
+    <!-- 7 Pregunta B1 -->
+    <section class="slide" data-notes="Paso 3 (12–20′). Escuchar 2–3 voces. Segunda pregunta de respaldo: ¿cuántos correos con copia a Directores enviamos a la semana solo para defender la postura técnica?">
+      <p class="tag">Bloque 1 · Indagación</p>
+      <h2>Primera reacción</h2>
+      <p class="prompt">Cuando un área vecina pide una excepción o ajuste, ¿cuál es nuestra primera reacción natural: <strong>entender su urgencia</strong> o <strong>buscar el manual para justificar el «no»</strong>?</p>
+    </section>
+
+    <!-- 8 Título B2 -->
+    <section class="slide" data-notes="Puente: no pedimos romper reglas ni ceder margen de seguridad. Pedimos educar al área vecina sobre el costo/riesgo de la excepción.">
+      <p class="tag">Bloque 2 · 00:20–00:50</p>
+      <h2>Reencuadre de la norma</h2>
+      <p class="lead">De usar la regla como escudo a usarla como criterio objetivo de riesgo.</p>
+      <div class="chips">
+        <span class="chip">Sistemático 71</span>
+        <span class="chip">Deliberativo 71</span>
+        <span class="chip">Organizado 67</span>
+      </div>
+    </section>
+
+    <!-- 9 Dos usos -->
+    <section class="slide" data-notes="Exponer contraste. Enfatizar: el segundo lenguaje no cede; condiciona.">
+      <p class="tag">Bloque 2 · Contraste</p>
+      <h2>Dos usos de la norma</h2>
+      <div class="grid-2">
+        <div class="card trad">
+          <h3>Garrote / posición</h3>
+          <p>«No se puede: el procedimiento exige 30 días y pedís 60.»</p>
+        </div>
+        <div class="card ok">
+          <h3>Criterio de riesgo</h3>
+          <p>«Los 30 días protegen la cartera. Si necesitamos 60 para cerrar, ¿qué garantía o condición de pago compensa ese riesgo?»</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 Plantilla 3 pasos -->
+    <section class="slide" data-notes="Dejar esta slide visible durante el trabajo en parejas. Si alguien vuelve a «el sistema no lo permite», detener y pedir el riesgo cuantitativo.">
+      <p class="tag">Bloque 2 · Plantilla</p>
+      <h2>Reencuadre en 3 pasos</h2>
+      <div class="steps">
+        <div class="step-card">
+          <div class="n">01</div>
+          <p><strong>Validar</strong> la necesidad del área vecina — demostrar escucha.</p>
+        </div>
+        <div class="step-card">
+          <div class="n">02</div>
+          <p><strong>Explicar el riesgo</strong> tras la regla — el <em>para qué</em>, no solo el <em>qué</em>.</p>
+        </div>
+        <div class="step-card">
+          <div class="n">03</div>
+          <p><strong>Condición de co-responsabilidad</strong> — transferir la búsqueda de solución.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 Parejas -->
+    <section class="slide" data-notes="Formar parejas cruzando direcciones (Finanzas×Comercial, SC×Admin, etc.). Consigna: un «NO» reciente reescrito con la plantilla. Plenaria: 2 parejas. NO usar personas del Grupo B.">
+      <p class="tag">Bloque 2 · Laboratorio</p>
+      <h2>Parejas cruzadas · 15′</h2>
+      <ul class="bullets">
+        <li>Elegir un «NO» reciente a otra área</li>
+        <li>Reescribirlo con la plantilla de 3 pasos</li>
+        <li>Uno interpreta su rol; el otro, el área que pide</li>
+      </ul>
+      <div class="timer" data-minutes="15">
+        <div class="timer-display">15:00</div>
+        <button type="button" class="timer-start">Start</button>
+        <button type="button" class="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- 12 Título B3 -->
+    <section class="slide" data-notes="Exponer desbalance Taking Charge 73 vs Independent 31. Provocación respetuosa: si les gusta liderar, ¿por qué la Dirección debe dar la orden para moverse?">
+      <p class="tag">Bloque 3 · 00:50–01:10</p>
+      <h2>La paradoja del escalamiento</h2>
+      <div class="grid-2" style="margin-top:.5rem">
+        <div class="card">
+          <h3>Tomar el control</h3>
+          <p style="font-family:var(--display);font-size:2.4rem;font-weight:700;color:var(--accent);margin:.4rem 0">73</p>
+          <p>Alta disposición a liderar</p>
+        </div>
+        <div class="card trad">
+          <h3>Independencia en la mesa</h3>
+          <p style="font-family:var(--display);font-size:2.4rem;font-weight:700;color:var(--risk);margin:.4rem 0">31</p>
+          <p>Baja autonomía real al resolver entre áreas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 Falsa seguridad -->
+    <section class="slide" data-notes="Anclar: escalar conflicto ≠ presentar opciones. Solo se escala con dos opciones de riesgo empaquetadas.">
+      <p class="tag">Bloque 3 · Efecto</p>
+      <h2>Falsa seguridad</h2>
+      <div class="grid-2">
+        <div class="card trad">
+          <h3>Lo que creemos</h3>
+          <p>«Copio al Director para estar cubierto si el proceso se retrasa.»</p>
+        </div>
+        <div class="card">
+          <h3>Lo que ocurre</h3>
+          <p>«Cada vez que la Dirección resuelve un desacuerdo entre coordinaciones, le demuestras que no controlas tu operación.»</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 Sustitución lenguaje -->
+    <section class="slide" data-notes="Usar como plantilla para reescritura en vivo. Pedir 2–3 ejemplos de correo típico y reescribir en pantalla / pizarra.">
+      <p class="tag">Bloque 3 · Lenguaje</p>
+      <h2>De escalar a proponer</h2>
+      <table class="compare-table">
+        <thead>
+          <tr><th>Escalamiento</th><th>Autonomía interfuncional</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bad">«Finanzas / Supply no autoriza; lo dejo en manos de la Dirección.»</td>
+            <td class="good">«Para liberar sin comprometer la política X, propongo Y. Sin objeción técnica en 24 h, procedemos.»</td>
+          </tr>
+          <tr>
+            <td class="bad">«No se puede: el sistema / manual no lo permite.»</td>
+            <td class="good">«El sistema requiere la condición A; si Comercial la aporta, el flujo queda activo de inmediato.»</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 15 Reescritura -->
+    <section class="slide" data-notes="Taller 10′: 2–3 correos reales reescritos. Criterio de cierre: escalar solo con dos opciones viables de riesgo, nunca para que la Dirección medie.">
+      <p class="tag">Bloque 3 · Práctica</p>
+      <h2>Reescritura ejecutiva · 10′</h2>
+      <p class="prompt">Tomar un correo de escalamiento reciente y convertirlo en <strong>«sí, bajo estos términos…»</strong></p>
+      <div class="timer" data-minutes="10">
+        <div class="timer-display">10:00</div>
+        <button type="button" class="timer-start">Start</button>
+        <button type="button" class="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- 16 Título B4 -->
+    <section class="slide" data-notes="Apelar a Growth-Seeking 68 y Receptive to Criticism 65. Cierre sin soluciones empaquetadas: dejar tensión cognitiva abierta hacia el taller de liderazgo.">
+      <p class="tag">Bloque 4 · 01:10–01:30</p>
+      <h2>Frustración saludable</h2>
+      <p class="key-msg">«Tener la razón técnica con el proceso paralizado sigue siendo un fracaso de gestión.»</p>
+      <div class="chips">
+        <span class="chip">Growth-Seeking 68</span>
+        <span class="chip">Receptivos a crítica 65</span>
+      </div>
+    </section>
+
+    <!-- 17 Costo oculto -->
+    <section class="slide" data-notes="Leer filas. Conectar triunfo individual con costo colectivo Tramontina.">
+      <p class="tag">Bloque 4 · Costo oculto</p>
+      <h2>Inventario del costo</h2>
+      <table class="compare-table">
+        <thead>
+          <tr><th>Triunfo individual</th><th>Costo colectivo</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>«Demostré que la otra área estaba equivocada.»</td>
+            <td>Fricción y pérdida de confianza entre equipos</td>
+          </tr>
+          <tr>
+            <td>«Cité la norma y detuve lo fuera de política.»</td>
+            <td>Atraso de servicio · riesgo de venta / cliente</td>
+          </tr>
+          <tr>
+            <td>«Escalé al Director para deslindar.»</td>
+            <td>Saturación directiva · pérdida de autonomía gerencial</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 18 Bitácora -->
+    <section class="slide" data-notes="Escritura individual 8′. No compartir en plenaria salvo que alguien quiera. Luego tarea de observación previa al taller.">
+      <p class="tag">Bloque 4 · Bitácora</p>
+      <h2>Dos preguntas · 8′</h2>
+      <ul class="bullets">
+        <li>¿Qué acuerdo interdepartamental tengo trabado hoy por defender la norma desde la postura y no desde el criterio?</li>
+        <li>¿Qué cambio de lenguaje probaré esta semana antes del próximo correo de escalamiento?</li>
+      </ul>
+      <div class="timer" data-minutes="8">
+        <div class="timer-display">8:00</div>
+        <button type="button" class="timer-start">Start</button>
+        <button type="button" class="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- 19 Tarea observación -->
+    <section class="slide" data-notes="Fijar expectativa: no resolver todos los conflictos esta semana; observar hábitos. Puente explícito al taller Negociación Táctica y Empresarial.">
+      <p class="tag">Puente al taller</p>
+      <h2>Tarea de observación</h2>
+      <ul class="bullets">
+        <li>Contar cuántas veces digo «no se puede» antes de preguntar «¿para qué lo necesitás?»</li>
+        <li>Mapear cuántos escalamientos podrían evitarse con reencuadre de criterio</li>
+        <li>Traer un caso real al taller de liderazgo</li>
+      </ul>
+      <div class="gold">La mayor traba no es la falta de procesos — es cómo usamos los procesos para relacionarnos entre áreas.</div>
+    </section>
+
+    <!-- 20 Cierre -->
+    <section class="slide" data-notes="Cierre institucional. Agradecer. Recordar: el aprendizaje se prueba en el próximo correo y en la próxima mesa interáreas.">
+      <p class="tag">Cierre</p>
+      <h2>Hasta el taller de liderazgo</h2>
+      <p class="lead">Razón técnica + criterio de riesgo = operación que se mueve.</p>
+      <div class="chips">
+        <span class="chip">Tramontina México</span>
+        <span class="chip">Grupo A</span>
+        <span class="chip">Negociación Táctica y Empresarial</span>
+      </div>
+    </section>
+
+  </div>
+
+  <aside class="notes" id="notes"></aside>
+  <div class="footer-bar">
+    <span>Negociación Táctica · Grupo A · Facilitador</span>
+    <div class="progress"><i id="bar"></i></div>
+    <span id="counter">1 / 20</span>
+    <div class="controls">
+      <button type="button" id="prev">Ant</button>
+      <button type="button" id="next">Sig</button>
+      <button type="button" id="notesBtn">Notes (S)</button>
+      <button type="button" id="fsBtn">Fullscreen (F)</button>
+    </div>
+  </div>
+
+  <script>
+(function () {
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const counter = document.getElementById("counter");
+  const bar = document.getElementById("bar");
+  const notesEl = document.getElementById("notes");
+  let i = 0;
+
+  function formatTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return m + ":" + String(s).padStart(2, "0");
+  }
+
+  function initTimers() {
+    document.querySelectorAll(".timer").forEach(function (el) {
+      if (el._timerReady) return;
+      el._timerReady = true;
+      const mins = parseFloat(el.getAttribute("data-minutes")) || 0;
+      let total = Math.round(mins * 60);
+      let left = total;
+      let interval = null;
+      const display = el.querySelector(".timer-display");
+      const startBtn = el.querySelector(".timer-start");
+      const resetBtn = el.querySelector(".timer-reset");
+
+      function render() { display.textContent = formatTime(left); }
+      function stop() {
+        if (interval) { clearInterval(interval); interval = null; }
+        el.classList.remove("running");
+        startBtn.textContent = "Start";
+      }
+
+      startBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (interval) { stop(); return; }
+        if (left <= 0) left = total;
+        el.classList.add("running");
+        el.classList.remove("done");
+        startBtn.textContent = "Pause";
+        interval = setInterval(function () {
+          left -= 1;
+          render();
+          if (left <= 0) {
+            stop();
+            el.classList.add("done");
+            left = 0;
+            render();
+          }
+        }, 1000);
+      });
+
+      resetBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        stop();
+        left = total;
+        el.classList.remove("done");
+        render();
+      });
+
+      render();
+    });
+  }
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, idx) { s.classList.toggle("active", idx === i); });
+    counter.textContent = (i + 1) + " / " + slides.length;
+    bar.style.width = ((i + 1) / slides.length * 100) + "%";
+    const note = slides[i].getAttribute("data-notes") || "";
+    notesEl.innerHTML = "<strong>Speaker</strong><br>" + note;
+    history.replaceState(null, "", "#" + (i + 1));
+  }
+
+  function next() { show(i + 1); }
+  function prev() { show(i - 1); }
+
+  document.getElementById("next").addEventListener("click", next);
+  document.getElementById("prev").addEventListener("click", prev);
+  document.getElementById("notesBtn").addEventListener("click", function () {
+    notesEl.classList.toggle("open");
+  });
+  document.getElementById("fsBtn").addEventListener("click", function () {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  window.addEventListener("keydown", function (e) {
+    if (e.target && (e.target.tagName === "BUTTON" || e.target.tagName === "INPUT")) return;
+    if (["ArrowRight", "ArrowDown", "PageDown", " ", "Enter"].includes(e.key)) {
+      e.preventDefault(); next();
+    } else if (["ArrowLeft", "ArrowUp", "PageUp", "Backspace"].includes(e.key)) {
+      e.preventDefault(); prev();
+    } else if (e.key === "s" || e.key === "S") {
+      notesEl.classList.toggle("open");
+    } else if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    } else if (e.key === "Home") { show(0); }
+    else if (e.key === "End") { show(slides.length - 1); }
+  });
+
+  initTimers();
+  const hash = parseInt((location.hash || "#1").slice(1), 10);
+  show(Number.isFinite(hash) && hash > 0 ? hash - 1 : 0);
+})();
+  </script>
+</body>
+</html>

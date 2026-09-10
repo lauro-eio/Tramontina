@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Guía de facilitación — Negociación Táctica y Empresarial · PrinciplesYou Grupo A · Tramontina">
+  <title>Negociación Táctica · Grupo A — Guía del Facilitador</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f0f0eb;
+      --sidebar: #1e293b;
+      --sidebar-text: #cbd5e1;
+      --sidebar-active: #c2410c;
+      --coach: #fef3c7;
+      --coach-border: #f59e0b;
+      --trigger: #ffedd5;
+      --trigger-border: #ea580c;
+      --copy: #ecfdf5;
+      --copy-border: #10b981;
+    }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: #1a1a1a;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      min-height: 100vh;
+    }
+    .sidebar {
+      background: var(--sidebar);
+      color: var(--sidebar-text);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-brand {
+      padding: 0 1.25rem 1.25rem;
+      border-bottom: 1px solid #334155;
+      margin-bottom: 0.75rem;
+    }
+    .sidebar-brand .tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+    }
+    .sidebar-brand h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-top: 0.25rem;
+    }
+    .sidebar-brand .total {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 0.35rem;
+    }
+    .coach-links {
+      padding: 0 1.25rem 1rem;
+      border-bottom: 1px solid #334155;
+      margin-bottom: 0.5rem;
+    }
+    .coach-links a {
+      display: block;
+      font-size: 0.75rem;
+      color: #fdba74;
+      text-decoration: none;
+      margin-bottom: 0.35rem;
+    }
+    .coach-links a:hover { text-decoration: underline; }
+    .step-nav { list-style: none; flex: 1; }
+    .step-nav button {
+      width: 100%;
+      display: block;
+      text-align: left;
+      padding: 0.7rem 1.25rem;
+      background: none;
+      border: none;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--sidebar-text);
+      font-size: 0.8rem;
+      transition: background 0.15s;
+    }
+    .step-nav button:hover { background: #334155; }
+    .step-nav button.active {
+      background: #334155;
+      border-left-color: var(--sidebar-active);
+      color: #f8fafc;
+    }
+    .step-nav .step-num {
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #64748b;
+      display: block;
+    }
+    .step-nav button.active .step-num { color: #fdba74; }
+    .step-nav .step-title {
+      font-weight: 600;
+      display: block;
+      margin-top: 0.15rem;
+    }
+    .step-nav .step-dur {
+      font-size: 0.68rem;
+      color: #64748b;
+      display: block;
+      margin-top: 0.1rem;
+    }
+    .progress-bar-wrap {
+      padding: 1rem 1.25rem 0;
+      border-top: 1px solid #334155;
+      margin-top: auto;
+    }
+    .progress-label {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-bottom: 0.4rem;
+    }
+    .progress-bar {
+      height: 4px;
+      background: #334155;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--sidebar-active);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    main {
+      padding: 2rem 2.5rem 3rem;
+      max-width: 860px;
+    }
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+    .panel-header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .panel-header .block-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+    }
+    .panel-header h2 {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 700;
+      margin-top: 0.3rem;
+      letter-spacing: -0.02em;
+    }
+    .panel-header .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.6rem;
+    }
+    .meta-pill {
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: #e5e7eb;
+      color: #374151;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+    .alert-coach {
+      background: var(--coach);
+      border: 1px solid var(--coach-border);
+      border-left: 4px solid var(--coach-border);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+    }
+    .alert-coach strong {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #92400e;
+      margin-bottom: 0.35rem;
+    }
+    .section { margin-bottom: 1.75rem; }
+    .section h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+      color: #111827;
+    }
+    .tight { margin-left: 1.1rem; font-size: 0.9rem; color: #374151; }
+    .tight li { margin-bottom: 0.35rem; }
+    .trigger-box {
+      background: var(--trigger);
+      border: 1px solid var(--trigger-border);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1rem;
+    }
+    .trigger-box .trigger-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c2410c;
+      margin-bottom: 0.4rem;
+    }
+    .trigger-box p { font-size: 0.9rem; color: #7c2d12; }
+    .copy-block {
+      background: var(--copy);
+      border: 1px solid var(--copy-border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .copy-block .copy-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      gap: 0.5rem;
+    }
+    .copy-block .copy-time {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #047857;
+    }
+    .copy-block .copy-btn {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.25rem 0.55rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .copy-block .copy-btn:hover { background: #059669; }
+    .copy-block .copy-btn.copied { background: #6b7280; }
+    .copy-block p { font-size: 0.88rem; color: #064e3b; line-height: 1.55; }
+    .obj-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .obj-table th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b7280;
+    }
+    .obj-table td {
+      padding: 0.7rem 0.75rem;
+      border-top: 1px solid #e5e7eb;
+      vertical-align: top;
+      color: #374151;
+      line-height: 1.45;
+    }
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 2px solid #e5e7eb;
+    }
+    .nav-btn {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      cursor: pointer;
+      color: #374151;
+    }
+    .nav-btn.next { background: #c2410c; border-color: #c2410c; color: #fff; }
+    .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .step-counter { font-size: 0.8rem; color: #6b7280; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-top: 0.75rem;
+    }
+    .stat {
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.75rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .stat .n { font-size: 1.35rem; font-weight: 800; color: #c2410c; }
+    .stat .l { font-size: 0.7rem; color: #6b7280; margin-top: 0.15rem; }
+    .stat.risk .n { color: #b91c1c; }
+    code {
+      font-size: 0.8rem;
+      background: #e5e7eb;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: relative; height: auto; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="tag">Solo facilitador</span>
+        <h1>Negociación Táctica · Grupo A</h1>
+        <p class="total">90 min · PrinciplesYou · Pre-taller</p>
+      </div>
+      <div class="coach-links">
+        <a href="deck/session-py-gpo-A.html" target="_blank" rel="noopener">→ Abrir deck proyección</a>
+        <a href="deck/index.html" target="_blank" rel="noopener">→ Índice de decks</a>
+        <a href="facilitador.html" target="_blank" rel="noopener">→ Facilitador Grupo B (3 h)</a>
+      </div>
+      <ol class="step-nav">
+        <li><button type="button" class="active" data-step="0">
+          <span class="step-num">Pre</span>
+          <span class="step-title">Checklist + datos</span>
+          <span class="step-dur">−20 min</span>
+        </button></li>
+        <li><button type="button" data-step="1">
+          <span class="step-num">Bloque 1</span>
+          <span class="step-title">Espejo con datos</span>
+          <span class="step-dur">00:00 – 00:20</span>
+        </button></li>
+        <li><button type="button" data-step="2">
+          <span class="step-num">Bloque 2</span>
+          <span class="step-title">Reencuadre norma</span>
+          <span class="step-dur">00:20 – 00:50</span>
+        </button></li>
+        <li><button type="button" data-step="3">
+          <span class="step-num">Bloque 3</span>
+          <span class="step-title">Escalamiento</span>
+          <span class="step-dur">00:50 – 01:10</span>
+        </button></li>
+        <li><button type="button" data-step="4">
+          <span class="step-num">Bloque 4</span>
+          <span class="step-title">Anclaje al taller</span>
+          <span class="step-dur">01:10 – 01:30</span>
+        </button></li>
+      </ol>
+      <div class="progress-bar-wrap">
+        <p class="progress-label" id="progressLabel">Paso 1 de 5</p>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+      </div>
+    </aside>
+
+    <main>
+      <!-- PASO 0 -->
+      <section class="step-panel active" data-step="0">
+        <header class="panel-header">
+          <span class="block-tag">Pre-sesión</span>
+          <h2>Checklist + integridad de datos</h2>
+          <div class="meta">
+            <span class="meta-pill">−20 minutos</span>
+            <span class="meta-pill">n=11 / 20 con PY</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ Coach</strong>
+          Postura: espejo operativo, no evaluador RH. Números = riesgo de diseño, no juicio de carácter. Nunca proyectar nombres, arquetipos individuales ni ranking. Decir siempre «promedio de quienes completaron el assessment (n=11)».
+        </div>
+
+        <div class="section">
+          <h3>Medias Grupo A (filtradas)</h3>
+          <div class="stats">
+            <div class="stat"><div class="n">81</div><div class="l">Persistencia</div></div>
+            <div class="stat"><div class="n">76</div><div class="l">Exigencia</div></div>
+            <div class="stat"><div class="n">75</div><div class="l">Lógico</div></div>
+            <div class="stat"><div class="n">73</div><div class="l">Taking Charge</div></div>
+            <div class="stat risk"><div class="n">31</div><div class="l">Empatía</div></div>
+            <div class="stat risk"><div class="n">31</div><div class="l">Independent</div></div>
+          </div>
+          <p style="font-size:0.8rem;color:#6b7280;margin-top:0.75rem">Fuente: <code>tramontina-bd/</code> · join email · solo Grupo A. No usar promedios A+B.</p>
+        </div>
+
+        <div class="section">
+          <h3>Checklist técnico</h3>
+          <ul class="tight">
+            <li>Deck abierto: <code>deck/session-py-gpo-A.html</code> (timers Start/Reset).</li>
+            <li>Esta guía en segunda pantalla.</li>
+            <li>Parejas cruzadas preparadas por dirección (no por amistad).</li>
+            <li>Pizarra / pantalla lista para reescribir correos en Bloque 3.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Sin PrinciplesYou (9) — no proyectar</h3>
+          <ul class="tight">
+            <li>Cintia Álvarez · Daniel Muñoz · Fernando Zavala</li>
+            <li>Hugo Torres · José Luis Cruz · Martha Plata</li>
+            <li>Rodrigo González · Samuel Sánchez · Vanessa Encarnación</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Parejas sugeridas (cruzar direcciones)</h3>
+          <table class="obj-table">
+            <thead><tr><th>Área A</th><th>Área B</th><th>Ejemplo de fricción</th></tr></thead>
+            <tbody>
+              <tr><td>Finanzas</td><td>Comercial</td><td>Crédito / plazos / excepciones de cartera</td></tr>
+              <tr><td>Supply Chain</td><td>Comercial</td><td>Lead time / pedido urgente / inventario</td></tr>
+              <tr><td>Admin / Legal</td><td>Supply o Comercial</td><td>Contrato / compliance / excepción de proceso</td></tr>
+              <tr><td>Finanzas</td><td>Supply Chain</td><td>Liberación de pago / costo logístico</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.8rem;color:#b91c1c;margin-top:0.65rem">No usar a Carlos Alberto Rodríguez Granados ni a nadie del Grupo B en esta sesión.</p>
+        </div>
+      </section>
+
+      <!-- PASO 1 -->
+      <section class="step-panel" data-step="1">
+        <header class="panel-header">
+          <span class="block-tag">Bloque 1</span>
+          <h2>Confrontación con datos</h2>
+          <div class="meta">
+            <span class="meta-pill">00:00 – 00:20</span>
+            <span class="meta-pill">Slides 1–7</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ Secuencia</strong>
+          1) Validar fortalezas (0–5′) → 2) Revelar brecha empatía (5–12′) → 3) Pregunta de indagación (12–20′). No saltar a sermón.
+        </div>
+
+        <div class="section">
+          <h3>Proyectar</h3>
+          <div class="trigger-box">
+            <p class="trigger-label">Deck</p>
+            <p>Hero → Agenda → Método (n=11) → Barras fortalezas → Barras ceguera → Paradoja → Pregunta.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Guion</h3>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Validación</span>
+              <button type="button" class="copy-btn" data-copy="Estos números muestran alta persistencia, exigencia y lógica. Gracias a ese perfil Tramontina sostiene rigor fiscal, normativo y operativo. Eso no está en discusión.">Copiar</button>
+            </div>
+            <p>Estos números muestran alta persistencia, exigencia y lógica. Gracias a ese perfil Tramontina sostiene rigor fiscal, normativo y operativo. Eso no está en discusión.</p>
+          </div>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Confrontación</span>
+              <button type="button" class="copy-btn" data-copy="Cuando la exigencia ronda 76 y la empatía 31, el riesgo de diseño es claro: imponemos la regla y nos atrincheramos en el proceso. No es un fallo de carácter; es un hábito operativo medible.">Copiar</button>
+            </div>
+            <p>Cuando la exigencia ronda 76 y la empatía 31, el riesgo de diseño es claro: imponemos la regla y nos atrincheramos en el proceso…</p>
+          </div>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Indagación</span>
+              <button type="button" class="copy-btn" data-copy="Cuando un área vecina pide una excepción, ¿cuál es nuestra primera reacción natural: entender su urgencia o buscar el manual para justificar el no?">Copiar</button>
+            </div>
+            <p>Cuando un área vecina pide una excepción, ¿cuál es nuestra primera reacción natural…?</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Si se ponen a la defensiva</h3>
+          <ul class="tight">
+            <li>«No estamos pidiendo romper políticas; estamos midiendo el costo de cómo las comunicamos.»</li>
+            <li>Volver a la paradoja: razón técnica + proceso parado = ¿quién gana?</li>
+            <li>Backup: ¿cuántos correos con copia a Directores defienden postura técnica esta semana?</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PASO 2 -->
+      <section class="step-panel" data-step="2">
+        <header class="panel-header">
+          <span class="block-tag">Bloque 2</span>
+          <h2>Reencuadre de la norma</h2>
+          <div class="meta">
+            <span class="meta-pill">00:20 – 00:50</span>
+            <span class="meta-pill">Slides 8–11 · Timer 15′</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ No pedir ceder</strong>
+          Enfatizar: no se pide romper reglas ni ceder margen de seguridad. Se pide educar al área vecina sobre el costo/riesgo técnico de la excepción.
+        </div>
+
+        <div class="section">
+          <h3>Proyectar</h3>
+          <div class="trigger-box">
+            <p class="trigger-label">Deck</p>
+            <p>Título B2 → Dos usos de la norma → Plantilla 3 pasos (dejar visible) → Parejas + timer 15′ → Plenaria 2 parejas.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Guion</h3>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Concepto</span>
+              <button type="button" class="copy-btn" data-copy="La norma puede usarse como garrote — para cerrar la conversación — o como criterio objetivo de riesgo — para abrir una negociación de condiciones. Hoy practicamos el segundo.">Copiar</button>
+            </div>
+            <p>La norma puede usarse como garrote… o como criterio objetivo de riesgo…</p>
+          </div>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Consigna parejas</span>
+              <button type="button" class="copy-btn" data-copy="Elijan un NO reciente que dieron a otra área. Reescríbanlo en tres pasos: validar la necesidad, explicar el riesgo detrás de la regla, y lanzar una condición de co-responsabilidad.">Copiar</button>
+            </div>
+            <p>Elijan un NO reciente… tres pasos: validar, explicar riesgo, condición de co-responsabilidad.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Calibración en plenaria</h3>
+          <ul class="tight">
+            <li>Si dicen «el sistema no lo permite» → detener y pedir el riesgo cuantitativo o cualitativo.</li>
+            <li>Buscar el verbo de condición: «si ustedes aportan X, nosotros liberamos Y».</li>
+            <li>Máximo 2 parejas en voz alta para no comer tiempo del Bloque 3.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PASO 3 -->
+      <section class="step-panel" data-step="3">
+        <header class="panel-header">
+          <span class="block-tag">Bloque 3</span>
+          <h2>Desarticulación del escalamiento</h2>
+          <div class="meta">
+            <span class="meta-pill">00:50 – 01:10</span>
+            <span class="meta-pill">Slides 12–15 · Timer 10′</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ Provocación calibrada</strong>
+          Taking Charge 73 vs Independent 31. Desafiar el ego profesional con respeto: «si les gusta liderar, ¿por qué la Dirección debe dar la orden para movernos?»
+        </div>
+
+        <div class="section">
+          <h3>Proyectar</h3>
+          <div class="trigger-box">
+            <p class="trigger-label">Deck</p>
+            <p>Paradoja 73/31 → Falsa seguridad → Tabla de lenguaje → Reescritura + timer 10′.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Guion</h3>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Paradoja</span>
+              <button type="button" class="copy-btn" data-copy="Sus datos muestran alta disposición a tomar el control — 73 — y baja independencia real en la mesa entre áreas — 31. Cuando hay bloqueo, ¿por qué dependemos de que la Dirección dé la orden?">Copiar</button>
+            </div>
+            <p>Sus datos muestran alta disposición a tomar el control… ¿por qué dependemos de que la Dirección dé la orden?</p>
+          </div>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Filtro de escalamiento</span>
+              <button type="button" class="copy-btn" data-copy="Solo se escala a la Dirección cuando llevamos dos opciones viables de riesgo empaquetadas — nunca para que la Dirección redacte la respuesta o medie un desacuerdo personal.">Copiar</button>
+            </div>
+            <p>Solo se escala… dos opciones viables de riesgo empaquetadas…</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Ejercicio</h3>
+          <ul class="tight">
+            <li>Pedir 2–3 esquemas típicos de correo de escalamiento.</li>
+            <li>Reescribir en vivo a «sí, bajo estos términos…».</li>
+            <li>Diferenciar: escalar conflicto (inmadurez) vs. presentar opciones (estrategia).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PASO 4 -->
+      <section class="step-panel" data-step="4">
+        <header class="panel-header">
+          <span class="block-tag">Bloque 4</span>
+          <h2>Frustración saludable · anclaje al taller</h2>
+          <div class="meta">
+            <span class="meta-pill">01:10 – 01:30</span>
+            <span class="meta-pill">Slides 16–20 · Timer 8′</span>
+          </div>
+        </header>
+
+        <div class="alert-coach">
+          <strong>⚠ No cerrar con soluciones</strong>
+          Dejar tensión cognitiva abierta. Growth-Seeking 68 + Receptive to Criticism 65 permiten autocrítica sin sermón. El «cómo» completo llega en el taller Negociación Táctica y Empresarial.
+        </div>
+
+        <div class="section">
+          <h3>Proyectar</h3>
+          <div class="trigger-box">
+            <p class="trigger-label">Deck</p>
+            <p>Frase de cierre → Matriz de costo oculto → Bitácora + timer 8′ → Tarea de observación → Gracias.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Guion</h3>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Provocación final</span>
+              <button type="button" class="copy-btn" data-copy="Sus perfiles muestran apertura a mejorar. Hoy vimos que la mayor traba no es la falta de procesos, sino cómo usamos esos procesos para relacionarnos con las áreas primas.">Copiar</button>
+            </div>
+            <p>Sus perfiles muestran apertura a mejorar… la mayor traba no es la falta de procesos…</p>
+          </div>
+          <div class="copy-block">
+            <div class="copy-meta">
+              <span class="copy-time">Tarea</span>
+              <button type="button" class="copy-btn" data-copy="Hasta el taller de liderazgo: no les pido resolver todos los conflictos. Les pido observar cuántas veces dicen no se puede antes de preguntar para qué lo necesitas, y cuántos escalamientos podrían evitarse con reencuadre.">Copiar</button>
+            </div>
+            <p>Hasta el taller… observar hábitos de negociación interna…</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Bitácora (individual, no forzar plenaria)</h3>
+          <ol class="tight">
+            <li>¿Qué acuerdo tengo trabado por defender la norma desde la postura y no desde el criterio?</li>
+            <li>¿Qué cambio de lenguaje probaré esta semana antes del próximo correo de escalamiento?</li>
+          </ol>
+        </div>
+      </section>
+
+      <footer class="nav-footer">
+        <button type="button" class="nav-btn prev" id="btnPrev" disabled>Anterior</button>
+        <span class="step-counter" id="stepCounter">Paso 1 de 5</span>
+        <button type="button" class="nav-btn next" id="btnNext">Siguiente</button>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var total = 5;
+      var current = 0;
+      var panels = document.querySelectorAll('.step-panel');
+      var navBtns = document.querySelectorAll('.step-nav button');
+      var btnPrev = document.getElementById('btnPrev');
+      var btnNext = document.getElementById('btnNext');
+      var stepCounter = document.getElementById('stepCounter');
+      var progressLabel = document.getElementById('progressLabel');
+      var progressFill = document.getElementById('progressFill');
+
+      function goTo(step) {
+        current = Math.max(0, Math.min(total - 1, step));
+        panels.forEach(function (p) {
+          p.classList.toggle('active', Number(p.dataset.step) === current);
+        });
+        navBtns.forEach(function (b) {
+          b.classList.toggle('active', Number(b.dataset.step) === current);
+        });
+        btnPrev.disabled = current === 0;
+        btnNext.textContent = current === total - 1 ? 'Fin' : 'Siguiente';
+        var label = 'Paso ' + (current + 1) + ' de ' + total;
+        stepCounter.textContent = label;
+        progressLabel.textContent = label;
+        progressFill.style.width = ((current + 1) / total * 100) + '%';
+      }
+
+      navBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () { goTo(Number(btn.dataset.step)); });
+      });
+      btnPrev.addEventListener('click', function () { goTo(current - 1); });
+      btnNext.addEventListener('click', function () {
+        if (current < total - 1) goTo(current + 1);
+      });
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () {
+            btn.textContent = 'Copiado';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = 'Copiar';
+              btn.classList.remove('copied');
+            }, 2000);
+          });
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') goTo(current + 1);
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+      });
+    })();
+  </script>
+</body>
+</html>
