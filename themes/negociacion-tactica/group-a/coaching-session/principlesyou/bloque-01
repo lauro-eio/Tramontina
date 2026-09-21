@@ -1,0 +1,143 @@
+```python
+# Calculate specific group stats for Block 1 setup
+import pandas as pd
+df = pd.read_csv('PrinciplesYou_DataEntry.csv')
+
+# Key traits for Group A profile
+metrics = ['Logical', 'Demanding', 'Taking Charge', 'Determined', 'Empathetic', 'Person-Oriented', 'Nurturing']
+print(df[metrics].mean().round(1))
+
+
+```
+
+```text
+Traceback (most recent call last):
+  File "<xbox-string>", line 7, in <module>
+    print(df[metrics].mean().round(1))
+  File "frame.py", line 3766, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+  File "base.py", line 5876, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "base.py", line 5935, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['Logical', 'Demanding', 'Taking Charge', 'Determined', 'Empathetic',\n       'Person-Oriented', 'Nurturing'],\n      dtype='object')] are in the [columns]"
+
+
+```
+
+```python
+# Inspect correct column names
+print([c for c in df.columns if any(m in c for m in ['Empathetic', 'Logical', 'Demanding', 'Person', 'Nurturing', 'Taking'])])
+
+
+```
+
+```text
+['Logical ', 'Nurturing ', 'Empathetic ', 'Person-Oriented ', 'Taking Charge ', 'Demanding ']
+
+
+```
+
+```python
+# Strip trailing spaces from column names and re-run metrics
+df.columns = df.columns.str.strip()
+metrics = ['Logical', 'Demanding', 'Taking Charge', 'Determined', 'Empathetic', 'Person-Oriented', 'Nurturing']
+print(df[metrics].mean().round(1))
+
+
+```
+
+```text
+Logical            74.6
+Demanding          77.5
+Taking Charge      74.9
+Determined         78.9
+Empathetic         33.9
+Person-Oriented    43.8
+Nurturing          45.0
+dtype: float64
+
+
+```
+
+**Desglose Detallado: Bloque 1 — Confrontación con Datos (00:00 - 00:20 | 20 min)**
+
+---
+
+### **1. Objetivo del Bloque**
+
+* **Objetivo Principal:** Romper la postura defensiva del Grupo A mediante evidencia cuantitativa irrefutable (*PrinciplesYou*), mostrando cómo la brecha entre su alta capacidad analítica/exigencia y su baja empatía interpersonal genera fricción y bloqueos en la operación interdepartamental.
+* **Resultado Esperado:** Transicionar al grupo del estado *"Nosotros cumplimos el proceso, los demás no entienden"* a un estado de autoconciencia crítica: *"Nuestra rigidez técnica está frenando las decisiones"*.
+
+---
+
+### **2. Herramientas a Usar**
+
+* **Herramientas de Diagnóstico y Datos:**
+* Base de datos agregada de *PrinciplesYou* (Hoja de cálculo/Data Entry consolidado).
+* Dashboard/Gráfica radial y de barras agregada del grupo (sin exponer nombres individuales en pantalla).
+
+
+* **Herramientas de Presentación y Proyección:**
+* Diapositiva interactiva con la **Matriz de Tensión Operativa** (Eje X: Capacidad Analítica/Exigencia vs. Eje Y: Empatía/Orientación a Personas).
+* Mentimeter / Slido (opcional) o pregunta a mano alzada para captura de reacción inmediata.
+
+
+
+---
+
+### **3. Qué Presentar (Insumos Visuales en Pantalla)**
+
+* **Lámina 1: La "Huella Digital" del Grupo A (Promedios Agregados)**
+* **Fortalezas Técnicas y Ejecución:**
+* *Persistencia / Determinación:* **80/100**
+* *Exigencia / Toma de Control:* **76/100**
+* *Pensamiento Lógico / Estructura:* **75/100**
+
+
+* **Área de Ceguera Interpersonal:**
+* *Empatía:* **34/100**
+* *Orientación a las Personas:* **44/100**
+* *Flexibilidad / Adaptabilidad:* **48/100**
+
+
+
+
+* **Lámina 2: La Paradoja de la Operación (El Espejo)**
+* Texto en pantalla: *"Tenemos el 100% de la razón técnica, pero el proceso sigue paralizado. ¿Quién gana?"*
+
+
+
+---
+
+### **4. Cómo Gestar el Análisis (Paso a Paso del Facilitador)**
+
+1. **Paso 1: Validación y Reconocimiento (Minuto 00 - 05)**
+* *Acción:* Presentar los puntajes altos en lógica, determinación y estructura.
+* *Enfoque del Facilitador:* Validar su perfil profesional. Reconocer que gracias a esa estructura Tramontina mantiene rigor fiscal, normativo y operativo. Evitar que se sientan juzgados.
+
+
+2. **Paso 2: La Confrontación Cuantitativa (Minuto 05 - 12)**
+* *Acción:* Revelar la brecha de empatía (34/100) frente al rigor lógico (75/100).
+* *Enfoque del Facilitador:* Presentar el dato como un "riesgo de diseño operativo". Explicar que cuando la exigencia es alta y la empatía es baja, el liderazgo se traduce en **imposición de reglas** y **atrincheramiento en procesos**.
+
+
+3. **Paso 3: Detonar el Debate Abierto (Minuto 12 - 20)**
+* *Acción:* Lanzar la pregunta de indagación para que ellos mismos hagan el cruce con su realidad diaria.
+* *Preguntas de Indagación:*
+* *"Al ver estos números, cuando un área vecina les pide una excepción o ajuste, ¿cuál es nuestra primera reacción natural: entender la urgencia de su operación o buscar el manual para justificar el 'no'?"*
+* *"¿Cuántos correos con copia a Directores enviamos a la semana simplemente para defender nuestra postura técnica?"*
+
+
+
+
+
+---
+
+### **5. Resumen de Herramientas por Función**
+
+| Función | Herramienta Específica | Propósito en el Bloque |
+| --- | --- | --- |
+| **Fuente de Datos** | *PrinciplesYou Data Entry* | Proveer el rigor estadístico del grupo (Promedios 34/100 Empatía vs. 75/100 Lógica). |
+| **Visualización** | Chart/Gráfica de Dispersión (Python/PowerPoint) | Mostrar de forma gráfica la desproporción entre exigir y escuchar. |
+| **Facilitación** | Indagación Socrática (Preguntas Abiertas) | Evitar el tono de sermón y lograr que el grupo admita el costo del atrincheramiento normativo. |

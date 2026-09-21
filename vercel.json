@@ -1,0 +1,124 @@
+{
+  "redirects": [
+    {
+      "source": "/tcm/role-play.html",
+      "destination": "/adaptabilidad-operativa/group-b/leadership-session/role-play.html",
+      "permanent": false
+    },
+    {
+      "source": "/tcm/facilitador.html",
+      "destination": "/adaptabilidad-operativa/group-b/leadership-session/facilitador.html",
+      "permanent": false
+    },
+    {
+      "source": "/tcm/a",
+      "destination": "/adaptabilidad-operativa/group-a/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/tcm/a/",
+      "destination": "/adaptabilidad-operativa/group-a/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/tcm/a/:path*",
+      "destination": "/adaptabilidad-operativa/group-a/leadership-session/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/tcm/b",
+      "destination": "/adaptabilidad-operativa/group-b/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/tcm/b/",
+      "destination": "/adaptabilidad-operativa/group-b/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/tcm/b/:path*",
+      "destination": "/adaptabilidad-operativa/group-b/leadership-session/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/tcm-a",
+      "destination": "/adaptabilidad-operativa/group-a/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/tcm-a/",
+      "destination": "/adaptabilidad-operativa/group-a/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/tcm-a/:path*",
+      "destination": "/adaptabilidad-operativa/group-a/leadership-session/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/gty/role-play.html",
+      "destination": "/negociacion-tactica/group-b/leadership-session/role-play.html",
+      "permanent": false
+    },
+    {
+      "source": "/gty/facilitador.html",
+      "destination": "/negociacion-tactica/group-b/leadership-session/facilitador.html",
+      "permanent": false
+    },
+    {
+      "source": "/gty/deck",
+      "destination": "/negociacion-tactica/group-b/leadership-session/deck/",
+      "permanent": false
+    },
+    {
+      "source": "/gty/deck/:path*",
+      "destination": "/negociacion-tactica/group-b/leadership-session/deck/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/gty/a",
+      "destination": "/negociacion-tactica/group-a/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/gty/a/",
+      "destination": "/negociacion-tactica/group-a/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/gty/a/:path*",
+      "destination": "/negociacion-tactica/group-a/leadership-session/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/gty/b",
+      "destination": "/negociacion-tactica/group-b/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/gty/b/",
+      "destination": "/negociacion-tactica/group-b/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/gty/b/:path*",
+      "destination": "/negociacion-tactica/group-b/leadership-session/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/hwf/facilitador.html",
+      "destination": "/how-to-win-friends/group-b/leadership-session/facilitador.html",
+      "permanent": false
+    },
+    {
+      "source": "/hwf/index.html",
+      "destination": "/how-to-win-friends/group-b/leadership-session/",
+      "permanent": false
+    },
+    {
+      "source": "/cierre/index.html",
+      "destination": "/cierre/",
+      "permanent": false
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+```python
+# Calculate specific metrics for Block 3: Autonomous/Taking Charge/Independent vs status quo habits
+df.columns = df.columns.str.strip()
+block3_metrics = ['Taking Charge', 'Autonomous', 'Independent', 'Self-Accountable', 'Direct', 'Composed']
+print(df[block3_metrics].mean().round(1))
+
+
+```
+
+```text
+Traceback (most recent call last):
+  File "<xbox-string>", line 2, in <module>
+    df.columns = df.columns.str.strip()
+NameError: name 'df' is not defined
+
+
+```
+
+```python
+import pandas as pd
+df = pd.read_csv('PrinciplesYou_DataEntry.csv')
+df.columns = df.columns.str.strip()
+block3_metrics = ['Taking Charge', 'Autonomous', 'Independent', 'Self-Accountable', 'Direct', 'Composed']
+print(df[block3_metrics].mean().round(1))
+
+
+```
+
+```text
+Taking Charge       74.9
+Autonomous          51.8
+Independent         28.7
+Self-Accountable    65.8
+Direct              66.7
+Composed            69.0
+dtype: float64
+
+
+```
+
+**Desglose Detallado: Bloque 3 — Desarticulación del Escalamiento Directivo (00:50 - 01:10 | 20 min)**
+
+---
+
+### **1. Objetivo del Bloque**
+
+* **Objetivo Principal:** Confrontar el hábito del "escalamiento defensivo" (enviar correos a Directores cuando surge un conflicto entre áreas) y sustituirlo por el ejercicio de la autonomía interfuncional.
+* **Resultado Esperado:** Que los participantes reconozcan que derivar una decisión operativa a la Dirección despoja su autoridad gerencial, y aprendan a estructurar cierres en su propio nivel antes de considerar un escalamiento.
+
+---
+
+### **2. Herramientas a Usar**
+
+* **Insumos de Diagnóstico:** Brecha entre el alto deseo de *Tomar el Control / Taking Charge* (**74.9/100**) y la baja *Independencia Real en la mesa / Independent* (**28.7/100**).
+* **Modelo Visual:** *La Escala de Madurez de Negociación Interna* (Lámina de 4 niveles de autonomía).
+* **Ejercicio Práctico:** Rediseño de correos/posturas de escalamiento en vivo (*"Del correo defensivo a la propuesta de cierre"*).
+
+---
+
+### **3. Qué Presentar (Insumos Visuales en Pantalla)**
+
+* **Lámina 1: La Paradoja del Escalamiento**
+* **La Falsa Seguridad:** *"Copio al Director para estar cubierto si el proceso se retrasa"*.
+* **El Efecto Real:** *"Cada vez que le pides a tu Director que resuelva un desacuerdo entre coordinaciones, le estás demostrando que no tienes el control de tu operación"*.
+
+
+* **Lámina 2: Matriz de Comunicación Ejecutiva (Sustitución de Lenguaje)**
+
+| Lenguaje del Escalamiento (Vicio) | Lenguaje de Autonomía Interfuncional |
+| --- | --- |
+| *"Finanzas/Supply Chain no autoriza la solicitud; lo dejo en manos de la Dirección."* | *"Para liberar esta operación sin comprometer la política 'X', propongo el esquema 'Y'. Si no hay objeción técnica en 24 horas, procedemos."* |
+| *"No se puede realizar porque el sistema/manual no lo permite."* | *"El sistema requiere la condición 'A' para procesarlo; si Comercial aporta esa condición, el flujo queda activo de inmediato."* |
+
+---
+
+### **4. Cómo Gestar el Análisis (Paso a Paso del Facilitador)**
+
+1. **Paso 1: La Pregunta de Autonomía y Poder (Minuto 50 - 55)**
+* *Acción:* Exponer el desbalance entre *Taking Charge* (74.9) e *Independent* (28.7).
+* *Enfoque del Facilitador:* Desafiar el ego profesional del grupo con una provocación directa pero respetuosa:
+* *"Sus datos muestran que les gusta liderar y tomar el control. Sin embargo, cuando hay un bloqueo entre áreas, ¿por qué dependemos de que la Dirección dé la orden para movernos?"*
+
+
+
+
+2. **Paso 2: Taller de Reescritura Ejecutiva (Minuto 55 - 65)**
+* *Acción:* Pedir a 3 participantes que compartan el esquema típico de un correo de escalamiento que hayan enviado o recibido recientemente.
+* *Ejercicio en Pizarrón/Pantalla:* Reescribir ese correo en tiempo real utilizando la estructura de **Propuesta de Condición Abierta** (*"Sí se puede, bajo estos términos..."*).
+
+
+3. **Paso 3: Establecer el Filtro de Escalamiento Válido (Minuto 65 - 70)**
+* *Acción:* Definir claramente la diferencia entre "escalar un conflicto" (inmadurez operativa) y "presentar opciones de decisión a la Dirección" (estrategia).
+* *Criterio de Cierre:* Solo se escala a la Dirección cuando se llevan **dos opciones viables de riesgo empaquetadas**, nunca para que la Dirección redacte la respuesta o medie en un desacuerdo personal.
+
+
+
+---
+
+### **5. Resumen de Herramientas por Función**
+
+| Función | Herramienta Específica | Propósito en el Bloque |
+| --- | --- | --- |
+| **Insumo de Personalidad** | Trazo *Taking Charge* vs. *Independent* | Evidenciar la contradicción entre querer liderar y delegar la decisión hacia arriba. |
+| **Modelo Verbal** | *Matriz de Sustitución de Lenguaje Executivo* | Convertir negativas defensivas en propuestas de co-responsabilidad. |
+| **Ejercicio de Campo** | Reescritura de Correos Reales en Pantalla | Demostrar que el cambio de postura se refleja inmediatamente en la comunicación escrita diaria. |

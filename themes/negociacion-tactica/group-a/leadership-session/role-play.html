@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Negociación Táctica Interfuncional — Role-play Grupo A: Mapa y fichas de rol">
+  <meta name="robots" content="noindex">
+  <title>Negociación Táctica · Grupo A — Role-play</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+    header { text-align: center; margin-bottom: 1.25rem; }
+    header .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    header .mantra {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+    .spoiler-note {
+      max-width: 640px;
+      margin: 0 auto 1.75rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #9a3412;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .nav-tabs button {
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: 2px solid #e5e7eb;
+      background: #fff;
+      color: #374151;
+      cursor: pointer;
+    }
+    .nav-tabs button.active {
+      border-color: #c2410c;
+      background: #c2410c;
+      color: #fff;
+    }
+    .block { display: none; }
+    .block.active { display: block; }
+    .scenario {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #c2410c;
+    }
+    .scenario h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #c2410c;
+    }
+    .scenario p {
+      color: #374151;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .scenario p:last-child { margin-bottom: 0; }
+    .rules-list {
+      list-style: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    .rules-list li {
+      font-size: 0.9rem;
+      color: #4b5563;
+      padding: 0.35rem 0 0.35rem 1.25rem;
+      position: relative;
+    }
+    .rules-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #c2410c;
+      font-weight: bold;
+    }
+    .timing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .timing-card {
+      background: #fafaf9;
+      border-radius: 8px;
+      padding: 0.85rem 0.9rem;
+      border: 1px solid #e7e5e4;
+    }
+    .timing-card .t {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c2410c;
+      margin-bottom: 0.25rem;
+    }
+    .timing-card p {
+      font-size: 0.8rem;
+      color: #4b5563;
+      margin: 0;
+      line-height: 1.45;
+    }
+    .worksheet {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+    .worksheet h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .worksheet > .hint {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .field { margin-bottom: 1rem; }
+    .field:last-of-type { margin-bottom: 0; }
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+    .field-box {
+      min-height: 3.25rem;
+      background: #fafaf9;
+      border: 1.5px dashed #d6d3d1;
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.9rem;
+      color: #a8a29e;
+      line-height: 1.5;
+    }
+    .field-box.tall { min-height: 5rem; }
+    .prep-note {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #9a3412;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+    }
+    .role-panel {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      border-top: 4px solid #c2410c;
+    }
+    .role-panel[data-role="sc"] { border-top-color: #2563eb; }
+    .role-panel[data-role="com"] { border-top-color: #dc2626; }
+    .role-panel[data-role="fin"] { border-top-color: #7c3aed; }
+    .role-panel[data-role="ops"] { border-top-color: #059669; }
+    .role-panel-head { padding: 1.35rem 1.5rem 1rem; }
+    .role-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+    }
+    .role-panel-head h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 0.2rem;
+      line-height: 1.3;
+    }
+    .role-panel[data-role="sc"] .role-panel-head h2 { color: #2563eb; }
+    .role-panel[data-role="com"] .role-panel-head h2 { color: #dc2626; }
+    .role-panel[data-role="fin"] .role-panel-head h2 { color: #7c3aed; }
+    .role-panel[data-role="ops"] .role-panel-head h2 { color: #059669; }
+    .role-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    .role-panel-body { padding: 0 1.5rem 1.5rem; }
+    .confidential-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #b45309;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .role-section { margin-bottom: 1.1rem; }
+    .role-section:last-child { margin-bottom: 0; }
+    .role-section h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+    .role-section p,
+    .role-section li {
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+    .role-section ul { list-style: none; padding: 0; }
+    .role-section li {
+      padding: 0.3rem 0 0.3rem 1.1rem;
+      position: relative;
+    }
+    .role-section li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #c2410c;
+      font-weight: bold;
+    }
+    .registro-card {
+      background: #1c1917;
+      color: #fafaf9;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .registro-card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .registro-card > p {
+      color: #a8a29e;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .registro-card img.qr-img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.35rem;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      background: #c2410c;
+      text-decoration: none;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+    }
+    .cta-btn:hover { background: #9a3412; }
+    .registro-fields {
+      text-align: left;
+      max-width: 480px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+    }
+    .registro-fields h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fed7aa;
+      margin-bottom: 0.65rem;
+    }
+    .registro-fields ul { list-style: none; }
+    .registro-fields li {
+      font-size: 0.85rem;
+      color: #d6d3d1;
+      padding: 0.35rem 0 0.35rem 1.1rem;
+      position: relative;
+    }
+    .registro-fields li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #fdba74;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    @media (max-width: 700px) {
+      .timing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="badge">Negociación Táctica · Grupo A · Interfuncional</p>
+      <h1>Simulación — Role-play</h1>
+      <p class="mantra">«Sostener la norma y proteger a la empresa, haciendo que la operación fluya.»</p>
+    </header>
+
+    <p class="spoiler-note">Abre solo la pestaña de tu rol asignado. No revises la ficha de tu contraparte.</p>
+
+    <div class="nav-tabs" role="tablist">
+      <button type="button" class="active" data-block="mapa" role="tab" aria-selected="true">Mapa</button>
+      <button type="button" data-block="escasc" role="tab" aria-selected="false">EscA-SC</button>
+      <button type="button" data-block="escacom" role="tab" aria-selected="false">EscA-Comercial</button>
+      <button type="button" data-block="escbfin" role="tab" aria-selected="false">EscB-Finanzas</button>
+      <button type="button" data-block="escbops" role="tab" aria-selected="false">EscB-Ops</button>
+      <button type="button" data-block="registro" role="tab" aria-selected="false">Registro</button>
+    </div>
+
+    <!-- MAPA -->
+    <div class="block active" id="block-mapa">
+      <section class="scenario" aria-labelledby="mapa-title">
+        <h2 id="mapa-title">Preparación individual — 15 minutos</h2>
+        <p>
+          Antes de hablar con tu pareja, lee tu ficha de rol y completa el mapa de preparación.
+          Parejas cruzadas: <strong>Escenario A</strong> (Supply Chain vs. Comercial) o
+          <strong>Escenario B</strong> (Finanzas vs. Ops/Importaciones).
+        </p>
+        <ul class="rules-list">
+          <li>Completa el mapa <strong>antes</strong> de iniciar la conversación.</li>
+          <li>Define al menos <strong>3 monedas de cambio</strong> operativas.</li>
+          <li>Fija tu BATNA: el límite de riesgo donde debes escalar con 2 opciones — no con un conflicto.</li>
+        </ul>
+        <div class="timing-grid" aria-label="Micro-estructura del role-play">
+          <div class="timing-card">
+            <div class="t">0 – 8 min</div>
+            <p>Resistencia. La contraparte exige; tú indagas el indicador de riesgo, sin ceder la norma de inmediato.</p>
+          </div>
+          <div class="timing-card">
+            <div class="t">8 – 28 min</div>
+            <p>Paquetes. Intercambio multivariable: «Sí, siempre y cuando tu área aporte Y».</p>
+          </div>
+          <div class="timing-card">
+            <div class="t">28 – 35 min</div>
+            <p>Cierre o BATNA. Acuerdo con compensación, o salida limpia / escalamiento con 2 opciones.</p>
+          </div>
+        </div>
+        <p style="margin-top:1rem; font-size:0.9rem; color:#4b5563;">
+          <strong>Feedback (contraparte → tú):</strong>
+          «¿Sentí que indagaste mi indicador de riesgo para destrabar, o que solo defendiste tu política como garrote?»
+        </p>
+      </section>
+
+      <div class="worksheet">
+        <h3>Hoja de trabajo — Mapa de preparación</h3>
+        <p class="hint">Anota a mano o mentalmente. Estos cuadros son guía visual; no se envían.</p>
+        <div class="field">
+          <label>Posición inicial</label>
+          <div class="field-box">Lo que pides o defiendes en la mesa…</div>
+        </div>
+        <div class="field">
+          <label>Mis intereses / riesgo a proteger</label>
+          <div class="field-box tall">El indicador o exposición real detrás de tu postura…</div>
+        </div>
+        <div class="field">
+          <label>Intereses estimados del área vecina</label>
+          <div class="field-box tall">Hipótesis sobre lo que necesita la otra coordinación…</div>
+        </div>
+        <div class="field">
+          <label>3 monedas de cambio</label>
+          <div class="field-box tall">1. … &nbsp;&nbsp; 2. … &nbsp;&nbsp; 3. …</div>
+        </div>
+        <div class="field">
+          <label>BATNA / límite de riesgo</label>
+          <div class="field-box">Condición mínima antes de escalar a Dirección con 2 opciones…</div>
+        </div>
+        <p class="prep-note">Completa este mapa antes de hablar. La simulación empieza cuando ambos estén listos.</p>
+      </div>
+    </div>
+
+    <!-- EscA-SC -->
+    <div class="block" id="block-escasc">
+      <article class="role-panel" data-role="sc">
+        <div class="role-panel-head">
+          <span class="role-tag">Escenario A · Solo este rol</span>
+          <h2>Coordinación Planeación / Supply Chain</h2>
+          <p class="role-subtitle">vs. KAM Walmart · Comercial</p>
+        </div>
+        <div class="role-panel-body">
+          <div class="confidential-banner">🔒 Confidencial — no muestres esta ficha a Comercial</div>
+          <div class="role-section">
+            <h4>Posición inicial</h4>
+            <p>
+              <strong>Rechazar</strong> la orden extraordinaria de Walmart por <strong>15,000 unidades</strong>
+              fuera de forecast, con entrega en <strong>7 días hábiles</strong>.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>Intereses reales (ocultos)</h4>
+            <ul>
+              <li>Evitar sobrecosto de flete exprés del <strong>22%</strong> que castiga el KPI de logística.</li>
+              <li>Proteger el fill rate del <strong>canal tradicional</strong> que quedaría desabastecido si se prioriza Walmart.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Monedas de cambio</h4>
+            <ul>
+              <li>Entregas parciales: <strong>40% / 60%</strong> en dos lotes.</li>
+              <li>Autorización de <strong>flete consolidado</strong>.</li>
+              <li>Ajuste de <strong>prioridad de empaque</strong> en planta.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>BATNA / límite</h4>
+            <p>
+              Aceptar solo si Comercial <strong>absorbe el flete exprés</strong> o si el cliente acepta
+              <strong>entrega escalonada</strong>. Si Comercial exige flete exprés a cargo de Logística
+              <strong>sin compensación</strong> → <strong>NO</strong> definitivo en la mesa.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>En la mesa</h4>
+            <ul>
+              <li>0–8′: sostén el rechazo con datos de capacidad/KPI; indaga qué necesita Comercial además del 100%.</li>
+              <li>8–28′: ofrece lotes / consolidado / prioridad de planta a cambio de absorción de riesgo.</li>
+              <li>28–35′: cierra con paquete o ejecuta el NO limpio.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- EscA-Comercial -->
+    <div class="block" id="block-escacom">
+      <article class="role-panel" data-role="com">
+        <div class="role-panel-head">
+          <span class="role-tag">Escenario A · Solo este rol</span>
+          <h2>Gerente KAM Walmart · Comercial</h2>
+          <p class="role-subtitle">vs. Coordinación Planeación / Supply Chain</p>
+        </div>
+        <div class="role-panel-body">
+          <div class="confidential-banner">🔒 Confidencial — no muestres esta ficha a Supply Chain</div>
+          <div class="role-section">
+            <h4>Posición inicial</h4>
+            <p>
+              Exigir la liberación <strong>total</strong> de las 15,000 unidades con
+              <strong>flete exprés</strong> para no perder cabecera de anaquel en la promoción.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>Intereses reales (ocultos)</h4>
+            <ul>
+              <li>Cumplir cuota trimestral (representa el <strong>35% del bono</strong>).</li>
+              <li>Evitar penalización Walmart si el fill rate cae del <strong>95%</strong>.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Monedas de cambio</h4>
+            <ul>
+              <li>Aceptar 2 lotes si el <strong>primer lote cubre exhibición</strong>.</li>
+              <li>Comprometer forecast del siguiente trimestre con <strong>30 días de anticipación</strong>.</li>
+              <li>Solicitar a Walmart extensión de ventana de recepción de <strong>+48 h</strong>.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>BATNA / límite</h4>
+            <p>
+              Mínimo <strong>6,000 unidades</strong> en la fecha inicial. Si Supply Chain no entrega ese volumen,
+              no se firma: escalar a Dirección con <strong>propuesta de penalización compartida</strong>.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>En la mesa</h4>
+            <ul>
+              <li>0–8′: presión por el 100% + exprés; indaga restricciones de almacén/flete antes de exigir todo.</li>
+              <li>8–28′: ofrece forecast temprano, lotes y ventana +48 h a cambio de volumen mínimo.</li>
+              <li>28–35′: cierra ≥6k o prepara escalamiento con 2 opciones (no solo queja).</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- EscB-Finanzas -->
+    <div class="block" id="block-escbfin">
+      <article class="role-panel" data-role="fin">
+        <div class="role-panel-head">
+          <span class="role-tag">Escenario B · Solo este rol</span>
+          <h2>Gerente de Tesorería / Finanzas</h2>
+          <p class="role-subtitle">vs. Importaciones / Operaciones</p>
+        </div>
+        <div class="role-panel-body">
+          <div class="confidential-banner">🔒 Confidencial — no muestres esta ficha a Ops</div>
+          <div class="role-section">
+            <h4>Posición inicial</h4>
+            <p>
+              <strong>Bloquear</strong> la liberación de crédito para importación de materia prima (acero)
+              por <strong>sobregiro de línea</strong> con el proveedor internacional.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>Intereses reales (ocultos)</h4>
+            <ul>
+              <li>Proteger exposición de <strong>riesgo cambiario</strong> e intereses moratorios.</li>
+              <li>Mantener la <strong>calificación crediticia auditada</strong> ante el corporativo.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Monedas de cambio</h4>
+            <ul>
+              <li>Liberación en lotes condicionada a <strong>pagos de cartera vencida</strong>.</li>
+              <li>Renegociación de <strong>términos de pago</strong> contra documentos embarcados.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>BATNA / límite</h4>
+            <p>
+              No liberar sin al menos un <strong>anticipo del 20%</strong> o una
+              <strong>garantía colateral de flujo</strong> por parte de Operaciones.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>En la mesa</h4>
+            <ul>
+              <li>0–8′: bloqueo firme; pide plan de cobertura de riesgo, no urgencia emocional.</li>
+              <li>8–28′: lotes vs. cobranza / términos de pago.</li>
+              <li>28–35′: cierra con anticipo/colateral o mantén el NO con 2 opciones para Dirección.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Regla de spoiler (coach)</h4>
+            <p><strong>NO revelar</strong> que tienes tolerancia del 5% de sobregiro si hay plan colateral.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- EscB-Ops -->
+    <div class="block" id="block-escbops">
+      <article class="role-panel" data-role="ops">
+        <div class="role-panel-head">
+          <span class="role-tag">Escenario B · Solo este rol</span>
+          <h2>Gerente de Importaciones / Operaciones</h2>
+          <p class="role-subtitle">vs. Tesorería / Finanzas</p>
+        </div>
+        <div class="role-panel-body">
+          <div class="confidential-banner">🔒 Confidencial — no muestres esta ficha a Finanzas</div>
+          <div class="role-section">
+            <h4>Posición inicial</h4>
+            <p>
+              Exigir la <strong>liberación inmediata</strong> de la línea de crédito.
+              Contenedores en puerto acumulan sobreestadías de <strong>$3,000 USD/día</strong>.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>Intereses reales (ocultos)</h4>
+            <ul>
+              <li>Evitar <strong>paro de línea</strong> en planta por falta de insumos.</li>
+              <li>Mantener el costo logístico de importación <strong>dentro de presupuesto</strong>.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>Monedas de cambio</h4>
+            <ul>
+              <li><strong>Adelantar cobranza</strong> de clientes prioritarios para abonar a la línea.</li>
+              <li>Reprogramar producción para <strong>diferir el segundo contenedor</strong>.</li>
+            </ul>
+          </div>
+          <div class="role-section">
+            <h4>BATNA / límite</h4>
+            <p>
+              Si Finanzas no libera: desviar a <strong>depósito fiscal (bonded warehouse)</strong> para pausar demurrage.
+              <strong>Obligatorio</strong>: no aceptar el bloqueo total sin ofrecer un <strong>plan de abono de cartera</strong>.
+            </p>
+          </div>
+          <div class="role-section">
+            <h4>En la mesa</h4>
+            <ul>
+              <li>0–8′: urgencia por demurrage y paro; indaga qué cobertura de riesgo necesita Finanzas.</li>
+              <li>8–28′: cobra anticipada + diferir 2º contenedor a cambio de liberación parcial.</li>
+              <li>28–35′: cierra con plan de cobranza o ejecuta depósito fiscal + 2 opciones a Dirección.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- REGISTRO -->
+    <div class="block" id="block-registro">
+      <section class="registro-card" aria-labelledby="reg-title">
+        <h2 id="reg-title">Form 2 · Registro del caso</h2>
+        <p>Al terminar el feedback, registren el resultado de la pareja (un envío por pareja).</p>
+        <img class="qr-img" src="qr/form-2-registro.svg" alt="QR Registro del Caso Práctico">
+        <a class="cta-btn" href="#PLACEHOLDER-FORM-2">Abrir formulario</a>
+        <div class="registro-fields">
+          <h3>Campos a reportar</h3>
+          <ul>
+            <li><strong>Pareja N°</strong> · escenario A (SC vs Comercial) o B (Finanzas vs Ops).</li>
+            <li><strong>Resultado:</strong> acuerdo con intercambio · salida por BATNA · impasse.</li>
+            <li><strong>Monedas:</strong> lotes · crédito/pago · forecast · prioridades · fletes.</li>
+            <li><strong>Criterio objetivo:</strong> dato duro o política usada como parámetro neutro.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>Tramontina · Global Leadership · Grupo A</footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.nav-tabs button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-block');
+        document.querySelectorAll('.nav-tabs button').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        document.querySelectorAll('.block').forEach(function (block) {
+          block.classList.toggle('active', block.id === 'block-' + id);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

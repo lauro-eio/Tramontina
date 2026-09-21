@@ -1,26 +1,36 @@
 # Instructor share URLs (Vercel)
 
-## Instructor hub (bookmark; do NOT share with participants)
-- `/` — open all landings + facilitator guides, copy URLs
+Canonical schema: [`themes/WORKSHOP-SCHEMA.md`](../themes/WORKSHOP-SCHEMA.md).
 
-## Participant landings (share only the one for that session)
-- HWF: `/hwf/`
-- TCM Grupo B: `/tcm/`
-- TCM Grupo B role-play (paste in chat when needed; not linked from landing): `/tcm/role-play.html`
-- TCM Grupo A: `/tcm-a/`
-- TCM Grupo A role-play (paste in chat when needed; not linked from landing): `/tcm-a/role-play.html`
-- GTY: `/gty/`
-- GTY role-play (paste in chat ~01:15; not linked from landing): `/gty/role-play.html`
+## Instructor hubs
 
-## Coach only (do not share with participants)
-- HWF facilitador: `/hwf/facilitador.html`
-- TCM Grupo B facilitador: `/tcm/facilitador.html`
-- TCM Grupo A facilitador: `/tcm-a/facilitador.html`
-- GTY facilitador: `/gty/facilitador.html`
-- GTY deck: `/gty/deck/` → `session-01.html`
+| Workshop | Full name | Opaque |
+| --- | --- | --- |
+| Thin directory (all) | `/` | — |
+| Negociación Táctica | `/negociacion-tactica/` | `/gty/` |
+| Adaptabilidad Operativa | `/adaptabilidad-operativa/` | `/tcm/` |
+| How to Win Friends | `/how-to-win-friends/` | `/hwf/` |
+| Cierre (examples) | `/cierre/` | — |
 
-## Notes
-Session source docs live in `_source/` (excluded from Vercel via `.vercelignore`).
-Participant landings have no cross-workshop or cross-group navigation.
-TCM A and TCM B share the same Google Forms / QR codes.
-GTY Forms 1–3 live — hub: `_source/gty/forms` · PNGs: `gty/qr/form-{1,2,3}-*.png`.
+## Participant landings (share these — workshop name in path)
+
+| Theme | Group | Session | URL |
+| --- | --- | --- | --- |
+| Negociación Táctica | A | leadership | `/negociacion-tactica/group-a/leadership-session/` |
+| Negociación Táctica | B | leadership | `/negociacion-tactica/group-b/leadership-session/` |
+| Adaptabilidad Operativa | A | leadership | `/adaptabilidad-operativa/group-a/leadership-session/` |
+| Adaptabilidad Operativa | B | leadership | `/adaptabilidad-operativa/group-b/leadership-session/` |
+| How to Win Friends | B | leadership | `/how-to-win-friends/group-b/leadership-session/` |
+
+Role-play (coach paste):
+
+- GTY A/B: `/negociacion-tactica/group-{a\|b}/leadership-session/role-play.html`
+- TCM A/B: `/adaptabilidad-operativa/group-{a\|b}/leadership-session/role-play.html`
+
+## Hub UX reminder
+
+**Abrir** → `facilitador.html` (or role-play / deck **file**). **Copiar** → participant folder URL. Never Abrir a bare directory.
+
+## Legacy
+
+`vercel.json` redirects old `/tcm/a`, `/tcm/b`, `/tcm-a`, `/gty/a`, `/gty/b`, flat `/gty/*.html`, `/hwf/facilitador.html` into the paths above.

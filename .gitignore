@@ -1,0 +1,6 @@
+# Roster + PrinciplesYou — never commit
+data/
+
+# Local / editor
+.DS_Store
+*.swp

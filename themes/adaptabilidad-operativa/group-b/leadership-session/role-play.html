@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TCM — Role-play: Pase de Estafeta y Debate de Canales">
+  <title>TCM — Role-play</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    header .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    header .mantra {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .nav-tabs button {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 2px solid #e5e7eb;
+      background: #fff;
+      color: #374151;
+      cursor: pointer;
+    }
+    .nav-tabs button.active {
+      border-color: #c2410c;
+      background: #c2410c;
+      color: #fff;
+    }
+    .block { display: none; }
+    .block.active { display: block; }
+    .scenario {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      margin-bottom: 2rem;
+      border-left: 4px solid #c2410c;
+    }
+    .scenario h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #c2410c;
+    }
+    .scenario p {
+      color: #374151;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .scenario p:last-child { margin-bottom: 0; }
+    .rules-list {
+      list-style: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    .rules-list li {
+      font-size: 0.9rem;
+      color: #4b5563;
+      padding: 0.35rem 0 0.35rem 1.25rem;
+      position: relative;
+    }
+    .rules-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #c2410c;
+      font-weight: bold;
+    }
+    .roles-header {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .roles-header h2 { font-size: 1.15rem; font-weight: 600; }
+    .roles-header p {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.35rem;
+    }
+    .roles-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .roles-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .roles-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .role-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      border-top: 4px solid;
+    }
+    .role-card[data-role="emisor"] { border-top-color: #2563eb; }
+    .role-card[data-role="receptor"] { border-top-color: #dc2626; }
+    .role-card[data-role="retail"] { border-top-color: #2563eb; }
+    .role-card[data-role="ecom"] { border-top-color: #dc2626; }
+    .role-card[data-role="mkt"] { border-top-color: #16a34a; }
+    .role-toggle {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 1.25rem 1.25rem 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+    }
+    .role-toggle:hover { background: #fafafa; }
+    .role-toggle:focus-visible {
+      outline: 2px solid #c2410c;
+      outline-offset: -2px;
+    }
+    .role-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+    }
+    .role-label h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-top: 0.2rem;
+      line-height: 1.3;
+    }
+    .role-card[data-role="emisor"] .role-label h3,
+    .role-card[data-role="retail"] .role-label h3 { color: #2563eb; }
+    .role-card[data-role="receptor"] .role-label h3,
+    .role-card[data-role="ecom"] .role-label h3 { color: #dc2626; }
+    .role-card[data-role="mkt"] .role-label h3 { color: #16a34a; }
+    .subtitle {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    .chevron {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.15rem;
+      transition: transform 0.25s ease;
+      color: #9ca3af;
+    }
+    .role-card.is-open .chevron { transform: rotate(180deg); }
+    .role-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    .role-card.is-open .role-body { grid-template-rows: 1fr; }
+    .role-body-inner {
+      overflow: hidden;
+      padding: 0 1.25rem;
+    }
+    .role-card.is-open .role-body-inner { padding-bottom: 1.25rem; }
+    .confidential-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #b45309;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .role-section { margin-bottom: 1rem; }
+    .role-section:last-child { margin-bottom: 0; }
+    .role-section h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+    .role-section p {
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    @media (max-width: 800px) {
+      .roles-grid.cols-2,
+      .roles-grid.cols-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="badge">TCM · Adaptabilidad Operativa</p>
+      <h1>Role-play de sesión</h1>
+      <p class="mantra">«Atacar las ideas comerciales con dureza; cuidar a las personas con calidez.»</p>
+    </header>
+
+    <div class="nav-tabs" role="tablist">
+      <button type="button" class="active" data-block="m1" role="tab" aria-selected="true">Módulo 1 · Pase de Estafeta</button>
+      <button type="button" data-block="m2" role="tab" aria-selected="false">Módulo 2 · Debate de Canales</button>
+    </div>
+
+    <!-- MÓDULO 1 -->
+    <div class="block active" id="block-m1">
+      <section class="scenario" aria-labelledby="m1-title">
+        <h2 id="m1-title">El escenario — Ronda 1</h2>
+        <p>
+          Hay que alinear la meta de un producto nuevo para el canal.
+          La cuota corporativa es de <strong>+$5 MDP</strong> para el trimestre.
+        </p>
+        <p>
+          Tienen <strong>exactamente 3 minutos</strong>. El objetivo no es resolver el plan completo
+          ni renegociar el P&amp;L: es pactar el compromiso y la forma de trabajo.
+        </p>
+        <ul class="rules-list">
+          <li>Trabajan en <strong>parejas</strong>: un Emisor y un Receptor.</li>
+          <li>Actúen como un martes cualquiera, con la prisa de la operación.</li>
+          <li>Abra <strong>solo la tarjeta del rol que le asignó el facilitador</strong>.</li>
+          <li>Si abrió la incorrecta, ciérrela y abra la suya.</li>
+        </ul>
+      </section>
+
+      <div class="roles-header">
+        <h2>Tarjetas de rol — Parejas</h2>
+        <p>Toque una tarjeta para ver u ocultar las instrucciones</p>
+      </div>
+
+      <div class="roles-grid cols-2">
+        <article class="role-card" data-role="emisor">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="emisor-body">
+            <div class="role-label">
+              <span class="role-tag">Ficha A</span>
+              <h3>Emisor</h3>
+              <p class="subtitle">Director / Subdirector</p>
+            </div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="role-body" id="emisor-body">
+            <div class="role-body-inner">
+              <div class="confidential-banner">🔒 Confidencial — solo para este rol</div>
+              <div class="role-section">
+                <h4>Contexto</h4>
+                <p>
+                  Debes asignar la meta del nuevo producto para el canal.
+                  La cuota corporativa es de <strong>+$5 MDP</strong> para el trimestre.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu restricción</h4>
+                <p>
+                  Tienes otra junta directiva en 5 minutos. Necesitas cerrar la reunión rápido,
+                  asegurar que el canal se comprometa con el número y saber que van a ejecutar.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu consigna</h4>
+                <p>
+                  Asigna la meta y asegura el compromiso del receptor antes de que suene
+                  la campana de los 3 minutos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="role-card" data-role="receptor">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="receptor-body">
+            <div class="role-label">
+              <span class="role-tag">Ficha B</span>
+              <h3>Receptor</h3>
+              <p class="subtitle">Gerente Regional / Canal</p>
+            </div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="role-body" id="receptor-body">
+            <div class="role-body-inner">
+              <div class="confidential-banner">🔒 Confidencial — solo para este rol</div>
+              <div class="role-section">
+                <h4>Contexto</h4>
+                <p>
+                  Tu jefe/superior te busca para asignarte la cuota de
+                  <strong>+$5 MDP</strong> para el trimestre.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tus datos de mercado (privados)</h4>
+                <p>
+                  Sabes que el cliente top de tu canal acaba de pedir un
+                  <strong>descuento adicional del 5%</strong> y que Logística tiene un
+                  <strong>retraso de 2 semanas</strong> en entregas de ese producto.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu decisión</h4>
+                <p>
+                  Tú decides cómo manejar esta información. Puedes exponer los riesgos de inmediato,
+                  negociar, o aceptar la meta y buscar cómo resolverlo después en la operación.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- MÓDULO 2 -->
+    <div class="block" id="block-m2">
+      <section class="scenario" aria-labelledby="m2-title">
+        <h2 id="m2-title">El escenario — Debate de Canales</h2>
+        <p>
+          Inventario limitado de un SKU de alta demanda para el cierre de año.
+          Hay que definir <strong>asignación de stock</strong> y
+          <strong>estrategia de precios promocionales</strong>. Los incentivos de cada canal chocan.
+        </p>
+        <p>
+          Usen el protocolo <strong>C.O.R.A.</strong> (Contexto, Objetivos cruzados, Riesgo compartido, Alternativas).
+          El Director observa; el mejor acuerdo es el que protege margen sin pedir arbitraje.
+        </p>
+        <ul class="rules-list">
+          <li>Trabajan en <strong>tríadas</strong>: Retail + E-commerce + Marketing/Producto.</li>
+          <li><strong>Fase 1:</strong> 10 min negociando con C.O.R.A.</li>
+          <li><strong>Fase 2:</strong> 10 min invirtiendo posturas (defienda el canal opuesto).</li>
+          <li>Abra <strong>solo su tarjeta</strong>; cierre si abrió la incorrecta.</li>
+        </ul>
+      </section>
+
+      <div class="roles-header">
+        <h2>Tarjetas de rol — Tríadas</h2>
+        <p>Toque una tarjeta para ver u ocultar las instrucciones</p>
+      </div>
+
+      <div class="roles-grid cols-3">
+        <article class="role-card" data-role="retail">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="retail-body">
+            <div class="role-label">
+              <span class="role-tag">Canal A</span>
+              <h3>Retail / Autoservicios</h3>
+              <p class="subtitle">Defensor del margen</p>
+            </div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="role-body" id="retail-body">
+            <div class="role-body-inner">
+              <div class="confidential-banner">🔒 Confidencial — solo para este rol</div>
+              <div class="role-section">
+                <h4>Tu prioridad</h4>
+                <p>
+                  Proteger el margen de lista y el surtido en piso. Tu cliente top ya tiene
+                  penalización contractual si hay quiebre de stock en anaquel.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu restricción</h4>
+                <p>
+                  Un descuento agresivo en E-commerce sobre este SKU canibaliza tu ticket
+                  y pone en riesgo el margen regional del trimestre.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu postura</h4>
+                <p>
+                  Exige datos de impacto financiero antes de ceder inventario.
+                  No aceptes un «no» cerrado: pide alternativas que no rompan tu lista base.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="role-card" data-role="ecom">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="ecom-body">
+            <div class="role-label">
+              <span class="role-tag">Canal B</span>
+              <h3>E-commerce</h3>
+              <p class="subtitle">Cazador de cuota digital</p>
+            </div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="role-body" id="ecom-body">
+            <div class="role-body-inner">
+              <div class="confidential-banner">🔒 Confidencial — solo para este rol</div>
+              <div class="role-section">
+                <h4>Tu prioridad</h4>
+                <p>
+                  Ganar cuota digital en el cierre de año. Marketing ya anunció una campaña
+                  flash; necesitas stock asegurado y un precio competitivo online.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu restricción</h4>
+                <p>
+                  Sin inventario suficiente, la campaña se cancela y pierdes el KPI de
+                  crecimiento digital del trimestre. Tu bono depende de ese indicador.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu postura</h4>
+                <p>
+                  Empuja por asignación prioritaria y promo. Reconoce el KPI de Retail,
+                  pero no salgas sin al menos una opción viable para Digital.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="role-card" data-role="mkt">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="mkt-body">
+            <div class="role-label">
+              <span class="role-tag">Canal C</span>
+              <h3>Marketing / Producto</h3>
+              <p class="subtitle">Guardián de marca y surtido</p>
+            </div>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="role-body" id="mkt-body">
+            <div class="role-body-inner">
+              <div class="confidential-banner">🔒 Confidencial — solo para este rol</div>
+              <div class="role-section">
+                <h4>Tu prioridad</h4>
+                <p>
+                  Proteger la coherencia de precio y la percepción de marca.
+                  Un gap grande entre canales daña la Satisfacción del Cliente a largo plazo.
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu restricción</h4>
+                <p>
+                  El inventario total es fijo: no hay reposición hasta enero.
+                  Debes proponer reglas de asignación y/o diferenciación (empaque, ventana, SKU).
+                </p>
+              </div>
+              <div class="role-section">
+                <h4>Tu postura</h4>
+                <p>
+                  Facilita con datos y alternativas. Llega con al menos 2 opciones co-creadas.
+                  Evita escalar a Dirección si la mesa puede resolver con C.O.R.A.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <footer>TCM · Tramontina · Adaptabilidad Operativa</footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.nav-tabs button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-block');
+        document.querySelectorAll('.nav-tabs button').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        document.querySelectorAll('.block').forEach(function (block) {
+          block.classList.toggle('active', block.id === 'block-' + id);
+        });
+      });
+    });
+
+    document.querySelectorAll('.role-card').forEach(function (card) {
+      var btn = card.querySelector('.role-toggle');
+      btn.addEventListener('click', function () {
+        var open = card.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  </script>
+</body>
+</html>

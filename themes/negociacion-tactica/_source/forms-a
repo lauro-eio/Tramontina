@@ -1,0 +1,25 @@
+# GTY Grupo A — Forms (placeholders)
+
+Swap `#PLACEHOLDER-FORM-*` and `qr/*.svg` when live Forms exist.
+
+## Form 1 — Termómetro de Fricción Operativa Interna
+1. Área: Supply Chain / Finanzas / Administración / Comercial
+2. Motivo principal de traba (múltiple)
+3. Horas/semana perdidas en negociación interna (1–10+)
+4. Autonomía 1–5 para resolver sin Director
+
+## Form 2 — Registro del Caso Práctico
+1. Pareja N°
+2. Escenario A (SC↔Comercial) | B (Finanzas↔Ops)
+3. Resultado: Acuerdo con intercambio | BATNA | Impasse
+4. Monedas de cambio (checkbox)
+5. Criterio objetivo adoptado (texto)
+
+## Form 3 — Carta Compromiso de Servicio Interfuncional
+1. Nombre y puesto
+2. Área vecina
+3. Acción que dejaré de hacer
+4. Acción que empezaré
+5. KPI de seguimiento
+
+URLs: `#PLACEHOLDER-FORM-1` · `#PLACEHOLDER-FORM-2` · `#PLACEHOLDER-FORM-3`

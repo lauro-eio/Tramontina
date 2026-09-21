@@ -4,283 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Tramontina · Hub del instructor</title>
+  <title>Tramontina · Workshops</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      background: #f0f0eb;
-      color: #1a1a1a;
-      line-height: 1.55;
-      min-height: 100vh;
-      padding: 2rem 1.25rem 3rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #f0f0eb; color: #1a1a1a; line-height: 1.55;
+      padding: 2.5rem 1.25rem 3rem;
     }
-    .wrap { max-width: 720px; margin: 0 auto; }
-    header { margin-bottom: 1.75rem; }
+    .wrap { max-width: 520px; margin: 0 auto; }
     .badge {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #92400e;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #92400e;
     }
-    h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-top: 0.35rem;
-      letter-spacing: -0.02em;
-    }
+    h1 { font-size: 1.4rem; font-weight: 700; margin: 0.4rem 0 0.75rem; }
     .warn {
-      background: #fef3c7;
-      border: 1px solid #f59e0b;
-      border-left: 4px solid #f59e0b;
-      border-radius: 8px;
-      padding: 0.85rem 1rem;
-      font-size: 0.88rem;
-      color: #78350f;
-      margin-bottom: 1.75rem;
+      background: #fef3c7; border-left: 4px solid #f59e0b;
+      padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.88rem;
+      color: #78350f; margin-bottom: 1.5rem;
     }
-    section { margin-bottom: 1.75rem; }
-    section h2 {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #6b7280;
-      margin-bottom: 0.65rem;
+    a.card {
+      display: block; background: #fff; border-radius: 12px;
+      padding: 1.1rem 1.25rem; margin-bottom: 0.65rem;
+      text-decoration: none; color: inherit;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      border: 1px solid #e7e5e4;
     }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-      overflow: hidden;
+    a.card:hover { border-color: #c2410c; }
+    a.card .code {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #c2410c;
     }
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.65rem;
-      padding: 0.9rem 1.1rem;
-      border-top: 1px solid #f3f4f6;
-    }
-    .row:first-child { border-top: none; }
-    .row .label {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #111827;
-    }
-    .row .hint {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #6b7280;
-      margin-top: 0.15rem;
-    }
-    .actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    a.btn, button.btn {
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-decoration: none;
-      border: none;
-      border-radius: 6px;
-      padding: 0.4rem 0.7rem;
-      cursor: pointer;
-    }
-    a.open { background: #1e40af; color: #fff; }
-    a.open:hover { background: #1e3a8a; }
-    button.copy { background: #e5e7eb; color: #374151; }
-    button.copy:hover { background: #d1d5db; }
-    button.copy.done { background: #10b981; color: #fff; }
-    .share { border-left: 3px solid #16a34a; }
-    .coach { border-left: 3px solid #c2410c; }
-    footer {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
+    a.card h2 { font-size: 1.05rem; margin: 0.2rem 0; }
+    a.card p { font-size: 0.82rem; color: #6b7280; }
+    footer { margin-top: 1.75rem; font-size: 0.8rem; color: #6b7280; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <p class="badge">Solo instructor</p>
-      <h1>Hub de sesiones Tramontina</h1>
-    </header>
+    <p class="badge">Instructor · thin directory</p>
+    <h1>Tramontina workshops</h1>
+    <p class="warn">Open a workshop instructor index. Do not share with participants. Schema: <code>themes/WORKSHOP-SCHEMA.md</code>.</p>
 
-    <div class="warn">
-      <strong>No comparta esta página con participantes.</strong>
-      Envíeles únicamente el landing de su taller (<code>/hwf/</code>, <code>/tcm/</code>, <code>/tcm-a/</code> o <code>/gty/</code>).
-      Esas páginas no tienen navegación entre talleres ni entre grupos.
-    </div>
-
-    <section>
-      <h2>Compartir con participantes</h2>
-      <div class="card share">
-        <div class="row">
-          <div>
-            <span class="label">HWF — landing</span>
-            <span class="hint">Role-play Operación Salvavidas</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="hwf/">Abrir</a>
-            <button type="button" class="btn copy" data-path="hwf/">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">TCM B — landing</span>
-            <span class="hint">Grupo B · Alineación y Ejecución Comercial</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="tcm/">Abrir</a>
-            <button type="button" class="btn copy" data-path="tcm/">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">TCM B — role-play</span>
-            <span class="hint">Pegar en chat cuando toque la dinámica (no está en el landing)</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="tcm/role-play.html">Abrir</a>
-            <button type="button" class="btn copy" data-path="tcm/role-play.html">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">TCM A — landing</span>
-            <span class="hint">Grupo A · Sincronía Operativa e Interdepartamental</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="tcm-a/">Abrir</a>
-            <button type="button" class="btn copy" data-path="tcm-a/">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">TCM A — role-play</span>
-            <span class="hint">Pegar en chat cuando toque la dinámica (no está en el landing)</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="tcm-a/role-play.html">Abrir</a>
-            <button type="button" class="btn copy" data-path="tcm-a/role-play.html">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">Negociación Táctica — landing</span>
-            <span class="hint">Grupo B · código interno GTY · /gty/</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="gty/">Abrir</a>
-            <button type="button" class="btn copy" data-path="gty/">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">Negociación Táctica — role-play</span>
-            <span class="hint">Pegar en chat ~01:15 (no está en el landing)</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="gty/role-play.html">Abrir</a>
-            <button type="button" class="btn copy" data-path="gty/role-play.html">Copiar URL</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Guías del facilitador</h2>
-      <div class="card coach">
-        <div class="row">
-          <div>
-            <span class="label">HWF — facilitador</span>
-            <span class="hint">Run-of-show 3 h</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="hwf/facilitador.html">Abrir</a>
-            <button type="button" class="btn copy" data-path="hwf/facilitador.html">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">TCM B — facilitador</span>
-            <span class="hint">Grupo B · Run-of-show 3 h</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="tcm/facilitador.html">Abrir</a>
-            <button type="button" class="btn copy" data-path="tcm/facilitador.html">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">TCM A — facilitador</span>
-            <span class="hint">Grupo A · Run-of-show 3 h</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="tcm-a/facilitador.html">Abrir</a>
-            <button type="button" class="btn copy" data-path="tcm-a/facilitador.html">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">Negociación Táctica — facilitador</span>
-            <span class="hint">Grupo B · Run-of-show 3 h + objeciones</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="gty/facilitador.html">Abrir</a>
-            <button type="button" class="btn copy" data-path="gty/facilitador.html">Copiar URL</button>
-          </div>
-        </div>
-        <div class="row">
-          <div>
-            <span class="label">Negociación Táctica — deck</span>
-            <span class="hint">Presentación fullscreen · session-01</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="gty/deck/">Abrir</a>
-            <button type="button" class="btn copy" data-path="gty/deck/">Copiar URL</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Otros</h2>
-      <div class="card">
-        <div class="row">
-          <div>
-            <span class="label">Cierre — ejemplos</span>
-          </div>
-          <div class="actions">
-            <a class="btn open" href="cierre/">Abrir</a>
-            <button type="button" class="btn copy" data-path="cierre/">Copiar URL</button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <a class="card" href="negociacion-tactica/">
+      <span class="code">gty</span>
+      <h2>Negociación Táctica</h2>
+      <p>Instructor hub · leadership + coaching</p>
+    </a>
+    <a class="card" href="adaptabilidad-operativa/">
+      <span class="code">tcm</span>
+      <h2>Adaptabilidad Operativa</h2>
+      <p>Instructor hub · A/B leadership live</p>
+    </a>
+    <a class="card" href="how-to-win-friends/">
+      <span class="code">hwf</span>
+      <h2>How to Win Friends</h2>
+      <p>Instructor hub · Grupo B leadership live</p>
+    </a>
+    <a class="card" href="cierre/">
+      <span class="code">examples</span>
+      <h2>Cierre</h2>
+      <p>Examples only</p>
+    </a>
 
     <footer>
-      Bookmarkee esta URL para usted. Participantes: solo landings.
+      Participant URLs use the workshop name path
+      (e.g. <code>/negociacion-tactica/group-a/leadership-session/</code>).
+      Hub rule: Abrir → facilitador · Copiar → participant folder.
     </footer>
   </div>
-
-  <script>
-    document.querySelectorAll('.copy').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var url = new URL(btn.getAttribute('data-path'), window.location.href).href;
-        navigator.clipboard.writeText(url).then(function () {
-          btn.textContent = 'Copiado';
-          btn.classList.add('done');
-          setTimeout(function () {
-            btn.textContent = 'Copiar URL';
-            btn.classList.remove('done');
-          }, 1800);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

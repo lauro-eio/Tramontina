@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>How to Win Friends · Instructor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #f0f0eb; color: #1a1a1a; line-height: 1.55;
+      padding: 2rem 1.25rem 3rem;
+    }
+    .wrap { max-width: 640px; margin: 0 auto; }
+    .badge {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #92400e;
+    }
+    h1 { font-size: 1.45rem; font-weight: 700; margin: 0.35rem 0 0.5rem; }
+    .warn {
+      background: #fef3c7; border-left: 4px solid #f59e0b;
+      padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.88rem;
+      color: #78350f; margin: 1rem 0 1.5rem;
+    }
+    h2 {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #6b7280; margin: 1.5rem 0 0.5rem;
+    }
+    .row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+      justify-content: space-between; background: #fff; border-radius: 10px;
+      padding: 0.85rem 1rem; margin-bottom: 0.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .row .label { font-weight: 600; font-size: 0.9rem; }
+    .row .hint { display: block; font-size: 0.75rem; color: #6b7280; font-family: ui-monospace, monospace; }
+    .actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    a.btn, button.btn {
+      font: inherit; font-size: 0.78rem; font-weight: 600;
+      padding: 0.4rem 0.75rem; border-radius: 6px; border: none; cursor: pointer;
+      text-decoration: none;
+    }
+    a.open { background: #c2410c; color: #fff; }
+    button.copy { background: #e5e7eb; color: #374151; }
+    button.copy.done { background: #10b981; color: #fff; }
+    footer { margin-top: 2rem; font-size: 0.8rem; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="badge">Instructor only · How to Win Friends</p>
+    <h1>How to Win Friends</h1>
+    <p class="warn">No compartir esta página con participantes. Abrir → coach file · Copiar → participant URL. Schema: <code>themes/WORKSHOP-SCHEMA.md</code>.</p>
+
+    <h2>Grupo B — Sales (live package)</h2>
+    <div class="row">
+      <div>
+        <span class="label">Leadership</span>
+        <span class="hint">Abrir → facilitador · Copiar → participant landing</span>
+      </div>
+      <div class="actions">
+        <a class="btn open" href="group-b/leadership-session/facilitador.html">Abrir</a>
+        <button type="button" class="btn copy" data-path="group-b/leadership-session/">Copiar</button>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="label">Coaching (+ speaking/)</span>
+        <span class="hint">Not built</span>
+      </div>
+    </div>
+
+    <h2>Grupo A — Supporting Areas</h2>
+    <div class="row">
+      <div>
+        <span class="label">Leadership · Coaching</span>
+        <span class="hint">Not built</span>
+      </div>
+    </div>
+
+    <footer>
+      Opaque <code>/hwf/</code> = this page. Participants: <code>/how-to-win-friends/group-b/leadership-session/</code>.
+      Edit under <code>themes/how-to-win-friends/</code> only.
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('.copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var url = new URL(btn.getAttribute('data-path'), window.location.href).href;
+        navigator.clipboard.writeText(url).then(function () {
+          btn.textContent = 'OK';
+          btn.classList.add('done');
+          setTimeout(function () { btn.textContent = 'Copiar'; btn.classList.remove('done'); }, 1600);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

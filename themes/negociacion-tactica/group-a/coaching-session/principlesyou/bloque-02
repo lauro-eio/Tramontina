@@ -1,0 +1,103 @@
+```python
+# Calculate specific traits for Block 2 breakdown (Orchestrator/Planner traits vs Coach/Helper)
+df.columns = df.columns.str.strip()
+block2_traits = ['Deliberative', 'Systematic', 'Organized', 'Helpful', 'Flexible', 'Adaptable']
+print(df[block2_traits].mean().round(1))
+
+
+```
+
+```text
+Traceback (most recent call last):
+  File "<xbox-string>", line 2, in <module>
+    df.columns = df.columns.str.strip()
+NameError: name 'df' is not defined
+
+
+```
+
+```python
+import pandas as pd
+df = pd.read_csv('PrinciplesYou_DataEntry.csv')
+df.columns = df.columns.str.strip()
+block2_traits = ['Deliberative', 'Systematic', 'Organized', 'Helpful', 'Flexible', 'Adaptable']
+print(df[block2_traits].mean().round(1))
+
+
+```
+
+```text
+Deliberative    70.0
+Systematic      69.4
+Organized       71.4
+Helpful         63.4
+Flexible        62.9
+Adaptable       66.2
+dtype: float64
+
+
+```
+
+**Desglose Detallado: Bloque 2 — Reencuadre de la Norma y Fricción Interna (00:20 - 00:50 | 30 min)**
+
+---
+
+### **1. Objetivo del Bloque**
+
+* **Objetivo Principal:** Reorientar la percepción del grupo sobre sus procesos, pasando de ver la norma como un "freno/escudo" a comunicarla como un "criterio objetivo de riesgo".
+* **Resultado Esperado:** Que los participantes aprendan a sostener el rigor normativo sin cerrar el diálogo, utilizando la norma como un parámetro para co-diseñar soluciones con otras áreas.
+
+---
+
+### **2. Herramientas a Usar**
+
+* **Insumos de Diagnóstico:** Perfiles de personalidad del grupo con alta inclinación hacia lo *Sistemático* (69.4/100), *Organizado* (71.4/100) y *Deliberativo* (70.0/100).
+* **Matriz Visual de Trabajo:** *Matriz de Reencuadre Normativo* (Lámina en pantalla o plantilla impresa).
+* **Dinámica:** Ejercicio práctico en parejas de áreas contrapuestas (ej. Finanzas vs. Comercial, Supply Chain vs. Operaciones).
+
+---
+
+### **3. Qué Presentar (Insumos Visuales en Pantalla)**
+
+* **Lámina 1: Los Dos Usos de la Norma**
+* **La Norma como Garrote (Posicionamiento):** *"No se puede porque el procedimiento exige 30 días de crédito y tú estás pidiendo 60"*.
+* **La Norma como Criterio Objetivo (Principio GTY):** *"La política de 30 días existe para proteger la reserva de cartera vencida ($X monto). Si necesitamos extender a 60 días para cerrar el contrato, ¿qué garantía o condición de pago compensa ese riesgo financiero?"*
+
+
+* **Lámina 2: La Plantilla del Reencuadre (3 Pasos)**
+1. **Validar la necesidad de la otra área** (Demostrar escucha activa).
+2. **Explicar el riesgo técnico tras la regla** (Explicar el *para qué*, no solo el *qué*).
+3. **Lanzar la condición de co-responsabilidad** (Transferir la búsqueda de la solución).
+
+
+
+---
+
+### **4. Cómo Gestar el Análisis (Paso a Paso del Facilitador)**
+
+1. **Paso 1: Exposición del Concepto (Minuto 20 - 27)**
+* *Acción:* Mostrar la diferencia entre usar la norma para bloquear vs. usar la norma para encuadrar el riesgo.
+* *Enfoque del Facilitador:* Enfatizar que **no se les está pidiendo romper reglas ni ceder margen de seguridad**. Se les está pidiendo educar al área vecina sobre el costo/riesgo técnico de romper la regla.
+
+
+2. **Paso 2: Trabajo en Parejas Cruzadas (Minuto 27 - 42)**
+* *Acción:* Formar parejas de roles complementarios/contrapuestos (ej. Carlos Alberto Rodríguez - Quiet Leader/Finanzas vs. Alejando Rodríguez - Commander/Comercial).
+* *Consigna:* Elegir un "NO" reciente que hayan dado a otra área y reescribirlo usando la Plantilla de 3 Pasos.
+* *Trabajo en Mesa:* Un participante interpreta su rol habitual y el otro actúa como el área que solicita la excepción.
+
+
+3. **Paso 3: Plenaria y Ajuste Táctico (Minuto 42 - 50)**
+* *Acción:* Seleccionar 2 parejas para presentar su reencuadre en voz alta.
+* *Enfoque del Facilitador:* Calibrar el lenguaje. Si el participante vuelve a caer en la frase *"es que el sistema no lo permite"*, detener la intervención y guiarlo a expresar el riesgo cuantitativo o cualitativo del proceso.
+
+
+
+---
+
+### **5. Resumen de Herramientas por Función**
+
+| Función | Herramienta Específica | Propósito en el Bloque |
+| --- | --- | --- |
+| **Insumo de Personalidad** | Trazo de rasgos *Deliberative/Systematic* | Apoyarse en su preferencia por la estructura para enseñarles un nuevo "algoritmo de comunicación". |
+| **Modelo de Trabajo** | *Plantilla de Reencuadre en 3 Pasos* | Darles una estructura verbal clara antes de hablar en la mesa. |
+| **Simulación** | Roleplay de Parejas Cruzadas | Experimentar el cambio de postura en un entorno controlado antes del taller de liderazgo. |

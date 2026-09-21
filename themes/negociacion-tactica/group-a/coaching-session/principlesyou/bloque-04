@@ -1,0 +1,95 @@
+```python
+import pandas as pd
+df = pd.read_csv('PrinciplesYou_DataEntry.csv')
+df.columns = df.columns.str.strip()
+
+# Metrics for Block 4: Growth-Seeking, Humble, Receptive to Criticism, Open-Minded
+block4_metrics = ['Growth-Seeking', 'Humble', 'Receptive to Criticism', 'Open-Minded', 'Composed']
+print(df[block4_metrics].mean().round(1))
+
+
+```
+
+```text
+Growth-Seeking            65.9
+Humble                    58.1
+Receptive to Criticism    68.2
+Open-Minded               63.4
+Composed                  69.0
+dtype: float64
+
+
+```
+
+**Desglose Detallado: Bloque 4 — La Frustración Saludable y Anclaje al Taller de GTY (01:10 - 01:30 | 20 min)**
+
+---
+
+### **1. Objetivo del Bloque**
+
+* **Objetivo Principal:** Anclar la sesión mediante una "frustración reflexiva", haciendo que cada participante reconozca el costo oculto de mantener la postura de "tener la razón técnica" y movilizar su disposición al aprendizaje (*Growth-Seeking*) para el taller de liderazgo posterior.
+* **Resultado Esperado:** Cerrar el encuentro sin dar soluciones empaquetadas, dejando una tensión cognitiva abierta que prepare al Grupo A para recibir la metodología GTY con apertura y sin defensas.
+
+---
+
+### **2. Herramientas a Usar**
+
+* **Insumos de Diagnóstico:** Nivel medio-alto en *Búsqueda de Crecimiento / Growth-Seeking* (**65.9/100**) y *Receptividad a la Crítica / Receptive to Criticism* (**68.2/100**), combinación ideal para detonar autocrítica estructurada.
+* **Modelo Visual:** *La Balanza del Valor Operativo* (Lámina de contraste: Razón Técnica vs. Resultado Integrado).
+* **Herramienta Individual:** *Tarjeta de Reflexión y Bitácora de Campo* (Física o digital).
+
+---
+
+### **3. Qué Presentar (Insumos Visuales en Pantalla)**
+
+* **Lámina 1: La Pregunta Incómoda de Cierre**
+* Texto destacado: *"Tener la razón técnica con el proceso o pedido paralizado sigue siendo un fracaso de gestión."*
+
+
+* **Lámina 2: El Inventario del Costo Oculto (Cuadro de Reflexión)**
+
+| El "Triunfo" Individual | El Costo Colectivo para Tramontina |
+| --- | --- |
+| *"Demostré que la otra área estaba equivocada."* | Fricción interpersonal y pérdida de confianza entre equipos. |
+| *"Cité la norma y detuve una solicitud fuera de política."* | Atraso en el nivel de servicio y riesgo de pérdida de venta/cliente. |
+| *"Escalé el problema al Director para deslindar responsabilidad."* | Saturación de la Dirección y pérdida de autonomía gerencial. |
+
+---
+
+### **4. Cómo Gestar el Análisis (Paso a Paso del Facilitador)**
+
+1. **Paso 1: Provocación Final (Minuto 70 - 75)**
+* *Acción:* Presentar los indicadores de *Growth-Seeking* (65.9) y *Receptive to Criticism* (68.2).
+* *Enfoque del Facilitador:* Apelar a su deseo profesional de crecimiento con un cierre incisivo:
+* *"Sus perfiles muestran que son profesionales abiertos a mejorar y perfeccionar sus capacidades. Hoy hemos visto que la mayor traba de nuestra operación no es la falta de procesos, sino cómo usamos esos procesos para relacionarnos con las áreas primas."*
+
+
+
+
+2. **Paso 2: Ejercicio de Bitácora Individual (Minuto 75 - 83)**
+* *Acción:* Solicitar que cada líder escriba en su libreta o tarjeta de trabajo la respuesta a dos preguntas de autoevaluación:
+1. *"¿Qué acuerdo interdepartamental tengo trabado hoy por defender la norma desde la postura y no desde el criterio objetivo?"*
+2. *"¿Qué cambio de lenguaje o enfoque probaré esta semana antes de mandar el siguiente correo de escalamiento?"*
+
+
+
+
+3. **Paso 3: Asignación de la "Tarea de Observación" (Minuto 83 - 90)**
+* *Acción:* Fijar la expectativa para el Taller de Liderazgo (GTY) que ocurrirá semanas después.
+* *Consigna:* No se les pide resolver todos sus conflictos esta semana, sino **observar sus propios hábitos de negociación interna**:
+* Identificar cuántas veces dicen *"No se puede"* antes de preguntar *"Para qué lo necesitas"*.
+* Medir cuántos correos de escalamiento podrían evitarse si aplicaran el reencuadre de criterios objetivos.
+
+
+
+
+
+---
+
+### **5. Resumen de Herramientas por Función**
+
+| Función | Herramienta Específica | Propósito en el Bloque |
+| --- | --- | --- |
+| **Insumo de Personalidad** | Indicadores *Growth-Seeking* (65.9) y *Receptive to Criticism* (68.2) | Apoyarse en su inclinación al perfeccionamiento para aceptar la autocrítica sin ponerse a la defensiva. |
+| **Elemento Visual** | *Matriz de Costo Oculto* | Demostrar cuantitativa y cualitativamente que "ganar la discusión" destruye valor a nivel empresa. |
+| **Anclaje Pedagógico** | *Bitácora de Campo y Tarea de Observación* | Mantener activa la reflexión durante el intervalo de semanas previas al Taller de Liderazgo (GTY). |
