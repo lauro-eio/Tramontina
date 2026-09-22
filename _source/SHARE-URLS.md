@@ -1,36 +1,32 @@
-# Instructor share URLs (Vercel)
+# Instructor share URLs
 
-Canonical schema: [`themes/WORKSHOP-SCHEMA.md`](../themes/WORKSHOP-SCHEMA.md).
+Schema: [`themes/WORKSHOP-SCHEMA.md`](../themes/WORKSHOP-SCHEMA.md).
 
-## Instructor hubs
+## Instructor hubs (short codes)
 
-| Workshop | Full name | Opaque |
+| Code | Commercial title | Hub |
 | --- | --- | --- |
-| Thin directory (all) | `/` | — |
-| Negociación Táctica | `/negociacion-tactica/` | `/gty/` |
-| Adaptabilidad Operativa | `/adaptabilidad-operativa/` | `/tcm/` |
-| How to Win Friends | `/how-to-win-friends/` | `/hwf/` |
-| Cierre (examples) | `/cierre/` | — |
+| — | Thin directory | `/` |
+| gty | Negociación Táctica y Empresarial | `/themes/gty/` |
+| tcm | Adaptabilidad Operativa | `/themes/tcm/` |
+| hwf | How to Win Friends — Operación Salvavidas | `/themes/hwf/` |
+| cierre | Cierre de ciclo | `/themes/cierre/` |
 
-## Participant landings (share these — workshop name in path)
+## Participant landings (public long slugs)
 
-| Theme | Group | Session | URL |
-| --- | --- | --- | --- |
-| Negociación Táctica | A | leadership | `/negociacion-tactica/group-a/leadership-session/` |
-| Negociación Táctica | B | leadership | `/negociacion-tactica/group-b/leadership-session/` |
-| Adaptabilidad Operativa | A | leadership | `/adaptabilidad-operativa/group-a/leadership-session/` |
-| Adaptabilidad Operativa | B | leadership | `/adaptabilidad-operativa/group-b/leadership-session/` |
-| How to Win Friends | B | leadership | `/how-to-win-friends/group-b/leadership-session/` |
+| Code | Group | Public URL |
+| --- | --- | --- |
+| gty | A leadership | `/negociacion-tactica/group-a/leadership-session/` |
+| gty | B leadership | `/negociacion-tactica/group-b/leadership-session/` |
+| tcm | A leadership | `/adaptabilidad-operativa/group-a/leadership-session/` |
+| tcm | B leadership | `/adaptabilidad-operativa/group-b/leadership-session/` |
+| hwf | B leadership | `/how-to-win-friends/group-b/leadership-session/` |
+| cierre | JUL | `/cierre/jul/` |
 
-Role-play (coach paste):
+## Hub UX
 
-- GTY A/B: `/negociacion-tactica/group-{a\|b}/leadership-session/role-play.html`
-- TCM A/B: `/adaptabilidad-operativa/group-{a\|b}/leadership-session/role-play.html`
+**Abrir** → local `facilitador.html` · **Copiar** → absolute public path · never Abrir a bare directory.
 
-## Hub UX reminder
+## Vercel
 
-**Abrir** → `facilitador.html` (or role-play / deck **file**). **Copiar** → participant folder URL. Never Abrir a bare directory.
-
-## Legacy
-
-`vercel.json` redirects old `/tcm/a`, `/tcm/b`, `/tcm-a`, `/gty/a`, `/gty/b`, flat `/gty/*.html`, `/hwf/facilitador.html` into the paths above.
+Rewrites map public slugs → `themes/{code}/`. Short `/gty/…` redirects to `/negociacion-tactica/…`.

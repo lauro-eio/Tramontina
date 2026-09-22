@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Negociación Táctica Interfuncional · Grupo A · Tramontina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --ink: #f4f7fa;
+  --muted: #9aadc0;
+  --navy: #0d1a2e;
+  --navy-2: #152438;
+  --navy-3: #1a2b45;
+  --accent: #fdba74;
+  --accent-deep: #c2410c;
+  --warn: #fbbf24;
+  --white: #ffffff;
+  --line: rgba(255,255,255,0.12);
+  --font: "DM Sans", system-ui, sans-serif;
+  --display: "Fraunces", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%;
+  background: var(--navy);
+  color: var(--ink);
+  font-family: var(--font);
+  overflow: hidden;
+}
+.deck { height: 100%; position: relative; }
+.slide {
+  display: none;
+  height: 100%;
+  padding: clamp(1.5rem, 4vh, 3rem) clamp(1.75rem, 5vw, 4.5rem) 4.5rem;
+  background:
+    radial-gradient(900px 500px at 100% 0%, rgba(194,65,12,0.18), transparent 55%),
+    radial-gradient(700px 400px at 0% 100%, rgba(26,43,69,0.9), transparent 50%),
+    linear-gradient(165deg, var(--navy) 0%, var(--navy-2) 55%, #0a1524 100%);
+  flex-direction: column;
+  justify-content: center;
+}
+.slide.active { display: flex; animation: in 0.35s cubic-bezier(0.22,1,0.36,1); }
+@keyframes in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.slide.hero { justify-content: flex-end; padding-bottom: 12vh; }
+.kicker {
+  font-size: .78rem; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 .6rem;
+}
+h1 {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 700; letter-spacing: -.02em;
+  line-height: 1.12; margin: 0 0 .75rem; max-width: 18ch;
+}
+h2 {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 700; letter-spacing: -.02em;
+  margin: 0 0 1.25rem; line-height: 1.15;
+}
+.lead { font-size: clamp(1.05rem, 2vw, 1.3rem); color: rgba(244,247,250,.82); max-width: 40rem; margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.5rem; }
+.chip {
+  padding: .4rem .85rem; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255,255,255,.06);
+  font-size: .88rem; color: rgba(244,247,250,.9);
+}
+.tag {
+  display: inline-block; font-size: .75rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .75rem;
+}
+ul.bullets {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: .85rem;
+  max-width: 44rem;
+}
+ul.bullets li {
+  position: relative; padding-left: 1.5rem;
+  font-size: clamp(1.05rem, 2.1vw, 1.4rem); line-height: 1.4;
+}
+ul.bullets li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: .55rem; height: .55rem; border-radius: 50%; background: var(--accent-deep);
+}
+.grid-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  max-width: 56rem;
+}
+.grid-3 {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;
+  max-width: 56rem;
+}
+@media (max-width: 900px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+.card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 14px; padding: 1.15rem 1.25rem;
+}
+.card h3 {
+  margin: 0 0 .65rem; font-size: 1.05rem; color: var(--accent);
+  letter-spacing: .04em; text-transform: uppercase; font-weight: 700;
+}
+.card p, .card li { margin: .35rem 0; font-size: 1.05rem; color: rgba(244,247,250,.88); }
+.note-line { color: var(--muted); font-size: 1rem; margin-top: 1rem; max-width: 40rem; }
+.thermo {
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.5rem;
+  align-items: start; max-width: 56rem;
+}
+@media (max-width: 800px) { .thermo { grid-template-columns: 1fr; } }
+.qr-box {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(253,186,116,.45);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  min-height: 12rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .5rem;
+}
+.qr-box img {
+  width: 9rem; height: 9rem;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 10px;
+  padding: .35rem;
+}
+.qr-box strong { color: var(--accent); font-size: 1rem; }
+.qr-box span { color: var(--muted); font-size: .9rem; }
+.qr-box a {
+  color: var(--accent);
+  font-size: .85rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: .25rem;
+}
+.qr-box a:hover { text-decoration: underline; }
+.timer {
+  margin-top: 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: .75rem;
+}
+.timer-display {
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .02em;
+  min-width: 5.5ch;
+}
+.timer button {
+  font-family: inherit;
+  font-size: .9rem; font-weight: 600;
+  padding: .55rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  background: rgba(255,255,255,.08);
+  color: var(--ink);
+}
+.timer button.timer-start {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  color: #fff;
+}
+.timer button:hover { filter: brightness(1.08); }
+.timer.running .timer-display { color: #86efac; }
+.timer.done .timer-display { color: #fca5a5; }
+.gold {
+  max-width: 48rem;
+  margin-top: 1rem;
+  padding: .9rem 1.15rem;
+  background: rgba(251,191,36,.12);
+  border: 1px solid rgba(251,191,36,.4);
+  border-radius: 12px;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: #fde68a;
+}
+.prompt {
+  max-width: 42rem;
+  font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+  line-height: 1.4;
+  color: rgba(244,247,250,.92);
+  margin: 0;
+}
+.key-msg {
+  max-width: 40rem;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+.phase {
+  display: grid; grid-template-columns: auto 1fr; gap: .75rem 1.25rem;
+  max-width: 48rem; align-items: start;
+}
+.phase .t {
+  font-family: var(--display); font-weight: 700;
+  color: var(--accent); font-size: 1.15rem; white-space: nowrap;
+}
+.phase .d { font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(244,247,250,.9); padding-bottom: .85rem; border-bottom: 1px solid var(--line); }
+.phase > *:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
+.metric {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+}
+.metric .n {
+  font-family: var(--display); font-size: 1.75rem; font-weight: 700;
+  color: var(--accent); margin-bottom: .35rem;
+}
+.metric p { margin: 0; font-size: 1rem; color: rgba(244,247,250,.88); line-height: 1.4; }
+.footer-bar {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: .65rem 1.25rem;
+  background: rgba(8,14,24,.85); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  font-size: .8rem; color: var(--muted); z-index: 20;
+}
+.progress {
+  flex: 1; max-width: 14rem; height: 4px;
+  background: rgba(255,255,255,.1); border-radius: 99px; overflow: hidden;
+}
+.progress > i {
+  display: block; height: 100%; width: 0%;
+  background: var(--accent-deep); border-radius: 99px; transition: width .25s ease;
+}
+.controls { display: flex; gap: .4rem; align-items: center; }
+.controls button {
+  background: rgba(255,255,255,.08); border: 1px solid var(--line);
+  color: var(--ink); border-radius: 8px; padding: .35rem .65rem;
+  cursor: pointer; font-size: .78rem; font-family: inherit;
+}
+.controls button:hover { background: rgba(194,65,12,.25); border-color: var(--accent); }
+.notes {
+  display: none; position: fixed; right: 1rem; bottom: 3.5rem;
+  width: min(28rem, calc(100vw - 2rem)); max-height: 40vh; overflow: auto;
+  background: #111827; border: 1px solid var(--line); border-radius: 12px;
+  padding: 1rem 1.15rem; z-index: 25; box-shadow: 0 20px 50px rgba(0,0,0,.4);
+  font-size: .9rem; color: #d1d5db; line-height: 1.5;
+}
+.notes.open { display: block; }
+.notes strong { color: var(--accent); }
+.help {
+  position: fixed; top: .75rem; right: .75rem; z-index: 15;
+  font-size: .72rem; color: var(--muted);
+  background: rgba(0,0,0,.35); padding: .35rem .6rem; border-radius: 8px;
+  border: 1px solid var(--line);
+}
+.url-chip {
+  display: inline-block;
+  margin-top: .75rem;
+  padding: .5rem .9rem;
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: ui-monospace, monospace;
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="help">← → navegar · S notes · F fullscreen</div>
+  <div class="deck">
+
+    <!-- 1 Hero -->
+    <section class="slide hero active" data-notes="Bienvenida Grupo A. Ya vivieron PrinciplesYou + Oratoria. No reinventar empatía: ir a fricción operativa y criterios de riesgo. Arrancar Form 1 si hay gente puntual.">
+      <p class="kicker">Tramontina · Global Leadership · Grupo A</p>
+      <h1>Negociación Táctica Interfuncional</h1>
+      <p class="lead">De la Norma al Criterio de Riesgo</p>
+      <div class="chips">
+        <span class="chip">3 horas</span>
+        <span class="chip">Grupo A</span>
+        <span class="chip">Supply · Finanzas · Ops · Comercial</span>
+      </div>
+    </section>
+
+    <!-- 2 Form 1 -->
+    <section class="slide" data-notes="Guion apertura completo en facilitador. Cortar ~12′. Proyectar consolidado: costo del atrincheramiento. Form placeholder hasta tener URL real.">
+      <p class="tag">Módulo 1 · Termómetro</p>
+      <h2>Fricción Operativa Interna</h2>
+      <div class="thermo">
+        <div>
+          <p class="lead" style="margin-bottom:1rem">Sostener la norma y proteger a la empresa — haciendo que la operación fluya.</p>
+          <ul class="bullets">
+            <li>Escanear QR · Formulario 1</li>
+            <li>Área · motivo de traba · hrs/semana · autonomía</li>
+            <li>Mapa grupal al arrancar</li>
+          </ul>
+          <div class="timer" data-minutes="10">
+            <div class="timer-display">10:00</div>
+            <button type="button" class="timer-start">Start</button>
+            <button type="button" class="timer-reset">Reset</button>
+          </div>
+        </div>
+        <div class="qr-box">
+          <img src="../qr/form-1-termometro.png" alt="QR Form 1">
+          <strong>Form 1 · Termómetro</strong>
+          <span>Fricción Operativa</span>
+          <a href="https://forms.gle/HktqnAQBW6ZgZNw46" target="_blank" rel="noopener">Abrir formulario</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Agenda -->
+    <section class="slide" data-notes="Puente: no es taller de ventas externas. Teoría comprimida 30′; simulación expandida. Agenda 180′.">
+      <p class="tag">Encuadre</p>
+      <h2>Agenda · 180 minutos</h2>
+      <ul class="bullets">
+        <li><strong>00:00–00:15</strong> M1 Apertura · Form 1</li>
+        <li><strong>00:15–00:45</strong> M2 Cuatro pilares (comprimidos)</li>
+        <li><strong>00:45–00:55</strong> Break</li>
+        <li><strong>00:55–02:10</strong> M3 Simulación cruzada</li>
+        <li><strong>02:10–02:40</strong> M4 Debrief</li>
+        <li><strong>02:40–03:00</strong> M5 Carta Compromiso · Form 3</li>
+      </ul>
+    </section>
+
+    <!-- 4 Pillars title -->
+    <section class="slide" data-notes="Di: aplicamos los cuatro pilares a la operación interna — no a la mesa de cliente.">
+      <p class="tag">Módulo 2</p>
+      <h2>Los 4 Pilares Interfuncionales</h2>
+      <p class="lead">De la norma como garrote al criterio objetivo de riesgo.</p>
+      <div class="chips" style="margin-top:2rem">
+        <span class="chip">1 · Cuello de botella</span>
+        <span class="chip">2 · Política = riesgo</span>
+        <span class="chip">3 · Compensación</span>
+        <span class="chip">4 · BATNA interno</span>
+      </div>
+    </section>
+
+    <!-- 5 P1 -->
+    <section class="slide" data-notes="Script: cuando Finanzas/SC dice no, no es actitud — ¿cuál es el indicador de riesgo exacto?">
+      <p class="tag">Pilar 1</p>
+      <h2>Personas vs. problema</h2>
+      <p class="key-msg">«La fricción no es la actitud del otro departamento; es el cuello de botella técnico.»</p>
+      <p class="lead">Pregunta que destraba: ¿cuál es el indicador de riesgo que les impide decir que sí?</p>
+    </section>
+
+    <!-- 6 P2 -->
+    <section class="slide" data-notes="Script: política como parámetro de riesgo, no garrote. La posición se discute; el riesgo se administra.">
+      <p class="tag">Pilar 2</p>
+      <h2>Intereses · política como riesgo</h2>
+      <p class="key-msg">«La política no es la posición; es el parámetro de riesgo.»</p>
+      <p class="lead">«No se puede porque…» vs. «Si hacemos esto, nos arriesgamos a $X.»</p>
+    </section>
+
+    <!-- 7 P3 -->
+    <section class="slide" data-notes="Script: ninguna excepción sin compensación operativa. Intercambiar certidumbre entre áreas.">
+      <p class="tag">Pilar 3</p>
+      <h2>Empaquetamiento</h2>
+      <div class="gold">«Ninguna excepción sin compensación operativa.»</div>
+      <div class="chips" style="margin-top:1.5rem">
+        <span class="chip">Lotes</span>
+        <span class="chip">Forecast</span>
+        <span class="chip">Cartera</span>
+        <span class="chip">Prioridades</span>
+        <span class="chip">Fletes</span>
+      </div>
+    </section>
+
+    <!-- 8 P4 -->
+    <section class="slide" data-notes="BATNA = límite de riesgo antes de Dirección. Escalar con 2 opciones, no con conflictos.">
+      <p class="tag">Pilar 4</p>
+      <h2>BATNA interno</h2>
+      <p class="key-msg">«Autonomía es resolver en tu nivel sin copiar al Director.»</p>
+      <p class="lead">Escala con <strong style="color:var(--accent)">dos opciones estructuradas</strong> — no con un conflicto sin resolver.</p>
+    </section>
+
+    <!-- 9 Break -->
+    <section class="slide" data-notes="Timer 10′. Al volver: pegar role-play.html en chat. Confirmar parejas Esc A / Esc B.">
+      <p class="tag">Receso</p>
+      <h2>Break · 10 minutos</h2>
+      <p class="lead">Reincorporación: inicia la simulación cruzada.</p>
+      <div class="timer" data-minutes="10">
+        <div class="timer-display">10:00</div>
+        <button type="button" class="timer-start">Start</button>
+        <button type="button" class="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- 10 Sim intro -->
+    <section class="slide" data-notes="Pegar URL role-play.html. NO está en landing. Esc A: SC↔Comercial. Esc B: Finanzas↔Ops. Spoiler 5% overline — no revelar.">
+      <p class="tag">Módulo 3</p>
+      <h2>Simulación cruzada</h2>
+      <p class="lead">Fricción real entre departamentos — norma como criterio de riesgo.</p>
+      <div class="grid-2" style="margin-top:1.25rem">
+        <div class="card">
+          <h3>Escenario A</h3>
+          <p>Supply Chain ↔ Comercial (Walmart 15k)</p>
+        </div>
+        <div class="card">
+          <h3>Escenario B</h3>
+          <p>Finanzas ↔ Ops (crédito importación)</p>
+        </div>
+      </div>
+      <span class="url-chip">role-play.html</span>
+    </section>
+
+    <!-- 11 Prep -->
+    <section class="slide" data-notes="Supervisar mapa: riesgo, 3 monedas, BATNA. No interrumpir.">
+      <p class="tag">Fase 1 · Preparación</p>
+      <h2>Mapa GTY · 15 minutos</h2>
+      <ul class="bullets">
+        <li>Posición vs. indicador de riesgo a proteger</li>
+        <li>Intereses estimados del área vecina</li>
+        <li>Tres monedas de compensación operativa</li>
+        <li>BATNA — límite antes de escalar con 2 opciones</li>
+      </ul>
+      <div class="timer" data-minutes="15">
+        <div class="timer-display">15:00</div>
+        <button type="button" class="timer-start">Start</button>
+        <button type="button" class="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- 12 Rules -->
+    <section class="slide" data-notes="NO revelar intereses ocultos. Circular. Inyección presión ~min 20. Timing ajustado a 35′: 0-8 / 8-28 / 28-35.">
+      <p class="tag">Fase 2 · Reglas de la mesa</p>
+      <h2>Estructura · 35 minutos</h2>
+      <div class="phase">
+        <div class="t">0–8′</div>
+        <div class="d"><strong>Resistencia.</strong> Indagar el indicador de riesgo. No ceder la norma de inmediato.</div>
+        <div class="t">8–28′</div>
+        <div class="d"><strong>Paquetes.</strong> «Sí, siempre y cuando tu área aporte Y.»</div>
+        <div class="t">28–35′</div>
+        <div class="d"><strong>Cierre o BATNA.</strong> Acuerdo con compensación, o escalamiento con 2 opciones.</div>
+      </div>
+    </section>
+
+    <!-- 13 Timer 35 -->
+    <section class="slide" data-notes="Coach no interrumpe la mesa; solo sombra e inyección. Identificar caso testigo anónimo.">
+      <p class="tag">Role-play en vivo</p>
+      <h2>Simulación · 35 minutos</h2>
+      <p class="lead">0–8 · 8–28 · 28–35 — sombra táctica; no spoilear fichas.</p>
+      <div class="timer" data-minutes="35">
+        <div class="timer-display">35:00</div>
+        <button type="button" class="timer-start">Start</button>
+        <button type="button" class="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- 14 Form 2 -->
+    <section class="slide" data-notes="Feedback: ¿indagaste indicador de riesgo o usaste la política como garrote? Luego Form 2 obligatorio.">
+      <p class="tag">Fase 3 · Registro</p>
+      <h2>Feedback + Formulario 2</h2>
+      <div class="thermo">
+        <div>
+          <ul class="bullets">
+            <li>Feedback cara a cara</li>
+            <li>Registro digital obligatorio</li>
+            <li>Resultado · monedas · criterio objetivo</li>
+          </ul>
+        </div>
+        <div class="qr-box">
+          <img src="../qr/form-2-registro.svg" alt="QR Form 2">
+          <strong>Form 2 · Registro</strong>
+          <span>Caso práctico</span>
+          <a href="#PLACEHOLDER-FORM-2">#PLACEHOLDER-FORM-2</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 Debrief -->
+    <section class="slide" data-notes="Plan B: manos alzadas. Caso testigo de empaquetamiento. Desarticular correo de escalamiento.">
+      <p class="tag">Módulo 4 · Debrief</p>
+      <h2>Tres métricas · conteo en sala</h2>
+      <div class="grid-3">
+        <div class="metric">
+          <div class="n">01</div>
+          <p><strong>Acuerdos vs BATNA</strong> — firmados · salida limpia · impasse</p>
+        </div>
+        <div class="metric">
+          <div class="n">02</div>
+          <p><strong>Riesgo salvado</strong> — ¿qué KPI o exposición quedó cubierta?</p>
+        </div>
+        <div class="metric">
+          <div class="n">03</div>
+          <p><strong>Monedas</strong> — lotes · crédito · forecast · fletes · prioridades</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 Form 3 -->
+    <section class="slide" data-notes="Cierre: el éxito no se mide por quién gana la discusión interna, sino por qué tan rápido fluye la decisión.">
+      <p class="tag">Módulo 5 · Cierre</p>
+      <h2>Carta Compromiso Interfuncional</h2>
+      <div class="thermo">
+        <div>
+          <p class="lead" style="margin-bottom:1rem">Área vecina · dejaré de · empezaré · KPI de impacto.</p>
+          <p class="note-line" style="font-size:clamp(1.05rem,2vw,1.25rem);color:rgba(244,247,250,.92)">Compromiso con el flujo — no checklist de RH.</p>
+        </div>
+        <div class="qr-box">
+          <img src="../qr/form-3-compromiso.png" alt="QR Form 3">
+          <strong>Form 3 · Compromiso</strong>
+          <span>Carta Interfuncional</span>
+          <a href="https://forms.gle/rDwjQUMnAfcCEGkJ9" target="_blank" rel="noopener">Abrir formulario</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 Gracias -->
+    <section class="slide" data-notes="Cierre institucional. Mantra de flujo. Próxima prueba: la siguiente fricción entre áreas.">
+      <p class="tag">Fin</p>
+      <h2>Gracias</h2>
+      <p class="lead">El éxito se mide por qué tan rápido fluye la decisión.</p>
+      <div class="chips">
+        <span class="chip">Tramontina México</span>
+        <span class="chip">Global Leadership</span>
+        <span class="chip">Grupo A</span>
+      </div>
+    </section>
+
+  </div>
+
+  <aside class="notes" id="notes"></aside>
+  <div class="footer-bar">
+    <span>Negociación Táctica · Grupo A · Facilitador</span>
+    <div class="progress"><i id="bar"></i></div>
+    <span id="counter">1 / 17</span>
+    <div class="controls">
+      <button type="button" id="prev">Ant</button>
+      <button type="button" id="next">Sig</button>
+      <button type="button" id="notesBtn">Notes (S)</button>
+      <button type="button" id="fsBtn">Fullscreen (F)</button>
+    </div>
+  </div>
+
+  <script>
+(function () {
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const counter = document.getElementById("counter");
+  const bar = document.getElementById("bar");
+  const notesEl = document.getElementById("notes");
+  let i = 0;
+
+  function formatTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return m + ":" + String(s).padStart(2, "0");
+  }
+
+  function initTimers() {
+    document.querySelectorAll(".timer").forEach(function (el) {
+      if (el._timerReady) return;
+      el._timerReady = true;
+      const mins = parseFloat(el.getAttribute("data-minutes")) || 0;
+      let total = Math.round(mins * 60);
+      let left = total;
+      let interval = null;
+      const display = el.querySelector(".timer-display");
+      const startBtn = el.querySelector(".timer-start");
+      const resetBtn = el.querySelector(".timer-reset");
+
+      function render() {
+        display.textContent = formatTime(left);
+      }
+
+      function stop() {
+        if (interval) { clearInterval(interval); interval = null; }
+        el.classList.remove("running");
+        startBtn.textContent = "Start";
+      }
+
+      startBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (interval) {
+          stop();
+          return;
+        }
+        if (left <= 0) left = total;
+        el.classList.add("running");
+        el.classList.remove("done");
+        startBtn.textContent = "Pause";
+        interval = setInterval(function () {
+          left -= 1;
+          render();
+          if (left <= 0) {
+            stop();
+            el.classList.add("done");
+            left = 0;
+            render();
+          }
+        }, 1000);
+      });
+
+      resetBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        stop();
+        left = total;
+        el.classList.remove("done");
+        render();
+      });
+
+      render();
+    });
+  }
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, idx) { s.classList.toggle("active", idx === i); });
+    counter.textContent = (i + 1) + " / " + slides.length;
+    bar.style.width = ((i + 1) / slides.length * 100) + "%";
+    const note = slides[i].getAttribute("data-notes") || "";
+    notesEl.innerHTML = "<strong>Speaker</strong><br>" + note;
+    history.replaceState(null, "", "#" + (i + 1));
+  }
+
+  function next() { show(i + 1); }
+  function prev() { show(i - 1); }
+
+  document.getElementById("next").addEventListener("click", next);
+  document.getElementById("prev").addEventListener("click", prev);
+  document.getElementById("notesBtn").addEventListener("click", function () {
+    notesEl.classList.toggle("open");
+  });
+  document.getElementById("fsBtn").addEventListener("click", function () {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  window.addEventListener("keydown", function (e) {
+    if (e.target && (e.target.tagName === "BUTTON" || e.target.tagName === "INPUT")) return;
+    if (["ArrowRight", "ArrowDown", "PageDown", " ", "Enter"].includes(e.key)) {
+      e.preventDefault(); next();
+    } else if (["ArrowLeft", "ArrowUp", "PageUp", "Backspace"].includes(e.key)) {
+      e.preventDefault(); prev();
+    } else if (e.key === "s" || e.key === "S") {
+      notesEl.classList.toggle("open");
+    } else if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    } else if (e.key === "Home") { show(0); }
+    else if (e.key === "End") { show(slides.length - 1); }
+  });
+
+  initTimers();
+  const hash = parseInt((location.hash || "#1").slice(1), 10);
+  show(Number.isFinite(hash) && hash > 0 ? hash - 1 : 0);
+})();
+  </script>
+</body>
+</html>

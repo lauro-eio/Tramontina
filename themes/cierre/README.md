@@ -1,11 +1,12 @@
 # Cierre
+**Commercial title (participants):** Cierre de ciclo
 
-Program close / examples — not a full A/B leadership + coaching theme.
+Every three monthly workshops → one close. Schema: [`../WORKSHOP-SCHEMA.md`](../WORKSHOP-SCHEMA.md).
 
-| Path | Role |
-| --- | --- |
-| [index.html](index.html) | Instructor entry |
-| [examples/](examples/) | Published examples |
-| [_source/](_source/) | Source snapshot |
+| Close | Folder | Status |
+| --- | --- | --- |
+| JUL (1–3) | [jul/](jul/) | Live examples package |
+| OCT (4–6) | [oct/](oct/) | Placeholder |
+| FEB (7–9) | [feb/](feb/) | Placeholder |
 
-Schema: [`../WORKSHOP-SCHEMA.md`](../WORKSHOP-SCHEMA.md).
+Instructor hub: [`index.html`](index.html).

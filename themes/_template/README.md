@@ -1,14 +1,15 @@
-# Theme template
+# {CODE}
+**Commercial title (participants):** {Title shown on landings}
+**Public slug:** /{long-slug}/
 
-Copy to `../{slug}/` then replace placeholders.
+Copy this folder to `../{code}/` (exactly 3 letters). Add a Vercel rewrite from the public slug → `/themes/{code}/`.
 
 ```text
-index.html                 # instructor-only for this workshop
+index.html                 # instructor hub — Copiar uses absolute public paths
 group-a|group-b/
-  leadership-session/      # 3h
-  coaching-session/        # 3h
-    speaking/              # oratoria (from global_speaker)
-_source/                   # briefs / notes — not deployed
+  leadership-session/
+  coaching-session/speaking/
+_source/
 ```
 
-Authoring: [`../../AUTHORING.md`](../../AUTHORING.md).
+Schema: [`../WORKSHOP-SCHEMA.md`](../WORKSHOP-SCHEMA.md) · Authoring: [`../../AUTHORING.md`](../../AUTHORING.md).

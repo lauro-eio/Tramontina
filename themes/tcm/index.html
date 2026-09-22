@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Cierre · Instructor</title>
+  <title>tcm · Instructor</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -23,6 +23,10 @@
       padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.88rem;
       color: #78350f; margin: 1rem 0 1.5rem;
     }
+    h2 {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #6b7280; margin: 1.5rem 0 0.5rem;
+    }
     .row {
       display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
       justify-content: space-between; background: #fff; border-radius: 10px;
@@ -31,7 +35,7 @@
     }
     .row .label { font-weight: 600; font-size: 0.9rem; }
     .row .hint { display: block; font-size: 0.75rem; color: #6b7280; font-family: ui-monospace, monospace; }
-    .actions { display: flex; gap: 0.4rem; }
+    .actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     a.btn, button.btn {
       font: inherit; font-size: 0.78rem; font-weight: 600;
       padding: 0.4rem 0.75rem; border-radius: 6px; border: none; cursor: pointer;
@@ -45,42 +49,68 @@
 </head>
 <body>
   <div class="wrap">
-    <p class="badge">Instructor only · Cierre de ciclo</p>
-    <h1>Cierre</h1>
-    <p class="warn">One close after every three workshops. JUL has the live package; OCT / FEB are placeholders.</p>
+    <p class="badge">Instructor only · tcm</p>
+    <h1>tcm — Adaptabilidad Operativa</h1>
+    <p class="warn">No compartir esta página. <strong>Copiar</strong> → URL pública <code>/adaptabilidad-operativa/…</code>. Abrir → local under <code>themes/tcm/</code>.</p>
 
+    <h2>Grupo A — Supporting Areas</h2>
     <div class="row">
       <div>
-        <span class="label">JUL — workshops 1–3</span>
-        <span class="hint">/cierre/jul/</span>
+        <span class="label">Leadership</span>
+        <span class="hint">/adaptabilidad-operativa/group-a/leadership-session/</span>
       </div>
       <div class="actions">
-        <a class="btn open" href="jul/index.html">Abrir</a>
-        <button type="button" class="btn copy" data-path="/cierre/jul/">Copiar</button>
+        <a class="btn open" href="group-a/leadership-session/facilitador.html">Abrir</a>
+        <button type="button" class="btn copy" data-path="/adaptabilidad-operativa/group-a/leadership-session/">Copiar</button>
       </div>
     </div>
     <div class="row">
       <div>
-        <span class="label">OCT — workshops 4–6</span>
-        <span class="hint">/cierre/oct/ · placeholder</span>
+        <span class="label">Role-play (coach)</span>
+        <span class="hint">coach only</span>
       </div>
       <div class="actions">
-        <a class="btn open" href="oct/index.html">Abrir</a>
-        <button type="button" class="btn copy" data-path="/cierre/oct/">Copiar</button>
+        <a class="btn open" href="group-a/leadership-session/role-play.html">Abrir</a>
       </div>
     </div>
     <div class="row">
       <div>
-        <span class="label">FEB — workshops 7–9</span>
-        <span class="hint">/cierre/feb/ · placeholder</span>
-      </div>
-      <div class="actions">
-        <a class="btn open" href="feb/index.html">Abrir</a>
-        <button type="button" class="btn copy" data-path="/cierre/feb/">Copiar</button>
+        <span class="label">Coaching (+ speaking/)</span>
+        <span class="hint">Not built</span>
       </div>
     </div>
 
-    <footer>Schema: <code>themes/WORKSHOP-SCHEMA.md</code>. Edit under <code>themes/cierre/</code>.</footer>
+    <h2>Grupo B — Sales</h2>
+    <div class="row">
+      <div>
+        <span class="label">Leadership</span>
+        <span class="hint">/adaptabilidad-operativa/group-b/leadership-session/</span>
+      </div>
+      <div class="actions">
+        <a class="btn open" href="group-b/leadership-session/facilitador.html">Abrir</a>
+        <button type="button" class="btn copy" data-path="/adaptabilidad-operativa/group-b/leadership-session/">Copiar</button>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="label">Role-play (coach)</span>
+        <span class="hint">coach only</span>
+      </div>
+      <div class="actions">
+        <a class="btn open" href="group-b/leadership-session/role-play.html">Abrir</a>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="label">Coaching (+ speaking/)</span>
+        <span class="hint">Not built</span>
+      </div>
+    </div>
+
+    <footer>
+      Folder code <code>tcm</code> · public slug <code>/adaptabilidad-operativa/</code>.
+      Edit under <code>themes/tcm/</code>.
+    </footer>
   </div>
   <script>
     document.querySelectorAll('.copy').forEach(function (btn) {

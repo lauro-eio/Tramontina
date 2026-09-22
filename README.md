@@ -2,26 +2,27 @@
 
 Instructor-facing static site (`lauro-eio/Tramontina`).
 
-**Frozen schema:** [`themes/WORKSHOP-SCHEMA.md`](themes/WORKSHOP-SCHEMA.md)  
+**Schema:** [`themes/WORKSHOP-SCHEMA.md`](themes/WORKSHOP-SCHEMA.md)  
 Also: [`AUTHORING.md`](AUTHORING.md) · [`PROGRAM.md`](PROGRAM.md) · [`_source/SHARE-URLS.md`](_source/SHARE-URLS.md)
 
 ## Layout
 
 ```text
-themes/{slug}/
-  index.html                # instructor hub (Abrir → facilitador)
-  group-a|b/
-    leadership-session/     # participant index.html
-    coaching-session/speaking/
-index.html                  # thin directory of workshops
-{slug}/  gty|tcm|hwf/       # aliases → themes/{slug}
+themes/{code}/              # short code you manage: gty, tcm, hwf
+  README.md                 # commercial title + public slug
+  index.html                # instructor hub
+  group-a|b/…
+themes/cierre/{jul|oct|feb}/
 ```
 
-## Participant vs instructor
+No root shortcuts. Vercel rewrites long public slugs onto `themes/{code}/`.
+
+## URLs
 
 | Audience | Example |
 | --- | --- |
+| You (builder) | `/themes/gty/` |
 | Participants | `/negociacion-tactica/group-a/leadership-session/` |
-| Instructor | `/negociacion-tactica/` or `/gty/` |
+| Cierre | `/cierre/jul/` |
 
-Hub rule: **Abrir** → coach HTML file · **Copiar** → participant folder URL.
+Hub: **Abrir** → local facilitador · **Copiar** → public long URL.

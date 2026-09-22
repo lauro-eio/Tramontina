@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guía digital del participante — Negociación Táctica Interfuncional · Tramontina · Grupo A">
+  <title>Negociación Táctica · Grupo A</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #c2410c;
+      --accent-dark: #9a3412;
+      --bg: #f5f5f0;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+    }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .hero {
+      background: linear-gradient(145deg, #1c1917 0%, #44403c 55%, #c2410c 160%);
+      color: #fafaf9;
+      padding: 3rem 1.5rem 2.75rem;
+      text-align: center;
+    }
+    .hero .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #fdba74;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #d6d3d1;
+      margin-bottom: 1.25rem;
+    }
+    .hero .mantra {
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #fed7aa;
+      border-top: 1px solid rgba(253, 186, 116, 0.35);
+      padding-top: 1rem;
+    }
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 720px;
+      margin: 1.5rem auto 0;
+    }
+    .pillars span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      background: rgba(255,255,255,0.1);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      color: #e7e5e4;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+    section { margin-bottom: 2.75rem; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+    }
+    section > p {
+      color: #374151;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .agenda-list {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--accent);
+      list-style: none;
+    }
+    .agenda-list li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+    .agenda-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .agenda-list li:first-child { padding-top: 0; }
+    .agenda-list .time {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+    .agenda-list strong { color: #1c1917; font-weight: 600; }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .tool-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      border-top: 3px solid var(--accent);
+    }
+    .tool-card .letter {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .tool-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+    .tool-card p {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0.6rem;
+    }
+    .tool-card .phrase {
+      font-size: 0.8rem;
+      color: #1c1917;
+      background: #fff7ed;
+      border-radius: 6px;
+      padding: 0.55rem 0.7rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .vs-label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+      font-style: normal;
+    }
+    .batna-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.35rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--accent);
+      margin-top: 1.25rem;
+    }
+    .batna-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+    .batna-box p {
+      font-size: 0.9rem;
+      color: #374151;
+    }
+    .cta-zone {
+      background: #1c1917;
+      color: #fafaf9;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .cta-zone h2 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .cta-zone > p {
+      color: #a8a29e;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .cta-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .cta-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #fed7aa;
+    }
+    .cta-card img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.35rem;
+      display: block;
+      margin: 0 auto;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+    }
+    .cta-btn:hover { background: var(--accent-dark); }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 700px) {
+      .card-grid, .cta-grid { grid-template-columns: 1fr; }
+      .agenda-list li {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <p class="badge">Tramontina · Grupo A · Guía del participante</p>
+    <h1>Negociación Táctica Interfuncional</h1>
+    <p class="sub">De la Norma al Criterio de Riesgo</p>
+    <p class="mantra">«El éxito de Tramontina no se mide por quién gana una discusión interna, sino por qué tan rápido fluye la decisión.»</p>
+    <div class="pillars">
+      <span>Persona vs. cuello de botella</span>
+      <span>Política = parámetro de riesgo</span>
+      <span>Excepción con compensación</span>
+      <span>BATNA interno</span>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section>
+      <p class="section-label">Sesión</p>
+      <h2>Objetivo</h2>
+      <p>
+        En tres horas, los líderes interfuncionales del Grupo A practican negociación interna:
+        sostener la norma como criterio de riesgo, empaquetar compensaciones operativas entre áreas
+        y resolver en su nivel — sin escalar conflictos a Dirección. Ya trajeron PrinciplesYou y Oratoria;
+        hoy se practica el flujo entre departamentos.
+      </p>
+    </section>
+
+    <section>
+      <p class="section-label">Recorrido</p>
+      <h2>Agenda resumida</h2>
+      <ul class="agenda-list">
+        <li>
+          <span class="time">00:00 – 00:15</span>
+          <span><strong>M1 Apertura.</strong> Termómetro de Fricción Operativa (Form 1).</span>
+        </li>
+        <li>
+          <span class="time">00:15 – 00:45</span>
+          <span><strong>M2 Cuatro pilares.</strong> Aplicación interfuncional comprimida.</span>
+        </li>
+        <li>
+          <span class="time">00:45 – 00:55</span>
+          <span><strong>Break.</strong> Receso de 10 minutos.</span>
+        </li>
+        <li>
+          <span class="time">00:55 – 02:10</span>
+          <span><strong>M3 Simulación.</strong> Mapa (15′), role-play (35′), feedback + Form 2 (25′).</span>
+        </li>
+        <li>
+          <span class="time">02:10 – 02:40</span>
+          <span><strong>M4 Debrief.</strong> Acuerdos vs. BATNA y caso testigo.</span>
+        </li>
+        <li>
+          <span class="time">02:40 – 03:00</span>
+          <span><strong>M5 Cierre.</strong> Carta Compromiso Interfuncional (Form 3).</span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-label">Cheatsheet</p>
+      <h2>Referencia de escritorio</h2>
+      <p>Contraste rápido: atrincheramiento tradicional frente a la clave interfuncional en cada pilar.</p>
+      <div class="card-grid">
+        <article class="tool-card">
+          <div class="letter">1</div>
+          <h3>Personas vs. problema</h3>
+          <p class="phrase">
+            <span class="vs-label">Tradicional</span>
+            Leer el «no» del área vecina como actitud o falta de apoyo.
+          </p>
+          <p class="phrase" style="margin-top:0.5rem; background:#f0fdf4;">
+            <span class="vs-label" style="color:#15803d;">Clave</span>
+            Aislar el cuello de botella técnico — no la persona del otro departamento.
+          </p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">2</div>
+          <h3>Intereses · política como riesgo</h3>
+          <p class="phrase">
+            <span class="vs-label">Tradicional</span>
+            Usar la política como garrote: «no se puede porque el procedimiento dice X».
+          </p>
+          <p class="phrase" style="margin-top:0.5rem; background:#f0fdf4;">
+            <span class="vs-label" style="color:#15803d;">Clave</span>
+            Explicar la política como parámetro de riesgo: qué pérdida o exposición evita.
+          </p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">3</div>
+          <h3>Empaquetamiento</h3>
+          <p class="phrase">
+            <span class="vs-label">Tradicional</span>
+            Rechazar excepciones o ceder sin compensación operativa.
+          </p>
+          <p class="phrase" style="margin-top:0.5rem; background:#f0fdf4;">
+            <span class="vs-label" style="color:#15803d;">Clave</span>
+            Ninguna excepción sin compensación: lotes, forecast, cartera, prioridades.
+          </p>
+        </article>
+        <article class="tool-card">
+          <div class="letter">4</div>
+          <h3>BATNA interno</h3>
+          <p class="phrase">
+            <span class="vs-label">Tradicional</span>
+            Copiar a Dirección al primer «no» y ceder la autoridad gerencial.
+          </p>
+          <p class="phrase" style="margin-top:0.5rem; background:#f0fdf4;">
+            <span class="vs-label" style="color:#15803d;">Clave</span>
+            Resolver en tu nivel; escalar con 2 opciones estructuradas, no con conflictos.
+          </p>
+        </article>
+      </div>
+      <div class="batna-box">
+        <h3>BATNA — límite de riesgo interno</h3>
+        <p>
+          En esta sesión, el BATNA es el <strong>límite de riesgo que tu área puede tolerar
+          antes de requerir una decisión de la alta dirección</strong>. No es «ganar» al otro departamento:
+          es saber hasta dónde puedes autorizar o bloquear sin destruir flujo operativo ni exposición
+          financiera, y llevar siempre dos opciones — no un conflicto sin resolver.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta-zone" id="formularios">
+      <h2>Zona de acción</h2>
+      <p>Escanee el QR o abra el formulario cuando el instructor lo indique.</p>
+      <div class="cta-grid">
+        <div class="cta-card">
+          <h3>Form 1 · Termómetro</h3>
+          <img src="qr/form-1-termometro.png" alt="QR Termómetro de Fricción Operativa">
+          <a class="cta-btn" href="https://forms.gle/HktqnAQBW6ZgZNw46" target="_blank" rel="noopener">Abrir formulario</a>
+        </div>
+        <div class="cta-card">
+          <h3>Form 3 · Carta Compromiso</h3>
+          <img src="qr/form-3-compromiso.png" alt="QR Carta Compromiso Interfuncional">
+          <a class="cta-btn" href="https://forms.gle/rDwjQUMnAfcCEGkJ9" target="_blank" rel="noopener">Abrir formulario</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>Tramontina · Global Leadership · Grupo A</footer>
+</body>
+</html>
